@@ -61,6 +61,7 @@ steps:
         right: "GitHub Actions"
       - type: respond
         with: 02_workflow-results.md
+        issue: Initial Workflow
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: getPullRequest
@@ -68,6 +69,7 @@ steps:
         action_id: iwPr
       - type: respond
         with: 03_modify-workflow.md
+        issue: Initial Workflow
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
 
