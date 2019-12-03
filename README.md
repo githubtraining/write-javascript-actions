@@ -1,2 +1,2 @@
-# write-javascript-actions
-Learn to write your own JavaScript GitHub Actions
+# GitHub Actions: Writing Javascript Actions
+Learn how to write your own GitHub JavaScript Action!  This course will empower you to begin automating customized tasks unique to your workflow.

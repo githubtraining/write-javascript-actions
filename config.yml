@@ -1,17 +1,138 @@
-title: Write JavaScript Actions
-tagline: A brand new course on Learning Lab
-description: Learn to write your own JavaScript GitHub Actions
+title: "GitHub Actions: Writing JavaScript Actions"
+tagline: Create custom automation tasks for your unique workflow using GitHub Actions
+description: >-
+  Learn how to write your own GitHub JavaScript Action!  This course will
+  empower you to begin automating customized tasks unique to your workflow.
 template:
-  repo: write-javascript-actions-template
-  name: write-javascript-actions
+  repo: "writing-javascript-actions-template"
+  name: "writing-javascript-actions"
 before:
+  - type: updateBranchProtection
   - type: createIssue
-    title: Welcome!
-    body: new-issue.md
+    title: Start Here!
+    body: welcome-issue.md
+    data:
+      actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
-  - title: First step
-    description: The first step in your course
-    event: issues.assigned
-    link: '{{ repoUrl }}'
+  - title: Prepare the repository
+    description: Create a pull request to add a workflow
+    event: pull_request
+    link: "{{ repoUrl }}/issue1/1"
     actions:
+      - type: gate
+        gates:
+          # if the payload action is 'opened' OR 'edited'
+          - left: "%payload.action%"
+            operator: ===
+            right: opened
+          - left: "%payload.action%"
+            operator: ===
+            right: edited
+            # AND the pull request title equals 'Initial Workflow'
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Initial Workflow
+
+        # if those statments FAIL... do this
+        else:
+          - type: respond
+            with: e-rename-pr.md
+            data:
+              title: Initial Workflow
+          # if those gates === true Then do this stuff
+      - type: respond
+        with: 01_explain-workflow.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+      - type: respond
+        with: 01_explain-environment.md
+      - type: respond
+        with: 01_explain-syntax.md
+
+  - title: Run a workflow
+    description: Wait for GitHub to run the workflow and report back the results
+    event: check_suite.completed
+    link: "{{ repoUrl }}/pull/2"
+    actions:
+      - type: gate
+        left: "%payload.check_suite.app.name%"
+        operator: ===
+        right: "GitHub Actions"
+      - type: respond
+        with: 02_workflow-results.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+      - type: getPullRequest
+        pullRequest: Initial Workflow
+        action_id: iwPr
+      - type: respond
+        with: 03_modify-workflow.md
+        data:
+          workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
+
+  - title: Add an Action reference
+    description: Add an Action reference to the workflow file
+    event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/2"
+    actions:
+      - type: getPullRequest
+        pullRequest: Initial Workflow
+        action_id: workflowPr
+      - type: respond
+        with: 03_reference-actions.md
+        data:
+          workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml"
+
+  - title: On to your development environment
+    description: Lets prepare your environemtn to start writing Actions
+    event: pull_request.synchronize
+    actions:
+      - type: mergePullRequest
+      - type: createIssue
+        title: Setting up your development environment
+        body: dev-env.md
+        action_id: devEnv
+      - type: respond
+        with: 03_on-to-actions.md
+        data:
+          issueUrl: "%actions.devEnv.data.html_url%"
+
+  - title: Install an editor and Node.js along with required packages
+    description: Installing the necessary tools and begin writing an Action
+    event: issues.created
+    actions:
+      - type: respond
+        with: 04_configure-env.md
+        issue: Setting up your development environment
+
+  - title: Creating the Action metadata
+    description: Create an action.yml file and add necessary metatdata for our Action
+    event: pull_request
+    # link: "{{ repoUrl }}/issue1/1"
+    actions:
+      - type: gate
+        gates:
+          # if the payload action is 'opened' OR 'edited'
+          - left: "%payload.action%"
+            operator: ===
+            right: opened
+          - left: "%payload.action%"
+            operator: ===
+            right: edited
+            # AND the pull request title equals 'Initial Workflow'
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Hello Actions
+
+        # if those statments FAIL... do this
+        else:
+          - type: respond
+            with: e-rename-pr.md
+            data:
+              title: Initial Workflow
       - type: closeIssue
+        issue: Setting up your development environment
+      - type: respond
+        with: 04_explain-metadata.md
