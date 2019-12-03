@@ -108,7 +108,7 @@ steps:
 
   - title: Install an editor and Node.js along with required packages
     description: Installing the necessary tools and begin writing an Action
-    event: issues.opened
+    event: pull_request.closed # Change this to when the pr is merged
     actions:
       - type: respond
         with: 04_configure-env.md
