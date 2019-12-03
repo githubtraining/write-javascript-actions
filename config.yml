@@ -100,7 +100,7 @@ steps:
 
   - title: Install an editor and Node.js along with required packages
     description: Installing the necessary tools and begin writing an Action
-    event: issues.created
+    event: issues.opened
     actions:
       - type: respond
         with: 04_configure-env.md
