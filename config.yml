@@ -1,0 +1,17 @@
+title: Write JavaScript Actions
+tagline: A brand new course on Learning Lab
+description: Learn to write your own JavaScript GitHub Actions
+template:
+  repo: write-javascript-actions-template
+  name: write-javascript-actions
+before:
+  - type: createIssue
+    title: Welcome!
+    body: new-issue.md
+steps:
+  - title: First step
+    description: The first step in your course
+    event: issues.assigned
+    link: '{{ repoUrl }}'
+    actions:
+      - type: closeIssue
