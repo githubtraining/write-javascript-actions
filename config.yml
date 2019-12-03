@@ -90,15 +90,21 @@ steps:
     description: Lets prepare your environemtn to start writing Actions
     event: pull_request.synchronize
     actions:
-      - type: mergePullRequest
       - type: createIssue
         title: Setting up your development environment
         body: dev-env.md
         action_id: devEnv
-      - type: respond
-        with: 03_on-to-actions.md
+      - type: createReview
+        event: APPROVE
+        body: 03_on-to-actions.md
         data:
           issueUrl: "%actions.devEnv.data.html_url%"
+        pullRequest: Initial Workflow
+      - type: mergePullRequest
+      # - type: respond
+      #   with: 03_on-to-actions.md
+      #   data:
+      #     issueUrl: "%actions.devEnv.data.html_url%"
 
   - title: Install an editor and Node.js along with required packages
     description: Installing the necessary tools and begin writing an Action
