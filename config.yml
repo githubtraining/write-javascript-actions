@@ -111,6 +111,9 @@ steps:
     event: pull_request.closed # Change this to when the pr is merged
     actions:
       - type: respond
+        with: install-tools.md
+        issue: Setting up your development environment
+      - type: respond
         with: 04_configure-env.md
         issue: Setting up your development environment
 
