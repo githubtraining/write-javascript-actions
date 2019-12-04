@@ -106,16 +106,16 @@ steps:
       #   data:
       #     issueUrl: "%actions.devEnv.data.html_url%"
 
-  - title: Install an editor and Node.js along with required packages
-    description: Installing the necessary tools and begin writing an Action
-    event: pull_request.closed # Change this to when the pr is merged
-    actions:
-      - type: respond
-        with: install-tools.md
-        issue: Setting up your development environment
-      - type: respond
-        with: 04_configure-env.md
-        issue: Setting up your development environment
+  # - title: Install an editor and Node.js along with required packages
+  #   description: Installing the necessary tools and begin writing an Action
+  #   event: pull_request.closed # Change this to when the pr is merged
+  #   actions:
+  #     - type: respond
+  #       with: install-tools.md
+  #       issue: Setting up your development environment
+  #     - type: respond
+  #       with: 04_configure-env.md
+  #       issue: Setting up your development environment
 
   - title: Creating the Action metadata
     description: Create an action.yml file and add necessary metatdata for our Action
