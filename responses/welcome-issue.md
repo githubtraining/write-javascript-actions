@@ -71,9 +71,9 @@ I'll respond in the new pull request when I detect it has been created.
 
 If at any point you're expecting a response and don't see one, refresh the page.
 
-`git clone https://{% raw %}{{repUrl}}{% endraw %}.git`
+`git clone https://{% raw %}{{repoUrl}}{% endraw %}.git`
 
-`{{repUrl}}`
+`{{repoUrl}}`
 
 {{repoUrl}}
 
