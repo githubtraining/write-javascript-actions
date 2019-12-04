@@ -1,4 +1,4 @@
-## Step 3: Edit my-workflow.yml
+## Step 2: Edit the current workflow
 
 Currently `my-workflow.yml` is not set up correctly for our use-case.  It worked great for allowing us to take a high-level look at workflows, but if we want to use our custom Actions there are some changes that we have to make to it.
 

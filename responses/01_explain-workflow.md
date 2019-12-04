@@ -5,7 +5,6 @@ Great job adding the workflow. Adding that file to this branch is enough for Git
 📖Take a deeper dive into [workflow components](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-workflows)
 
 
-## Step 2: Run a workflow
 
 I'll respond when GitHub Actions finishes running the workflow. You can follow along in the [Actions tab]({{ actionsUrl }}), or by clicking **Details** on the pending status below.
 
