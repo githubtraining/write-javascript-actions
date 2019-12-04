@@ -24,7 +24,8 @@ Now that you have all the necessary tools installed locally, follow these steps 
 7. Initialize the a new project with `npm init -y`
 8. Install the **core** and **github** dependencies from the [GitHub ToolKit](https://github.com/actions/toolkit) by typing `npm install --save @actions/core @actions/github`
 9.  Commit those newly added files, including `node_modules`, we will remove the need to upload `node_modules` in a later step
-10. Push you changes to your repository
+10. Push you changes to your repository:
+    `git push -u origin hello-world`
 11. Create a new pull request from the `hello-world` branch to `master` with the title of `Hello Actions`
     - Take notice that the pull request name `Hello Actions` is case-sensitive
 
