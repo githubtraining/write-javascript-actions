@@ -139,3 +139,18 @@ steps:
     actions:
       - type: respond
         with: 04_explain-runs.md
+      - type: respond
+        with: 04_main-js.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+
+  - title: Adding input parameters
+    description: extend your action to accept input parameters
+    event: check_suite.completed
+    actions:
+      - type: gate
+        left: "%payload.check_suite.app.name%"
+        operator: ===
+        right: "GitHub Actions"
+      - type: respond
+        with: 04_add-input-params.md
