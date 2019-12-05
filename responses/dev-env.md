@@ -28,7 +28,7 @@ Now that you have all the necessary tools installed locally, follow these steps 
     <!-- ![alt text](https://media.giphy.com/media/YnvmISGo2MbXpn2bc5/giphy.gif) -->
 
 3. Navigate to the folder you just cloned:
-   `cd writing-javacript-actions`
+   `cd writing-javascript-actions`
       <details><summary>View GIF</summary><img src="https://media.giphy.com/media/duA6JVCuXbt5gKqNLw/giphy.gif" alt="directory navigation" /></details>
     <!-- ![alt text](https://media.giphy.com/media/duA6JVCuXbt5gKqNLw/giphy.gif) -->
 4. Create a new branch named `hello-world`.  This is the branch we will use to write our first Action.  **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**

@@ -25,7 +25,7 @@ If you'd like to see more examples of workflows and Actions then check out these
 
 1. [Edit]({{workflowFile}}) the `my-workflow.yml`.
 1. Add a new `step:` and `name:` it `hello-action`
-1. Set the value of `uses:` to `.github/actions/hello-world`
+1. Set the value of `uses:` to `./.github/actions/hello-world`
 1. Commit these file changes to this branch
 
 ---
@@ -46,6 +46,6 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: hello-action
-      uses: .github/actions/hello-world
+      uses: ./.github/actions/hello-world
 ```
 </details>
