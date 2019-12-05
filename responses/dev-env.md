@@ -12,9 +12,9 @@ If you do not have a preferred environment then I suggest following along with m
 
 Most of your work going forward will take place away from your Learning Lab repository, so before continuing with the course ensure you have the following installed on your **local machine**.  
 
-1. [Node.js](https://nodejs.org)
-2. [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
-3. [Git](https://git-scm.com/)
+1. [ ] [Node.js](https://nodejs.org)
+2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
+3. [ ] [Git](https://git-scm.com/)
 
 
 ### :keyboard: Activity: Configure your environment
@@ -23,7 +23,7 @@ Now that you have all the necessary tools installed locally, follow these steps 
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
 2. Clone your Learning Lab repo to your local machine:
-   `git clone https://{{repoUrl}}.git`
+   `git clone {{repoUrl}}.git`
    <details><summary>View GIF</summary><img src="https://media.giphy.com/media/YnvmISGo2MbXpn2bc5/giphy.gif" alt="git clone example" /></details>
     <!-- ![alt text](https://media.giphy.com/media/YnvmISGo2MbXpn2bc5/giphy.gif) -->
 
@@ -37,14 +37,28 @@ Now that you have all the necessary tools installed locally, follow these steps 
    
 5. Create a new folder for our Actions files:
    `mkdir -p .github/actions/hello-world`
+    <details><summary>View GIF</summary><img src="https://media.giphy.com/media/Wn03sc0QsywHHD1LeN/giphy.gif" alt="create folder for action example" /></details>
 6. Navigate to the `hello-world` folder you just created:
    `cd .github/actions/hello-world`
-7. Initialize the a new project with `npm init -y`
-8. Install the **core** and **github** dependencies from the [GitHub ToolKit](https://github.com/actions/toolkit) by typing `npm install --save @actions/core @actions/github`
-9.  Commit those newly added files, including `node_modules`, we will remove the need to upload `node_modules` in a later step
+    <details><summary>View GIF</summary><img src="https://media.giphy.com/media/ckCMgczjpbjNwkfJq4/giphy.gif" alt="navigate to folder for action example" /></details>
+   
+7. Initialize a new project:
+   `npm init -y`
+    <details><summary>View GIF</summary><img src="https://media.giphy.com/media/mEW0fJYx4oUjdgYHDV/giphy.gif" alt="navigate to folder for action example" /></details>
+
+8. Install the **core** and **github** dependencies from the [GitHub ToolKit](https://github.com/actions/toolkit):
+   `npm install --save @actions/core @actions/github`
+   <details><summary>View GIF</summary><img src="https://media.giphy.com/media/H3kGNqDI24lNOEKk5k/giphy.gif" alt="navigate to folder for action example" /></details>
+9.  Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
+    `git add .`
+    `git commit -m 'initial hello-world'`
 10. Push you changes to your repository:
     `git push -u origin hello-world`
-11. Create a new pull request from the `hello-world` branch to `master` with the title of `Hello Actions`
-    - Take notice that the pull request name `Hello Actions` is case-sensitive
 
-I will close this issue and continue responding to you in the `hello-actions` pull request once you have created it.
+
+---
+
+I will respond once you have finished.
+
+
+

@@ -41,6 +41,8 @@ steps:
             data:
               title: Initial Workflow
           # if those gates === true Then do this stuff
+      - type: closeIssue
+        issue: Start Here!
       - type: respond
         with: 01_explain-workflow.md
         data:
@@ -101,49 +103,39 @@ steps:
           issueUrl: "%actions.devEnv.data.html_url%"
         pullRequest: Initial Workflow
       - type: mergePullRequest
-      # - type: respond
-      #   with: 03_on-to-actions.md
-      #   data:
-      #     issueUrl: "%actions.devEnv.data.html_url%"
-
-  # - title: Install an editor and Node.js along with required packages
-  #   description: Installing the necessary tools and begin writing an Action
-  #   event: pull_request.closed # Change this to when the pr is merged
-  #   actions:
-  #     - type: respond
-  #       with: install-tools.md
-  #       issue: Setting up your development environment
-  #     - type: respond
-  #       with: 04_configure-env.md
-  #       issue: Setting up your development environment
 
   - title: Creating the Action metadata
     description: Create an action.yml file and add necessary metatdata for our Action
-    event: pull_request
+    event: push
     # link: "{{ repoUrl }}/issue1/1"
     actions:
       - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Initial Workflow'
-      - type: gate
-        left: "%payload.pull_request.title%"
+        left: "%payload.ref%"
         operator: ===
-        right: Hello Actions
-
-        # if those statments FAIL... do this
-        else:
-          - type: respond
-            with: e-rename-pr.md
-            data:
-              title: Initial Workflow
+        right: "refs/heads/hello-world"
+      - type: gate
+        left: "%payload.created%"
+        operator: ===
+        right: true
+      - type: createPullRequest
+        title: Hello Action
+        body: 04_explain-metadata.md
+        head: hello-world
+        action_id: helloPr
+      - type: respond
+        with: 04_hello-pr.md
+        issue: Setting up your development environment
+        data:
+          pullUrl: "%actions.helloPr.data.html_url%"
       - type: closeIssue
         issue: Setting up your development environment
       - type: respond
-        with: 04_explain-metadata.md
+        with: 04_create-metadata.md
+        issue: Hello Action
+
+  - title: Create the Action entrypoint
+    description: time to start adding code to main.js
+    event: pull_request.synchronize
+    actions:
+      - type: respond
+        with: 04_explain-runs.md
