@@ -122,6 +122,8 @@ steps:
         body: 04_explain-metadata.md
         head: hello-world
         action_id: helloPr
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 04_hello-pr.md
         issue: Setting up your development environment
@@ -139,6 +141,8 @@ steps:
     actions:
       - type: respond
         with: 04_explain-runs.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 04_main-js.md
         data:
@@ -146,12 +150,8 @@ steps:
 
   - title: Adding input parameters
     description: extend your action to accept input parameters
-    event: check_suite.completed
+    event: pull_request.synchronize
     actions:
-      - type: gate
-        left: "%payload.check_suite.app.name%"
-        operator: ===
-        right: "GitHub Actions"
       - type: respond
         with: 04_hello-result.md
       - type: respond

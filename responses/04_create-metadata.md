@@ -15,9 +15,7 @@ We will start with using the parameters that are **required** and later implemen
 3. Next, add a `description` parameter and give it a value of `"say hello with Actions"`
 4. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
 
-    <details><summary>View the complete file</summary><img src="https://i.imgur.com/xCuBdI4.png" alt="screenshot of action.yml file" />
-
-    <details><summary>Raw code to copy</summary>
+    <details><summary>View the complete file</summary>
 
     ```yaml
     name: "my hello action"
@@ -30,7 +28,7 @@ We will start with using the parameters that are **required** and later implemen
     ```
     </details>
 
-    </details>
+
 
 5. Save the `action.yml` file
 6. commit the changes:

@@ -16,16 +16,14 @@ The first iteration of our Action will follow the traditional path of logging "H
 
 1. Create a file named `main.js`
 2. Log "Hello World" to the console
-    <details><summary>View the complete file</summary><img src="https://i.imgur.com/ABXoNtE.png" alt="screenshot of main.js file" />
-
-    <details><summary>Raw code to copy</summary>
+    <details><summary>View the complete file</summary>
 
     ```javascript
     console.log("Hello World")
     ```
     </details>
 
-    </details>
+
 3. Save the `main.js` file
 4. commit the changes:
    `git add .`
