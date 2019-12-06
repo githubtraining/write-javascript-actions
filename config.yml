@@ -153,4 +153,6 @@ steps:
         operator: ===
         right: "GitHub Actions"
       - type: respond
+        with: 04_hello-result.md
+      - type: respond
         with: 04_add-input-params.md
