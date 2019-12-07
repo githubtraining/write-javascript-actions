@@ -70,7 +70,7 @@ steps:
         pullRequest: Initial Workflow
         action_id: iwPr
       - type: respond
-        with: 03_modify-workflow.md
+        with: 02_modify-workflow.md
         issue: Initial Workflow
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
@@ -98,7 +98,7 @@ steps:
         action_id: devEnv
       - type: createReview
         event: APPROVE
-        body: 03_on-to-actions.md
+        body: 04_on-to-actions.md
         data:
           issueUrl: "%actions.devEnv.data.html_url%"
         pullRequest: Initial Workflow
@@ -119,20 +119,20 @@ steps:
         right: true
       - type: createPullRequest
         title: Hello Action
-        body: 04_explain-metadata.md
+        body: 05_explain-metadata.md
         head: hello-world
         action_id: helloPr
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
-        with: 04_hello-pr.md
+        with: 05_hello-pr.md
         issue: Setting up your development environment
         data:
           pullUrl: "%actions.helloPr.data.html_url%"
       - type: closeIssue
         issue: Setting up your development environment
       - type: respond
-        with: 04_create-metadata.md
+        with: 05_create-metadata.md
         issue: Hello Action
 
   - title: Create the Action entrypoint
@@ -140,19 +140,35 @@ steps:
     event: pull_request.synchronize
     actions:
       - type: respond
-        with: 04_explain-runs.md
+        with: 06_explain-runs.md
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
-        with: 04_main-js.md
+        with: 06_main-js.md
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
 
   - title: Adding input parameters
     description: extend your action to accept input parameters
-    event: pull_request.synchronize
+    event: pull_request.synchronize #ideally would like the workflow completing to tigger this
     actions:
       - type: respond
-        with: 04_hello-result.md
+        with: 07_hello-result.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
-        with: 04_add-input-params.md
+        with: 07_add-input-params.md
+      - type: respond
+        with: 07_update-files.md
+
+  - title: Exploring your input parameters
+    description: view the results of adding input parameter
+    event: pull_request.synchronize #ideally would like workflow complete to trigger this
+    actions:
+      - type: respond
+        with: 08_input-result.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+      - type: removeBranchProtection
+      - type: respond
+        with: 08_experiment.md
