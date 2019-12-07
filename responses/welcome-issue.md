@@ -45,7 +45,7 @@ In other courses, you may have noticed that some behaviors take me longer to res
 
 If you aren't already familiar, it may be a good idea to go through the [Introduction to GitHub Learning Lab](https://lab.github.com/githubtraining/introduction-to-github).
 
-## Step 1: Preparing your repository
+## Preparing your repository
 
 Actions are enabled on your repository by default, but we still have to tell our repository to use them.  We do this by creating a **workflow** file in our repository.
 
