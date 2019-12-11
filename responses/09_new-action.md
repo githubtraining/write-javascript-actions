@@ -9,7 +9,7 @@ You will still see the workflow trying to execute with every push if you look at
 ### :keyboard: Activity: Setting up the next Action
 
 1. [Edit]({{workflowFile}) your workflow file by commenting out every single line.
-2. Commit the changes to a new branch.
+2. Commit the changes to a new branch and name it `action-two`.
 3. Create a pull request named **External APIs**
 
 Like our first Action, I'll respond in the new pull request when I detect it has been opened.

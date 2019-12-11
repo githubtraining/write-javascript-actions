@@ -196,8 +196,8 @@ steps:
           workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Add a second Action
-    description: Create a pull request to add another Action
+  - title: Prevent the workflow from running
+    description: Comment out the lines in the workflow to prevent unwanted runs
     event: pull_request
     # link: "{{ repoUrl }}/issue1/1"
     actions:
@@ -214,19 +214,39 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Second Action
+        right: External APIs
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Initial Workflow
+              title: External APIs
           # if those gates === true Then do this stuff
       ###############################################################################################################
       - type: closeIssue
         issue: Knock Knock...
       - type: respond
-        with: 10_some-markdown.md
-        data:
-          actionsUrl: "%payload.repository.html_url%/actions"
+        with: 10_action-two.md
+
+  - title: Create your new Action metadata
+    description: Add action.yml file for new joke action
+    event: pull_request.synchronize
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+      - type: respond
+        with: 10_create-metadata.md
+
+  - title: Create your Actions JavaScript files
+    description: Add joke.j and main.js to your Action
+    event: pull_request.synchronize
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+      - type: respond
+        with: 10_create-js-files.md
