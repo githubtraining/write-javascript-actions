@@ -1,4 +1,4 @@
-### :keyboard: Activity: Setting up the next Action
+## Breaking our workflow
 
 Before we continue we are going to need to do a few things. First and foremost our workflow is currently setup to run each time there is a `push` event to this repository. Let's comment out our current workflow to prevent things from running but preserve the things you've worked on up to this point.
 
@@ -6,5 +6,33 @@ You will still see the workflow trying to execute with every push if you look at
 
 ![No trigger screenshot](https://i.imgur.com/rARtXc1.png)
 
-<!-- add action.yml -->
-<!-- open pull request -->
+### :keyboard: Activity: Setting up the next Action
+
+1. [Edit]({{workflowFile}) your workflow file by commenting out every single line.
+2. Commit the changes to a new branch.
+3. Create a pull request named **External APIs**
+
+Like our first Action, I'll respond in the new pull request when I detect it has been opened.
+
+---
+
+<details><summary>The complete workflow can be viewed by clicking here</summary>
+
+```yaml
+# name: JS Actions
+
+# on: [push]
+
+# jobs:
+#   action:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v1
+
+#     - name: hello-action
+#       uses: ./.github/actions/hello-world
+```
+
+</details>
