@@ -172,3 +172,60 @@ steps:
       - type: removeBranchProtection
       - type: respond
         with: 08_experiment.md
+
+  - title: Integrating Actions with external APIs
+    description: Write a new Action that call an external API
+    event: pull_request.closed
+    actions:
+      - type: updateBranchProtection
+      - type: createIssue
+        body: 09_joking-around.md
+        title: Knock Knock...
+        action_id: jokeIssue
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+      - type: respond
+        with: 08_next-steps.md
+        issue: Hello Action
+        data:
+          issueUrl: "%actions.jokeIssue.data.html_url%"
+      - type: respond
+        with: 09_new-action.md
+        issue: Knock Knock...
+        data:
+          workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
+
+  - title: Add a second Action
+    description: Create a pull request to add another Action
+    event: pull_request
+    # link: "{{ repoUrl }}/issue1/1"
+    actions:
+      - type: gate
+        gates:
+          # if the payload action is 'opened' OR 'edited'
+          - left: "%payload.action%"
+            operator: ===
+            right: opened
+          - left: "%payload.action%"
+            operator: ===
+            right: edited
+            # AND the pull request title equals 'Initial Workflow'
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Second Action
+
+        # if those statments FAIL... do this
+        else:
+          - type: respond
+            with: e-rename-pr.md
+            data:
+              title: Initial Workflow
+          # if those gates === true Then do this stuff
+      ###############################################################################################################
+      - type: closeIssue
+        issue: Knock Knock...
+      - type: respond
+        with: 10_some-markdown.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
