@@ -250,3 +250,19 @@ steps:
         right: External APIs
       - type: respond
         with: 10_create-js-files.md
+
+  - title: Use the joke Action in a workflow
+    description: Edit the workflow file to now use the newly created joke Action
+    event: pull_request.synchronize
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+      - type: getPullRequest
+        pullRequest: External APIs
+        action_id: apiPr
+      - type: respond
+        with: 11_edit-workflow.md
+        data:
+          workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml"
