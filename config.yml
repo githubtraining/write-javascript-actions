@@ -194,6 +194,7 @@ steps:
         issue: Knock Knock...
         data:
           workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
+          actionsUrl: "%payload.repository.html_url%/actions"
 
   - title: Add a second Action
     description: Create a pull request to add another Action
