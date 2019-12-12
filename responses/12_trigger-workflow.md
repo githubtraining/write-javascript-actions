@@ -10,4 +10,4 @@ Great job! Everything is all set up and now we are ready to start laughing 🤣.
 
 ---
 
-When you are ready to move forward in the lesson comment on this pull request and I will continue showing you how to write JavaScript Actions.
+When you are ready to move forward in the lesson merge this pull request into the `master` branch.
