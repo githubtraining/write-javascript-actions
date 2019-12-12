@@ -1,4 +1,4 @@
-## Congrats on your first Action 🎉
+## Congrats on your second Action 🎉
 
 Congratulations {{user.login}} you have officially written two GitHub JavaScript Actions!!!
 
