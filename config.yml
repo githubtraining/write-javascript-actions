@@ -266,3 +266,4 @@ steps:
         with: 11_edit-workflow.md
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml"
+          actionsUrl: "%payload.repository.html_url%/actions"
