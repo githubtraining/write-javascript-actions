@@ -283,3 +283,20 @@ steps:
         issue: External APIs
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
+
+  - title: Creating the third and final Action
+    description: Create an Action that consumes output from another Action and uses Octokit
+    event: pull_request.closed
+    actions:
+      - type: updateBranchProtection
+      - type: createIssue
+        body: 13_action-three.md
+        title: Consuming Action Outputs
+        action_id: outputIssue
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+      - type: respond
+        with: 12_next-steps.md
+        issue: External APIs
+        data:
+          issueUrl: "%actions.outputIssue.data.html_url%"
