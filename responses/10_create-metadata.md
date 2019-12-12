@@ -4,6 +4,8 @@
 
 Our Action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
 
+We will not use the `joke-output` in in this portion of the course. There will be a later step that will rely on this Actions output.
+
 1. Create a file named `action.yml`
 2. Use the `name` parameter to name your Action `"external API action"`
 3. Next, add a `description` parameter and give it a value of `"use an external API to retrieve and display a joke"`
