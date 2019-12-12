@@ -20,7 +20,7 @@ Now that you have all the necessary tools installed locally, follow these steps 
 7. Initialize a new project:
    `npm init -y`
 8. Install the **request** and **request-promise** dependencies using `npm`:
-   `npm install --save request request-promise`
+   `npm install --save request request-promise @actions/core`
 9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
    `git add .`
    `git commit -m 'initial joke action'`
