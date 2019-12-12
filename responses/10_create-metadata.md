@@ -2,12 +2,13 @@
 
 💡All of the following steps take place inside of the `.github/actions/hello-world` directory.
 
-Our Action does not require much metadata for it to run correctly. We will not be accepting any inputs, nor setting any outputs. Because of that we simply need to name it, give it a description and define its environment.
+Our Action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
 
 1. Create a file named `action.yml`
 2. Use the `name` parameter to name your Action `"external API action"`
 3. Next, add a `description` parameter and give it a value of `"use an external API to retrieve and display a joke"`
-4. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
+4. Create an `outputs:` with an id of `joke-output:` and add a `description:` so we know what the output is for
+5. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
 
    <details><summary>View the complete file</summary>
 
@@ -16,6 +17,10 @@ Our Action does not require much metadata for it to run correctly. We will not b
 
    description: "use an external API to retrieve and display a joke"
 
+   outputs:
+     joke-output:
+       description: The resulting joke from the icanhazdadjokes API
+
    runs:
      using: "node12"
      main: "main.js"
@@ -23,9 +28,9 @@ Our Action does not require much metadata for it to run correctly. We will not b
 
    </details>
 
-5. Save the `action.yml` file
-6. commit the changes:
+6. Save the `action.yml` file
+7. commit the changes:
    `git add .`
    `git commit -m 'update action.yml'`
-7. push them to the `action-two` branch:
+8. push them to the `action-two` branch:
    `git push`
