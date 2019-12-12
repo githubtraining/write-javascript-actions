@@ -267,3 +267,18 @@ steps:
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml"
           actionsUrl: "%payload.repository.html_url%/actions"
+
+  - title: Having Actions tell a joke... or two
+    description: Wait for your Action to present you with a joke
+    event: pull_request.synchronize
+    # link: "{{ repoUrl }}/pull/2"
+    actions:
+      - type: gate
+        left: "%payload.check_suite.app.name%"
+        operator: ===
+        right: "GitHub Actions"
+      - type: respond
+        with: 12_trigger-workflow.md
+        issue: External APIs
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
