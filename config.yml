@@ -272,10 +272,6 @@ steps:
     event: pull_request.synchronize
     # link: "{{ repoUrl }}/pull/2"
     actions:
-      - type: gate
-        left: "%payload.check_suite.app.name%"
-        operator: ===
-        right: "GitHub Actions"
       - type: removeBranchProtection
       - type: respond
         with: 12_trigger-workflow.md
@@ -332,3 +328,27 @@ steps:
         issue: Consuming Action Outputs
       - type: respond
         with: 14_action-three.md
+
+  - title: Add third Actions metadata
+    description: Create the metadata for the third Action
+    event: pull_request.synchronize
+    # link: "{{ repoUrl }}/pull/2"
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Use Outputs
+      - type: respond
+        with: 14_create-metadata.md
+
+  - title: Add third Actions JavaScript files
+    description: Create the JavaScript files for the third Action
+    event: pull_request.synchronize
+    # link: "{{ repoUrl }}/pull/2"
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Use Outputs
+      - type: respond
+        with: 14_create-js-files.md
