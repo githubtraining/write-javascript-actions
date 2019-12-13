@@ -34,13 +34,14 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
 3. Next, add a `description` parameter and give it a value of `"consume the output of the previous Action and create a new issue in the repository"`
 4. Create an `inputs:` with an id of `joke:` and add a `description:` of `"This will become the body of the created issue"`
 5. Create another `inputs:` with an id of `issue-title:` and a `description:` of `"Every issue needs a title, it's nice to supply one, even though you could do this dynamically within your code"`
-6. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
-7. Save the `action.yml` file
-8. commit the changes:
+6. Give the `issue-title:` a `default:` value of `"a joke for you"`
+7. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
+8. Save the `action.yml` file
+9. commit the changes:
    `git add .`
    `git commit -m 'update action.yml'`
-9. push the changes to the `action-three` branch:
-   `git push`
+10. push the changes to the `action-three` branch:
+    `git push`
 
 ---
 
@@ -56,6 +57,7 @@ inputs:
     description: "This will become the body of the created issue"
   issue-title:
     description: "Every issue needs a title, it's nice to supply one, even though you could do this dynamically within your code"
+    default: "a joke for you"
 
 runs:
   using: "node12"
