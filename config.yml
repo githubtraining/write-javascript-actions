@@ -223,7 +223,6 @@ steps:
             data:
               title: External APIs
           # if those gates === true Then do this stuff
-      ###############################################################################################################
       - type: closeIssue
         issue: Knock Knock...
       - type: respond
@@ -284,13 +283,13 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Creating the third and final Action
-    description: Create an Action that consumes output from another Action and uses Octokit
+  - title: Configure the workflow for a third Action
+    description: Edit the workflow to accomodate the third action
     event: pull_request.closed
     actions:
       - type: updateBranchProtection
       - type: createIssue
-        body: 13_action-three.md
+        body: 13_action-three-workflow.md
         title: Consuming Action Outputs
         action_id: outputIssue
         data:
@@ -301,3 +300,35 @@ steps:
         issue: External APIs
         data:
           issueUrl: "%actions.outputIssue.data.html_url%"
+
+  - title: Write the final Action
+    description: Create an Action that consumes output from another Action and uses Octokit
+    event: pull_request
+    # link: "{{ repoUrl }}/issue1/1"
+    actions:
+      - type: gate
+        gates:
+          # if the payload action is 'opened' OR 'edited'
+          - left: "%payload.action%"
+            operator: ===
+            right: opened
+          - left: "%payload.action%"
+            operator: ===
+            right: edited
+            # AND the pull request title equals 'Initial Workflow'
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Use Outputs
+
+        # if those statments FAIL... do this
+        else:
+          - type: respond
+            with: e-rename-pr.md
+            data:
+              title: Use Outputs
+          # if those gates === true Then do this stuff
+      - type: closeIssue
+        issue: Consuming Action Outputs
+      - type: respond
+        with: 14_action-three.md
