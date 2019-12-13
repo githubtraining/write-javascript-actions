@@ -295,6 +295,7 @@ steps:
         action_id: outputIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
+          workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
       - type: respond
         with: 12_next-steps.md
         issue: External APIs
