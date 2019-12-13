@@ -1,6 +1,6 @@
 ### :keyboard: Activity: Create the metadata file
 
-💡All of the following steps take place inside of the `.github/actions/hello-world` directory.
+💡All of the following steps take place inside of the `.github/actions/joke-action` directory.
 
 Our Action does not require much metadata for it to run correctly. We will not be accepting any inputs, we will however be setting a single output this time.
 
