@@ -11,7 +11,7 @@ Let's create our final project directory and install all the necessary dependenc
    `git checkout master`
 3. Update the contents of your Learning Lab repo to your local machine:
    `git pull`
-4. Checkout the `action-two` branch you created for this pull request.
+4. Checkout the `action-three` branch you created for this pull request.
    `git checkout action-three`
 5. Create a new folder for our Actions files:
    `mkdir -p .github/actions/issue-maker`
