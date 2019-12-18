@@ -62,7 +62,7 @@ inputs:
 
 runs:
   using: "node12"
-  main: "main.js"
+  main: "index.js"
 ```
 
 </details>

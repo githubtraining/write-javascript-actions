@@ -84,7 +84,7 @@ Don't forget to call the `run()` function.
 
    async function getJoke() {
      const res = await request(options);
-     return res;
+     return res.joke;
    }
 
    module.exports = getJoke;
@@ -95,12 +95,12 @@ Don't forget to call the `run()` function.
 
    ```javascript
    const getJoke = require("./joke");
-   const core = require("@actions/core)
+   const core = require("@actions/core");
 
    async function run() {
      const joke = await getJoke();
      console.log(joke);
-     core.setOutput("joke-output", joke)
+     core.setOutput("joke-output", joke);
    }
 
    run();
