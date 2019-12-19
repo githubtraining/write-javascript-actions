@@ -354,3 +354,15 @@ steps:
         with: 14_create-js-files.md
       - type: respond
         with: 14_js-files-activity.md
+
+  - title: Trigger the third Action
+    description: Add a pull request label to trigger the workflow
+    event: pull_request.synchronize
+    # link: "{{ repoUrl }}/pull/2"
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Use Outputs
+      - type: respond
+        with: 15_add-a-label.md
