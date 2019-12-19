@@ -366,3 +366,5 @@ steps:
         right: Use Outputs
       - type: respond
         with: 15_add-a-label.md
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
