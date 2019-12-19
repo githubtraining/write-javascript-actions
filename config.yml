@@ -377,4 +377,13 @@ steps:
     actions:
       - type: createIssue
         title: Last minute notes
-        body: 16_using-ncc.md
+        body: great-job.md
+      - type: respond
+        issue: Last minute notes
+        with: 16_using-ncc.md
+      - type: respond
+        issue: Last minute notes
+        with: 16_publishing.md
+      - type: respond
+        issue: Last minute notes
+        with: 16_complete.md
