@@ -25,11 +25,11 @@ We need to make some edits to the `my-workflow.yml` file to get it configured to
 
 ### :keyboard: Activity: Final workflow edit
 
-1. [Edit]({{workflowFile}) your `my-workflow.yml` file.
+1. [Edit]({{workflowFile}}) your `my-workflow.yml` file.
 2. Assign the `ha-ha` step an `id:` of **jokes**
 3. Add a new step named `create-issue`.
 4. The new step should have its `uses:` property point to `./.github/actions/issue-maker`
-5. The `issue-maker` Action should consume the output of the `joke-action`. Add a `with:` property that takes a parameter of `joke:` with a value of `${{steps.jokes.outputs.joke-output}}`
+5. The `issue-maker` Action should consume the output of the `joke-action`. Add a `with:` property that takes a parameter of `joke:` with a value of `{% raw %}${{steps.jokes.outputs.joke-output}}{% endraw %}`
 6. The `issue-maker` Action should have a property of `repo-token:` which has `${{secrets.GITHUB_TOKEN}}` as the value (I'll explain this in a later step, for now it's a secret 🤣🤷‍♂)
 7. Commit the changes to a new branch and name it `action-three`.
 8. Create a pull request named **Use Outputs**
@@ -64,8 +64,8 @@ jobs:
       - name: create-issue
         uses: ./.github/actions/issue-maker
         with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
-          joke: ${{steps.jokes.outputs.joke-output}}
+          repo-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
+          joke: {% raw %}${{steps.jokes.outputs.joke-output}}{% endraw %}
 ```
 
 </details>

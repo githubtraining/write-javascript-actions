@@ -66,7 +66,7 @@ Don't forget to call the `run()` function.
 
 ### :keyboard: Creating the javascript files for your new Action.
 
-1. Add the following contents to the `.github/actions/joke-action/joke.js` file:
+1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
    ```javascript
    const request = require("request-promise");
@@ -91,7 +91,7 @@ Don't forget to call the `run()` function.
    ```
 
 2. Save the `joke.js` file.
-3. Add the following contents to the `.github/actions/joke-action/main.js` file:
+3. Create and add the following contents to the `.github/actions/joke-action/main.js` file:
 
    ```javascript
    const getJoke = require("./joke");

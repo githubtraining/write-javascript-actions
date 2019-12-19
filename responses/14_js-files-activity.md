@@ -11,6 +11,9 @@ I'm counting on you this time! In the previous steps I have guided you heavily o
 7. Use the `setFailed()` method from the `@actions/core` package to stop your Action and log and error if something goes wrong
 8. Save the file
 9. Commit and push the changes to this branch
+   `git add .`
+   `git commit -m 'adding js files'`
+   `git push`
 
 I'll respond once you complete these steps, good luck 👍
 

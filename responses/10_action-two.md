@@ -14,9 +14,11 @@ Now that you have all the necessary tools installed locally, follow these steps 
 4. Checkout the `action-two` branch you created for this pull request.
    `git checkout action-two`
 5. Create a new folder for our Actions files:
-   `mkdir -p .github/actions/joke-action`
+   `mkdir joke-action`
+   **The full path should be `.github/actions/joke-action`**
 6. Navigate to the `joke-action` folder you just created:
-   `cd .github/actions/joke-action`
+   `cd joke-action`
+   **This may be different depending on your current directory**
 7. Initialize a new project:
    `npm init -y`
 8. Install the **request** and **request-promise** dependencies using `npm`:

@@ -4,8 +4,8 @@ Great job! Everything is all set up and now we are ready to start laughing 🤣.
 
 ### :keyboard: Trigger a joke
 
-1. Apply the `first joke` label to this pull request
-2. Wait a few seconds and then apply the `second joke` label to this pull request
+1. Apply a label to this pull request
+2. Wait a few seconds and then apply another label to this pull request
 3. Check the workflow results on the [Actions tab]({{actionsUrl}})
 
 ---

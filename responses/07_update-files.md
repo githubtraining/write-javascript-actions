@@ -2,76 +2,80 @@
 
 ### :keyboard: Activity: Add input parameters
 
-That was a lot of information that you just learned.  @{{user.login}} it is time for you to put it in practice.  
+That was a lot of information that you just learned. @{{user.login}} it is time for you to put it in practice.
 
 1. Using your code editor change these files to reflect the code in the examples shown above:
 
-    <details><summary>main.js</summary>
+   <details><summary>main.js</summary>
 
-    ```javascript
-    const core = require("@actions/core");
+   ```javascript
+   const core = require("@actions/core");
 
-    const firstGreeting = core.getInput("first-greeting");
-    const secondGreeting = core.getInput("second-greeting");
-    const thirdGreeting = core.getInput("third-greeting");
+   const firstGreeting = core.getInput("first-greeting");
+   const secondGreeting = core.getInput("second-greeting");
+   const thirdGreeting = core.getInput("third-greeting");
 
-    console.log(`Hello ${firstGreeting}`);
-    console.log(`Hello ${secondGreeting}`);
-    if (thirdGreeting) {
-    console.log(`Hello ${thirdGreeting}`);
-    }
-    ```
-    </details>
+   console.log(`Hello ${firstGreeting}`);
+   console.log(`Hello ${secondGreeting}`);
+   if (thirdGreeting) {
+     console.log(`Hello ${thirdGreeting}`);
+   }
+   ```
 
-    <details><summary>Action.yml</summary>
+   </details>
 
-    ```yaml
-    name: "my hello action"
+   <details><summary>Action.yml</summary>
 
-    description: "say hello with Actions"
+   ```yaml
+   name: "my hello action"
 
-    inputs:
-    first-greeting:
-        description: who you would like to greet in the console
-        required: true
-        default: Hubot
+   description: "say hello with Actions"
 
-    second-greeting:
-        description: who to greet
-        required: true
-        default: Mona the Octocat
+   inputs:
+     first-greeting:
+       description: who you would like to greet in the console
+       required: true
+       default: Hubot
 
-    third-greeting:
-        description: another greeting
-        required: false
+     second-greeting:
+       description: who to greet
+       required: true
+       default: Mona the Octocat
 
-    runs:
-    using: "node12"
-    main: "main.js"
-    ```
-    </details>
+     third-greeting:
+       description: another greeting
+       required: false
 
-    <details><summary>my-workflow.yml</summary>
+   runs:
+     using: "node12"
+     main: "main.js"
+   ```
 
-    ```yaml
-    name: JS Actions
+   </details>
 
-    on: [push]
+   <details><summary>my-workflow.yml</summary>
 
-    jobs:
-    action:
+   ```yaml
+   name: JS Actions
 
-        runs-on: ubuntu-latest
+   on: [push]
 
-        steps:
-        - uses: actions/checkout@v1
+   jobs:
+   action:
+       runs-on: ubuntu-latest
 
-        - name: hello-action
-        uses: ./.github/actions/hello-world
-        with:
-            first-greeting: Learning Lab User
-    ```
-    </details>
+       steps:
+       - uses: actions/checkout@v1
+
+       - name: hello-action
+           uses: ./.github/actions/hello-world
+           with:
+           first-greeting: Learning Lab User
+
+   ```
+
+   </details>
+
 2. Save the changes to each file
 3. Commit the changes to this branch
    `git add .`
@@ -82,6 +86,3 @@ That was a lot of information that you just learned.  @{{user.login}} it is time
 ---
 
 I'll respond here when you finish this step.
-
-
-

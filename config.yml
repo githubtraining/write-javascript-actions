@@ -193,6 +193,7 @@ steps:
         with: 09_new-action.md
         issue: Knock Knock...
         data:
+          # The following workflowFile var does not point where it should for some reason
           workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
           actionsUrl: "%payload.repository.html_url%/actions"
 
@@ -364,7 +365,16 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: Use Outputs
+      - type: removeBranchProtection
       - type: respond
         with: 15_add-a-label.md
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
+
+  - title: Wrapping things up
+    description: Final notes before you go
+    event: pull_request.closed
+    actions:
+      - type: createIssue
+        title: Last minute notes
+        body: 16_using-ncc.md

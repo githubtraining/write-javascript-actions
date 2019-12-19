@@ -25,7 +25,7 @@ Let's create our final project directory and install all the necessary dependenc
    `git add .`
    `git commit -m 'initial issue maker action'`
 10. Push you changes to your repository:
-    `git push
+    `git push`
 
 ---
 
