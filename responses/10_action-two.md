@@ -25,7 +25,7 @@ Now that you have all the necessary tools installed locally, follow these steps 
    `git add .`
    `git commit -m 'initial joke action'`
 10. Push you changes to your repository:
-    `git push
+    `git push`
 
 ---
 
