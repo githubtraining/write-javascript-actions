@@ -17,7 +17,7 @@ steps:
   - title: Prepare the repository
     description: Create a pull request to add a workflow
     event: pull_request
-    link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issue/1"
     actions:
       - type: gate
         gates:
