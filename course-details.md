@@ -1,9 +1,6 @@
-This is the description we show on the course page [here](https://lab.github.com/githubtraining/github-actions:-writing-javascript-actions). This first paragraph will be featured at the top of the page so make it great.
-​
+[GitHub Actions](https://github.com/features/actions) is a powerful platform that empowers your team to go from code to cloud all from the comfort of your own repositories.
 
-​
-Be sure to tell the learner about the technology you are teaching, why they should learn it, how they can use it, and what you will teach them.
-​
+Over the duration of this course, approximately 1 hour, you will learn the skills needed to begin using and customizing GitHub Actions in your unique workflow scenarios.
 
-
-Include information on how they can reach you for questions about the content or course. 
+**prerequisites**
+It would be very beneficial to you to have JavaScript or other programming familiarity before enrolling in this course.
