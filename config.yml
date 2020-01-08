@@ -10,8 +10,12 @@ before:
   - type: updateBranchProtection
   - type: createIssue
     title: Start Here!
-    body: welcome-issue.md
+    body: 01_welcome-issue.md
+  - type: respond
+    issue: Start Here!
+    body: 01_welcome-activity.md
     data:
+      quicklink: '%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank'
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
   - title: Prepare the repository
