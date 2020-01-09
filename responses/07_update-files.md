@@ -57,22 +57,21 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
    <details><summary><code>.github/workflows/my-workflow.yml</code></summary>
 
    ```yaml
-   name: JS Actions
+  name: JS Actions
 
-   on: [push]
+  on: [push]
 
-   jobs:
-   action:
-       runs-on: ubuntu-latest
+  jobs:
+    action:
+      runs-on: ubuntu-latest
 
-       steps:
-       - uses: actions/checkout@v1
+      steps:
+      - uses: actions/checkout@v1
 
-       - name: hello-action
-           uses: ./.github/actions/hello-world
-           with:
-           first-greeting: Learning Lab User
-
+      - name: hello-action
+        uses: ./.github/actions/hello-world
+        with:
+          first-greeting: Learning Lab Use
    ```
 
    </details>
