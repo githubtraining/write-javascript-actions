@@ -18,7 +18,7 @@ The right-hand panel shows real-time logging of the steps executed by the `build
 
 GitHub Actions will **always** add the `Set up job` and `Complete job` steps to each job in a workflow.  These steps are what configure the [virtual environment](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners) before running your steps and shut it down properly before moving onto the next job in your workflow.
 
-If you recall, we had 1 step that used an Action and 2 steps that ran commands, can you identify which step used the Action?
+If you recall, we had 1 step that used an action and 2 steps that ran commands, can you identify which step used the action?
 
 If you said `actions/checkout@v1` you'd be correct 😄!
 

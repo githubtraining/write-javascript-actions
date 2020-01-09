@@ -4,7 +4,7 @@ We typically don't commit a `node_modules` folder in a repository. These can oft
 
 First you need to install a tool called [ncc](https://github.com/zeit/ncc). You'll want to install this tool globally so that you can use as if it's any other CLI tool on your machine.
 
-What **ncc** does is take all the dependencies within your project and compile them into a single JavaScript file. This allows you to avoid committing the `node_modules` folder in your Actions source code.
+What **ncc** does is take all the dependencies within your project and compile them into a single JavaScript file. This allows you to avoid committing the `node_modules` folder in your actions source code.
 
 **Install ncc**
 `npm install -g @zeit/ncc`
@@ -14,7 +14,7 @@ When you use ncc:
 
 `ncc build <input-file>`
 
-A new directory named `dist` will be created. Within that directory you will find a file named `index.js`. To tell GitHub Actions that this new `index.js` file is the one that should run when your Action is used a small edit to the `action.yml` file needs to be made.
+A new directory named `dist` will be created. Within that directory you will find a file named `index.js`. To tell GitHub Actions that this new `index.js` file is the one that should run when your action is used a small edit to the `action.yml` file needs to be made.
 
 _before:_
 

@@ -1,10 +1,10 @@
 ## {{user.login}} you're doing great 👍
 
-Just like the first Action we wrote, we are going to need to setup a few directories and files.
+Just like the first action we wrote, we are going to need to setup a few directories and files.
 
-### :keyboard: Activity: Configure your second Action
+### :keyboard: Activity: Configure your second action
 
-Now that you have all the necessary tools installed locally, follow these steps to ensure your environment is configured and ready for Actions.
+Now that you have all the necessary tools installed locally, follow these steps to ensure your environment is configured and ready for actions.
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine and navigate to your course repo directory.
 2. Checkout the `master` branch
@@ -13,7 +13,7 @@ Now that you have all the necessary tools installed locally, follow these steps 
    `git pull`
 4. Checkout the `action-two` branch you created for this pull request.
    `git checkout action-two`
-5. Create a new folder for our Actions files:
+5. Create a new folder for our actions files:
    `mkdir joke-action`
    **The full path should be `.github/actions/joke-action`**
 6. Navigate to the `joke-action` folder you just created:

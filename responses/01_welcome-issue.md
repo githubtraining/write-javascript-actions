@@ -29,7 +29,7 @@ Currently, there are **two** supported ways to create your own GitHub Actions:
 As you can see we aren't necessarily limited to JavaScript even though it is the focal point for this course.
 
 
-### Creating vs consuming Actions
+### Creating vs consuming actions
 
 Although we are going to focus on creating and consuming a custom action, in this course we will also be consuming some actions that have been made public to us.  Because your workflows will most likely do the same, I found it important to show you where to look for actions that already exist.
 
@@ -37,7 +37,7 @@ After all, for each time we need to reinvent the wheel for our specific use-case
 
 - The [GitHub Actions Marketplace](https://github.com/marketplace?type=actions) is the primary place to find open-source actions that the community has written and released.  Your action, should you choose to release it, could also reside here one day, ready to be consumed by the world!
 - The [GitHub Actions Repository](https://github.com/actions) is where you can find actions that are written by GitHub.  We will leverage an action named `[checkout](https://github.com/actions/checkout)` from this repository as we go through this course.  I'll explain more about what it does when we use it!
-- Your repositories may also contain **private actions** and they will most likely be located in the `.github/actions` directory in the root of your repository.  **This is the convention we will be using as we learn how to create our own Action.**
+- Your repositories may also contain **private actions** and they will most likely be located in the `.github/actions` directory in the root of your repository.  **This is the convention we will be using as we learn how to create our own action.**
 
 ### Using actions and Learning Lab
 

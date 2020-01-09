@@ -1,6 +1,6 @@
 ## Edit the current workflow
 
-Currently `my-workflow.yml` is not set up correctly for our use-case.  It worked great for allowing us to take a high-level look at workflows, but if we want to use our custom Actions there are some changes that we have to make to it.
+Currently `my-workflow.yml` is not set up correctly for our use-case.  It worked great for allowing us to take a high-level look at workflows, but if we want to use our custom actions there are some changes that we have to make to it.
 
 ### :keyboard: Activity: Modify my-workflow.yml to remove boilerplate steps
 

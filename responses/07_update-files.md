@@ -29,7 +29,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
    ```yaml
    name: "my hello action"
 
-   description: "say hello with Actions"
+   description: "say hello with GitHub Actions"
 
    inputs:
      first-greeting:

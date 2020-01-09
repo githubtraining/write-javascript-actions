@@ -8,7 +8,7 @@ If you look at the screenshot below you will see a very similar output to what y
 ![results from using input](https://i.imgur.com/QFKqDb2.png)
 
 
-Your Action now says hello to **Learning Lab User** which was the specified value for the `first-greeting` input parameter which was added to the `my-workflow.yml` file.
+Your action now says hello to **Learning Lab User** which was the specified value for the `first-greeting` input parameter which was added to the `my-workflow.yml` file.
 
 What's interesting though, is that we also see **Mona the Octocat** and if you recall that is the value of the `second-greeting` parameter in the `action.yml` file.
 

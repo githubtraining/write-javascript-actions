@@ -1,10 +1,10 @@
 ## Using input parameters
 
-Earlier I asked you to install the `@actions/core` package using `npm`.  We did this so that we can expand our Action to make it more flexible.
+Earlier I asked you to install the `@actions/core` package using `npm`.  We did this so that we can expand our action to make it more flexible.
 
 A "Hello World" message is great, but let's personalize it a little bit.  We will do this by adding an **input** parameter to the `action.yml` and `main.js` files.
 
-Although this example may seem a little lightweight input parameters have a very flexible use case.  Consider a scenario where you need to access secret API key with your Action, or when you need to specify the path to a given file.  Inputs allows for these problems to be easily solved.
+Although this example may seem a little lightweight input parameters have a very flexible use case.  Consider a scenario where you need to access secret API key with your action, or when you need to specify the path to a given file.  Inputs allows for these problems to be easily solved.
 
 #### A quick example
 
@@ -17,7 +17,7 @@ The structure of an input looks like this
 ![input parameter screenshot](https://i.imgur.com/qgtZL6x.png)
 
 
-The above examples shows that we can have more than one input for our Action, as well as drop any optional parameters we may not need, such as setting a `default:` value for the input parameter.
+The above examples shows that we can have more than one input for our action, as well as drop any optional parameters we may not need, such as setting a `default:` value for the input parameter.
 
 Let's take a look at how this fits into an `action.yml` file.
 
@@ -39,13 +39,13 @@ Or we could leave them out and rely on their default values.  The example below 
 **my-workflow.yml**
 ![workflow file example](https://i.imgur.com/d8iWVHa.png)
 
-And in our `main.js` file we would need to account for the inputs that are now a part of the Actions metadata.
+And in our `main.js` file we would need to account for the inputs that are now a part of the actions metadata.
 
 ![](https://i.imgur.com/IF7w5th.png)
 
 By using `getInput()` we can specify the string of any input parameter we have placed inside of the `action.yml` file.
 
-The `@actions/core` package brings a few more methods along with it to help us interact with the Actions platform.  If writing Actions is something you plan to continue doing it's work reading the [documentation](https://github.com/actions/toolkit/tree/master/packages/core) about this package.
+The `@actions/core` package brings a few more methods along with it to help us interact with the GitHub Actions platform.  If writing actions is something you plan to continue doing it's work reading the [documentation](https://github.com/actions/toolkit/tree/master/packages/core) about this package.
 
 ---
 
