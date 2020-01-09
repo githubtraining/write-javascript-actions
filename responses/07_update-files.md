@@ -4,6 +4,7 @@
 
 That was a lot of information that you just learned. @{{user.login}} it is time for you to put it in practice.
 
+1. Navigate to the root directory of your project.
 1. Using your code editor change these files to reflect the code in the examples shown above:
 
    <details><summary><code>.github/actions/hello-world/main.js</code></summary>
