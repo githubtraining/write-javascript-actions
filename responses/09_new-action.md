@@ -4,7 +4,7 @@ Before we continue we are going to need to do a few things. First and foremost o
 
 ### :keyboard: Activity: Setting up the next action
 
-1. [Edit]({{workflowFile}) your workflow file by commenting out every single line.
+1. [Edit]({{workflowFile}}) your workflow file by commenting out every single line.
 2. Commit the changes to a new branch and name it `action-two`.
 3. Create a pull request named **External APIs**
 
