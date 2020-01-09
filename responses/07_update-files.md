@@ -6,7 +6,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
 1. Using your code editor change these files to reflect the code in the examples shown above:
 
-   <details><summary>main.js</summary>
+   <details><summary><code>.github/actions/hello-world/main.js</code></summary>
 
    ```javascript
    const core = require("@actions/core");
@@ -24,7 +24,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
    </details>
 
-   <details><summary>Action.yml</summary>
+   <details><summary><code>.github/actions/hello-world/action.yml</code></summary>
 
    ```yaml
    name: "my hello action"
@@ -53,7 +53,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
    </details>
 
-   <details><summary>my-workflow.yml</summary>
+   <details><summary><code>.github/workflows/my-workflow.yml</code></summary>
 
    ```yaml
    name: JS Actions
