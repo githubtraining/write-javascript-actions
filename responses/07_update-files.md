@@ -80,7 +80,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 2. Save the changes to each file
 3. Commit the changes to this branch
    `git add .`
-   `git commit -m 'updating our files'`
+   `git commit -m 'allow input in all action files'`
 4. Push the changes from your local machine to this repository.
    `git push`
 
