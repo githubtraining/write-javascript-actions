@@ -33,6 +33,6 @@ We will not use the `joke-output` in in this portion of the course. There will b
 6. Save the `action.yml` file
 7. commit the changes:
    `git add .`
-   `git commit -m 'update action.yml'`
+   `git commit -m 'add metadata for the joke action'`
 8. push them to the `action-two` branch:
    `git push`
