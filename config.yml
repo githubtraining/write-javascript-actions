@@ -56,7 +56,7 @@ steps:
         action_id: workflowFileContents
 
       - type: gate
-        left: '%actions.workflowFileContents.data%'
+        left: '%actions.workflowFileContents%'
         else:
           - type: respond
             with: e-404.md
