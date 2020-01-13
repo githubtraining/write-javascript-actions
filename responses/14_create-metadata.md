@@ -1,8 +1,8 @@
-## Create and edit the third Actions action.yml file
+## Create and edit the third actions action.yml file
 
-Like our "hello world" Action, this Action will require at least one `input:` parameter. We need this parameter so that our JavaScript for this Action has access to the `output:` from the joke Action.
+Like our "hello world" action, this action will require at least one `input:` parameter. We need this parameter so that our JavaScript for this action has access to the `output:` from the joke action.
 
-If you recall, in the `my-workflow.yml` file, we stated this Action would take a specific input named `joke:` and we set it's value to the output of the previous Action.
+If you recall, in the `my-workflow.yml` file, we stated this action would take a specific input named `joke:` and we set it's value to the output of the previous action.
 
 ```yaml
 - name: create-issue
@@ -11,7 +11,7 @@ If you recall, in the `my-workflow.yml` file, we stated this Action would take a
     joke: ${{steps.jokes.outputs.joke-output}}
 ```
 
-Because of this, we need to define `joke:` as one of our `inputs:` for this action. Remember when we did this with the first Action? It looked a little like this:
+Because of this, we need to define `joke:` as one of our `inputs:` for this action. Remember when we did this with the first action? It looked a little like this:
 
 ```yaml
 inputs:
@@ -21,17 +21,17 @@ inputs:
     default: Hubot
 ```
 
-Now, we will do something similar so that our Action matches what our workflow expects.
+Now, we will do something similar so that our action matches what our workflow expects.
 
 ### :keyboard: Activity: Create the final metadata file
 
 💡All of the following steps take place inside of the `.github/actions/issue-maker` directory.
 
-We will use the `joke-output`, as well as an issue title, in in this portion of the course so we need to accept `inputs:` for our Action.
+We will use the `joke-output`, as well as an issue title, in in this portion of the course so we need to accept `inputs:` for our action.
 
 1. Create a file named `action.yml`
-2. Use the `name` parameter to name your Action `"issue maker"`
-3. Next, add a `description` parameter and give it a value of `"consume the output of the previous Action and create a new issue in the repository"`
+2. Use the `name` parameter to name your action `"issue maker"`
+3. Next, add a `description` parameter and give it a value of `"consume the output of the previous action and create a new issue in the repository"`
 4. Create an `inputs:` with an id of `joke:` and add a `description:` of `"This will become the body of the created issue"`
 5. Create another `inputs:` with an id of `issue-title:` and a `description:` of `"Every issue needs a title, it's nice to supply one, even though you could do this dynamically within your code"`
 6. Give the `issue-title:` a `default:` value of `"a joke for you"` and make it a `required:` parameter
@@ -50,7 +50,7 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
 ```yaml
 name: "I have issues"
 
-description: "consume the output of the previous Action and create a new issue in the repository"
+description: "consume the output of the previous action and create a new issue in the repository"
 
 inputs:
   joke:

@@ -4,13 +4,13 @@ Take a few minutes to play with the current code you have.  I don't suggest edit
 
 ### :keyboard: Activity: Try these things
 
-1. Remove all the input parameters from the `my-workflow.yml` file.  What happens when your Action executes?
-2. Add all three input parameter and be explicit with their values in the `my-workflow.yml` file.  What happens when your Action executes?
-3. Specify only the `third-greeting` input parameter in the `my-workflow.yml` file.  what happens when your Action executes?
+1. Remove all the input parameters from the `my-workflow.yml` file.  What happens when your action executes?
+2. Add all three input parameter and be explicit with their values in the `my-workflow.yml` file.  What happens when your action executes?
+3. Specify only the `third-greeting` input parameter in the `my-workflow.yml` file.  what happens when your action executes?
 
 When you are finished experimenting and examining the results merge this pull request into the **master** branch.  
 
-Our next lesson will show you how to add external libraries to an Action as well as interact with external APIs.
+Our next lesson will show you how to add external libraries to an action as well as interact with external APIs.
 
 ---
 

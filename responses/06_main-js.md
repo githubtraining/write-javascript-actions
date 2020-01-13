@@ -4,15 +4,15 @@ You may have noticed that your workflow has been running every time a change has
 
 Hopefully you have also noticed that it fails when it reaches the `hello-action` step.
 
-As we can see from the screenshot, as well as the [Actions]({{actionsUrl}}) tab, the failure occurs because the runner cannot find the Action.  
+As we can see from the screenshot, as well as the [Actions]({{actionsUrl}}) tab, the failure occurs because the runner cannot find the action.  
 
-Lets fix that by creating the Action it is looking for!
+Lets fix that by creating the action it is looking for!
 
 ### :keyboard: Activity: Hello World
 
 💡All of the following steps take place inside of the `.github/actions/hello-world` directory. 
 
-The first iteration of our Action will follow the traditional path of logging "Hello World" 👋to the console.  We will expand on this as we move forward, for now it's a good test to make sure all of our files are set up correctly 😄
+The first iteration of our action will follow the traditional path of logging "Hello World" 👋to the console.  We will expand on this as we move forward, for now it's a good test to make sure all of our files are set up correctly 😄
 
 1. Create a file named `main.js`
 2. Log "Hello World" to the console

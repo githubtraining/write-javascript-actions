@@ -4,9 +4,10 @@
 
 That was a lot of information that you just learned. @{{user.login}} it is time for you to put it in practice.
 
+1. Navigate to the root directory of your project.
 1. Using your code editor change these files to reflect the code in the examples shown above:
 
-   <details><summary>main.js</summary>
+   <details><summary><code>.github/actions/hello-world/main.js</code></summary>
 
    ```javascript
    const core = require("@actions/core");
@@ -24,12 +25,12 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
    </details>
 
-   <details><summary>Action.yml</summary>
+   <details><summary><code>.github/actions/hello-world/action.yml</code></summary>
 
    ```yaml
    name: "my hello action"
 
-   description: "say hello with Actions"
+   description: "say hello with GitHub Actions"
 
    inputs:
      first-greeting:
@@ -53,25 +54,24 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
    </details>
 
-   <details><summary>my-workflow.yml</summary>
+   <details><summary><code>.github/workflows/my-workflow.yml</code></summary>
 
    ```yaml
-   name: JS Actions
+  name: JS Actions
 
-   on: [push]
+  on: [push]
 
-   jobs:
-   action:
-       runs-on: ubuntu-latest
+  jobs:
+    action:
+      runs-on: ubuntu-latest
 
-       steps:
-       - uses: actions/checkout@v1
+      steps:
+      - uses: actions/checkout@v1
 
-       - name: hello-action
-           uses: ./.github/actions/hello-world
-           with:
-           first-greeting: Learning Lab User
-
+      - name: hello-action
+        uses: ./.github/actions/hello-world
+        with:
+          first-greeting: Learning Lab Use
    ```
 
    </details>
@@ -79,7 +79,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 2. Save the changes to each file
 3. Commit the changes to this branch
    `git add .`
-   `git commit -m 'updating our files'`
+   `git commit -m 'allow input in all action files'`
 4. Push the changes from your local machine to this repository.
    `git push`
 

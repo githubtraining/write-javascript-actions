@@ -37,7 +37,7 @@ Let's take a second to talk about each of the pieces that we see here:
   - This is our first block of instructions.  We are defining our first job for this workflow.
   - In this case, the job has been named `build`
   - We also define the runner for the job as `runs-on: ubuntu-latest`
-  - Finally we define the steps for this job which can either rely on specific Actions, or run commands directly.  As we can see there are three steps which show a mixed usage of Actions and Commands.
+  - Finally we define the steps for this job which can either rely on specific actions, or run commands directly.  As we can see there are three steps which show a mixed usage of actions and commands.
     - `uses: actions/checkout@v1`
     - ```
       name: Run a one-line script

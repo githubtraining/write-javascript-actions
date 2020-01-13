@@ -2,7 +2,7 @@
 
 It was so fun having you as a student while taking this course. I'll forever cherish our time together {{user.login}}
 
-You can keep this repository forever to remember our time... I actually encourage you to do so! This has now become your central point for notes on writing JavaScript Actions 😄
+You can keep this repository forever to remember our time... I actually encourage you to do so! This has now become your central point for notes on writing JavaScript actions 😄
 
 I really do think of everything!
 

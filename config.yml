@@ -9,9 +9,14 @@ template:
 before:
   - type: updateBranchProtection
   - type: createIssue
-    title: Start Here!
-    body: welcome-issue.md
+    title: Start here!
+    body: 01_welcome-issue.md
+    action_id: welcomeIssue
+  - type: respond
+    issue: '%actions.welcomeIssue.data.number%'
+    with: 01_welcome-activity.md
     data:
+      quicklink: '%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank'
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
   - title: Prepare the repository
@@ -28,21 +33,21 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial Workflow'
+            # AND the pull request title equals 'Initial workflow'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Initial Workflow
+        right: Initial workflow
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Initial Workflow
+              title: Initial workflow
           # if those gates === true Then do this stuff
       - type: closeIssue
-        issue: Start Here!
+        issue: Start here!
       - type: respond
         with: 01_explain-workflow.md
         data:
@@ -63,15 +68,15 @@ steps:
         right: "GitHub Actions"
       - type: respond
         with: 02_workflow-results.md
-        issue: Initial Workflow
+        issue: Initial workflow
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: getPullRequest
-        pullRequest: Initial Workflow
+        pullRequest: Initial workflow
         action_id: iwPr
       - type: respond
         with: 02_modify-workflow.md
-        issue: Initial Workflow
+        issue: Initial workflow
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
 
@@ -81,7 +86,7 @@ steps:
     link: "{{ repoUrl }}/pull/2"
     actions:
       - type: getPullRequest
-        pullRequest: Initial Workflow
+        pullRequest: Initial workflow
         action_id: workflowPr
       - type: respond
         with: 03_reference-actions.md
@@ -101,7 +106,7 @@ steps:
         body: 04_on-to-actions.md
         data:
           issueUrl: "%actions.devEnv.data.html_url%"
-        pullRequest: Initial Workflow
+        pullRequest: Initial workflow
       - type: mergePullRequest
 
   - title: Creating the Action metadata
@@ -211,7 +216,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial Workflow'
+            # AND the pull request title equals 'Initial workflow'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -312,7 +317,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial Workflow'
+            # AND the pull request title equals 'Initial workflow'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===

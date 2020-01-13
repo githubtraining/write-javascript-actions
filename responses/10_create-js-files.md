@@ -1,12 +1,12 @@
 ## Files? 🤔
 
-Yes... files... plural. As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript Actions are just programs written in JavaScript that run based on a specific trigger we are able to make our Action code modular as well.
+Yes... files... plural. As you probably know, in JavaScript and other programming languages it is common to break your code into modules so that it is easier to read and maintain going forward. Since JavaScript actions are just programs written in JavaScript that run based on a specific trigger we are able to make our action code modular as well.
 
-To do so we will create two files. One of them will contain the logic to reach out to an external API and retrieve a joke for us, the other will call that module and print the joke to the Actions console for us. We will be extending this functionality in our third and final Action.
+To do so we will create two files. One of them will contain the logic to reach out to an external API and retrieve a joke for us, the other will call that module and print the joke to the actions console for us. We will be extending this functionality in our third and final action.
 
 **Joke API**
 
-The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our Action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). I'll point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
+The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). I'll point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
 
 When we make our request to this API we will get back a JSON Object in the response. That Object looks like this:
 
@@ -40,7 +40,7 @@ Inside of the `options` block we add a key named `headers`. This defines the HTT
 
 Next we define an **asynchronous JavaScript function** to make the request for us, storing the JSON Object that is returned in a variable named `res`.
 
-Lastly, we `return` the `res.joke` which is only the value associated with the `joke` key of the JSON Object. This value will be random every time our Action runs because of how we are interacting with the **icanhazdadjoke** API.
+Lastly, we `return` the `res.joke` which is only the value associated with the `joke` key of the JSON Object. This value will be random every time our action runs because of how we are interacting with the **icanhazdadjoke** API.
 
 This file finishes up by exporting the newly created function so that we can use it in our `main.js` file.
 
@@ -54,7 +54,7 @@ That file will look like this:
 
 Like we did in the `joke.js` file, we are first going to bring in our dependencies. Only this time, our dependencies include something we wrote! To do that we simply use `require()` to point to the location of the file we wish to bring in.
 
-We also bring in `@actions/core` so that we can set the output of our Action.
+We also bring in `@actions/core` so that we can set the output of our action.
 
 Next we write another **asynchronous JavaScript function** that stores the return value of `getJoke()` in a variable called **joke**.
 
@@ -64,7 +64,7 @@ Finally we finish the function with by setting the contents of the joke as the v
 
 Don't forget to call the `run()` function.
 
-### :keyboard: Creating the javascript files for your new Action.
+### :keyboard: Creating the javascript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
@@ -77,7 +77,7 @@ Don't forget to call the `run()` function.
      headers: {
        Accept: "application/json",
        "User-Agent":
-         "Writing JavaScript Action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+         "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
      },
      json: true
    };

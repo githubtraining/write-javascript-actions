@@ -1,13 +1,13 @@
 ## Runs
 
-As you have learned `runs:` defines the command necessary to execute your Action.
+As you have learned `runs:` defines the command necessary to execute your action.
 
 In our current case `runs:` takes 2 arguments
 
 - `using:`
 - `main:`
 
-These are specific to JavaScript Actions.  It is our way of telling the runner to run the `main.js` file using `node12`
+These are specific to JavaScript actions.  It is our way of telling the runner to run the `main.js` file using `node12`
 
 This is no different than running a local JavaScript file using Node like you see below:
 ![node example](https://media.giphy.com/media/W1kCFFsaoYlsmpVtxv/giphy.gif)
