@@ -54,6 +54,7 @@ steps:
       - type: getFileContents
         filename: '.github/workflows/my-workflow.yml'
         action_id: workflowFileContents
+        required: false
 
       - type: gate
         left: '%actions.workflowFileContents%'
