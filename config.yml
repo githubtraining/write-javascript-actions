@@ -47,7 +47,7 @@ steps:
               title: Initial workflow
           # if those gates === true Then do this stuff
       - type: closeIssue
-        issue: Start Here!
+        issue: Start here!
       - type: respond
         with: 01_explain-workflow.md
         data:
