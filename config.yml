@@ -34,6 +34,7 @@ steps:
             operator: ===
             right: edited
             # AND the pull request title equals 'Initial workflow'
+
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -46,8 +47,20 @@ steps:
             data:
               title: Initial workflow
           # if those gates === true Then do this stuff
+
       - type: closeIssue
         issue: Start here!
+
+        - type: getFileContents
+        filename: .github/workflows/my-workflow.yml
+        action_id: workflowFileContents
+
+      - type: gate
+        left: '%actions.workflowFileContents.data%'
+        else:
+          - type: respond
+            with: e-404.md
+
       - type: respond
         with: 01_explain-workflow.md
         data:
