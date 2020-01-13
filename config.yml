@@ -11,8 +11,9 @@ before:
   - type: createIssue
     title: Start Here!
     body: 01_welcome-issue.md
+    action_id: welcomeIssue
   - type: respond
-    issue: "Start Here!"
+    issue: '%actions.welcomeIssue.data.number%'
     with: 01_welcome-activity.md
     data:
       quicklink: '%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank'
