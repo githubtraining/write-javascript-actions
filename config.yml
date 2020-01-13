@@ -61,7 +61,7 @@ steps:
           - type: respond
             with: e-404.md
             data:
-              got: '%actions.workflowFileContents.data%'
+              got: '%actions.workflowFileContents%'
 
       - type: respond
         with: 01_explain-workflow.md
