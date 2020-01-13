@@ -94,6 +94,48 @@ steps:
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/2"
     actions:
+      # Make sure we have the right PR
+      - type: gate
+        left: '%payload.pull_request.title%'
+        operator: ===
+        right: Initial workflow
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
+      - type: gate
+        left: '/name:\w*JS Actions/gm'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'name: JS Actions'
+
+      - type: gate
+        left: '/action:/gm'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'action:'
+
+
       - type: getPullRequest
         pullRequest: Initial workflow
         action_id: workflowPr
