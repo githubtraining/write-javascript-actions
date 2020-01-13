@@ -12,7 +12,7 @@ before:
     title: Start Here!
     body: 01_welcome-issue.md
   - type: respond
-    issue: Start Here!
+    issue: "Start Here!"
     with: 01_welcome-activity.md
     data:
       quicklink: '%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank'
