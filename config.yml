@@ -21,20 +21,13 @@ before:
 steps:
   - title: Prepare the repository
     description: Create a pull request to add a workflow
-    event: pull_request
+    event: 
+        # if the payload action is 'opened' OR 'edited'
+      - pull_request.opened
+      - pull_request.edited
+      - pull_request.synchornize
     link: "{{ repoUrl }}/issues/1"
     actions:
-      - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Initial workflow'
-
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -62,7 +55,7 @@ steps:
           - type: respond
             with: e-404.md
             data:
-              got: '%actions.workflowFileContents%'
+              need: .github/workflows/my-workflow.yml
 
       - type: respond
         with: 01_explain-workflow.md
