@@ -52,7 +52,7 @@ steps:
         issue: Start here!
 
       - type: getFileContents
-        filename: .github/workflows/my-workflow.yml
+        filename: '.github/workflows/my-workflow.yml'
         action_id: workflowFileContents
 
       - type: gate
@@ -60,6 +60,8 @@ steps:
         else:
           - type: respond
             with: e-404.md
+            data:
+              got: '%actions.workflowFileContents.data%'
 
       - type: respond
         with: 01_explain-workflow.md
