@@ -123,6 +123,7 @@ steps:
             data:
               filename: .github/workflows/my-workflow.yml
               code: 'name: JS Actions'
+              got: '%actions.workflowFileContents%'
 
       - type: gate
         left: '/action:/gm'
