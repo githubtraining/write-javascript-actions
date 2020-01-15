@@ -120,7 +120,7 @@ steps:
               need: .github/workflows/my-workflow.yml
 
       - type: gate
-        left: '/name:\w*JS Actions/gm'
+        left: '/name:\s*JS Actions/gm'
         operator: test
         right: '%actions.workflowFileContents%'
         else:
