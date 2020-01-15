@@ -177,30 +177,18 @@ steps:
         - left: '/name:\s*hello-action/gm'
           operator: test
           right: '%actions.workflowFileContents%'
-          else:
-          - type: respond
-            with: e-line.md
-            data:
-              filename: .github/workflows/my-workflow.yml
-              code: 'name: hello-action'
-              got: '%actions.workflowFileContents%'
         - left: '/uses:\s*\.\/\.github\/actions\/hello-world/gm'
           operator: test
           right: '%actions.workflowFileContents%'
-          else:
+        else:
           - type: respond
             with: e-line.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: 'uses: ./.github/actions/hello-world'
+              code: |
+                - name: hello-action
+                  uses: ./.github/actions/hello-world
               got: '%actions.workflowFileContents%'
-        # else:
-        #   - type: respond
-        #     with: e-line.md
-        #     data:
-        #       filename: .github/workflows/my-workflow.yml
-        #       code: 'name: JS Actions'
-        #       got: '%actions.workflowFileContents%'
 
       - type: createIssue
         title: Setting up your development environment
