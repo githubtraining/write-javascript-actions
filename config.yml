@@ -207,13 +207,19 @@ steps:
     link: "{{ repoUrl }}/issues/1"
     actions:
       - type: gate
-        left: "%payload.ref%"
-        operator: ===
-        right: "refs/heads/hello-world"
-      - type: gate
-        left: "%payload.created%"
-        operator: ===
-        right: true
+        gates:
+        - left: "%payload.ref%"
+          operator: ===
+          right: "refs/heads/hello-world"
+        - left: "%payload.created%"
+          operator: ===
+          right: true
+        else:
+        - type: respond
+          issue: Setting up your development environment
+          with: e-branch.md
+          data: 
+            expected: hello-world
       - type: createPullRequest
         title: Hello Action
         body: 05_explain-metadata.md
