@@ -132,7 +132,7 @@ steps:
               got: '%actions.workflowFileContents%'
 
       - type: gate
-        left: '/- uses: actions\/checkout@v1$/g'
+        left: '/uses:\s*actions\/checkout@v1\n*$/g'
         operator: test
         right: '%actions.workflowFileContents%'
         else:
@@ -140,7 +140,7 @@ steps:
             with: e-end.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: '- uses: actions\/checkout@v1$'
+              code: '- uses: actions\/checkout@v1'
               got: '%actions.workflowFileContents%'
 
       - type: gate
