@@ -4,11 +4,6 @@ Actions are enabled on your repository by default, but we still have to tell our
 
 A **workflow** file can be thought of as the recipe for automating a task. They house the start to finish instructions, in the form of `jobs` and `steps`, for what should happen based on specific triggers.
 
-These individual steps take one of two forms.
-
-- Run a raw command such as `echo` or `npm install`
-- Use an action such as the one we will be building
-
 📖Read more about [workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#choosing-the-type-of-actions-for-your-workflow)
 
 ### :keyboard: Activity: Create a pull request to prepare the repository for actions
