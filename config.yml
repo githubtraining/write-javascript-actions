@@ -153,7 +153,6 @@ steps:
               filename: .github/workflows/my-workflow.yml
               code: 'action:'
 
-
       - type: getPullRequest
         pullRequest: Initial workflow
         action_id: workflowPr
@@ -205,7 +204,7 @@ steps:
   - title: Creating the Action metadata
     description: Create an action.yml file and add necessary metatdata for our Action
     event: push
-    # link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issues/1"
     actions:
       - type: gate
         left: "%payload.ref%"
