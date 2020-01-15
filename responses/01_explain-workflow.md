@@ -1,12 +1,6 @@
-## Workflow success!
+## While we wait!
 
-Great job adding the workflow. Adding that file to this branch is enough for GitHub Actions to begin running on your repository. The time this takes will vary based on the complexity of the workflow.  While this runs I'll briefly explain the components of the workflow you just added.
-
-📖Take a deeper dive into [workflow components](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-workflows)
-
-
-
-I'll respond when GitHub Actions finishes running the workflow. You can follow along in the [Actions tab]({{ actionsUrl }}), or by clicking **Details** on the pending status below.
+Great job adding the workflow. Adding that file to this branch is enough for GitHub Actions to begin running on your repository. The time this takes will vary based on the complexity of the workflow. While this runs I'll briefly explain the components of the workflow you just added.
 
 ---
 
@@ -21,4 +15,4 @@ If the checks don't appear or if the checks are stuck in progress, there's a few
 - Refresh the page, it's possible the workflow ran and the page just hasn't been updated with that change
 - Try making a commit on this branch. Our workflow is triggered with a `push` event, and committing to this branch will result in a new `push`
 - Edit the workflow file on GitHub and ensure there are no red lines indicating a syntax problem
-</details>
+  </details>
