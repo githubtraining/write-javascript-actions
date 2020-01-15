@@ -50,4 +50,5 @@ Let's take a second to talk about each of the pieces that we see here:
 
 ---
 
+📖Take a deeper dive into [workflow components](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-workflows)
 📖Read more about [configuring workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-workflows)
