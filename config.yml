@@ -95,7 +95,7 @@ steps:
     link: "{{ repoUrl }}/pull/2"
     actions:
       - type: getPullRequest
-        pullRequest: Initial workflow
+        pullRequest: Create my-workflow.yml
         action_id: workflowPr
       - type: respond
         with: 03_reference-actions.md
