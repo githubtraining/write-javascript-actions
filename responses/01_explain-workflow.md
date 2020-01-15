@@ -1,4 +1,4 @@
-## Workflow success!
+## Workflow added!
 
 Great job adding the workflow. Adding that file to this branch is enough for GitHub Actions to begin running on your repository. The time this takes will vary based on the complexity of the workflow.  While this runs I'll briefly explain the components of the workflow you just added.
 
