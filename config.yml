@@ -46,14 +46,14 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Initial workflow
+        right: Create my-workflow.yml
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Initial workflow
+              title: Create my-workflow.yml
           # if those gates === true Then do this stuff
       - type: closeIssue
         issue: Start here!
