@@ -93,7 +93,7 @@ steps:
         with: 02_modify-workflow.md
         issue: Initial workflow
         data:
-          workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=%actions.iwPr.data.base.repo.full_name%/pull/%actions.iwPr.data.number%"
+          workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.iwPr.data.base.repo.full_name%/pull/%actions.iwPr.data.number%"
   - title: Add an Action reference
     description: Add an Action reference to the workflow file
     event: pull_request.synchronize
@@ -159,7 +159,7 @@ steps:
       - type: respond
         with: 03_reference-actions.md
         data:
-          workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=%actions.workflowPr.data.base.repo.full_name%/pull/%actions.workflowPr.data.number%"
+          workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.workflowPr.data.base.repo.full_name%/pull/%actions.workflowPr.data.number%"
 
   - title: On to your development environment
     description: Lets prepare your environemtn to start writing Actions
@@ -379,7 +379,7 @@ steps:
       - type: respond
         with: 11_edit-workflow.md
         data:
-          workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=%actions.apiPr.data.base.repo.full_name%/pull/%actions.apiPr.data.number%"
+          workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.apiPr.data.base.repo.full_name%/pull/%actions.apiPr.data.number%"
           actionsUrl: "%payload.repository.html_url%/actions"
 
   - title: Having Actions tell a joke... or two
