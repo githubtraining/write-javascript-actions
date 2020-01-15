@@ -207,19 +207,30 @@ steps:
     link: "{{ repoUrl }}/issues/1"
     actions:
       - type: gate
-        gates:
-        - left: "%payload.ref%"
-          operator: ===
-          right: "refs/heads/hello-world"
-        - left: "%payload.created%"
-          operator: ===
-          right: true
+        left: "%payload.ref%"
+        operator: ===
+        right: "refs/heads/hello-world"
         else:
         - type: respond
           issue: Setting up your development environment
           with: e-branch.md
           data: 
             expected: hello-world
+
+      - type: getFileContents
+        filename: '.github/actions/hello-world/package.json'
+        action_id: packageJSON
+        required: false
+
+      - type: gate
+        left: '/@actions\/core/gm'
+        operator: test
+        right: '%actions.packageJSON%'
+        else:
+          - type: respond
+            with: e-actions-dep.md
+            issue: Setting up your development environment
+
       - type: createPullRequest
         title: Hello Action
         body: 05_explain-metadata.md
