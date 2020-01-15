@@ -22,6 +22,12 @@ _In our case, we will use this one **workflow** file for many things, which lead
 
 _It is important to place meaningful content into the body of the pull requests you create throughout this course. This repository will stay with you long after you complete the course. It is advisable that you use the body of the pull requests you create as a way to take long lived notes about thing you want to remember._
 
+<details><summary>Suggested body content</summary>
+
+`Workflow files are the recipe for task automation. This is where actions are placed if I want to use them for a task.`
+
+</details>
+
 I'll respond in the new pull request when I detect it has been created.
 
 ---
