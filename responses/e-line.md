@@ -1,6 +1,6 @@
 Uh oh, I'm specifically looking to see whether `{{ filename }}` contains the following code:
 
-```
+```yaml
 {{ code }}
 ```
 
