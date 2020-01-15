@@ -166,6 +166,42 @@ steps:
     description: Lets prepare your environemtn to start writing Actions
     event: pull_request.synchronize
     actions:
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+        - left: '/name:\s*hello-action/gm'
+          operator: test
+          right: '%actions.workflowFileContents%'
+          else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'name: hello-action'
+              got: '%actions.workflowFileContents%'
+        - left: '/uses:\s*\.\/\.github\/actions\/hello-world/gm'
+          operator: test
+          right: '%actions.workflowFileContents%'
+          else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'uses: ./.github/actions/hello-world'
+              got: '%actions.workflowFileContents%'
+        # else:
+        #   - type: respond
+        #     with: e-line.md
+        #     data:
+        #       filename: .github/workflows/my-workflow.yml
+        #       code: 'name: JS Actions'
+        #       got: '%actions.workflowFileContents%'
+
       - type: createIssue
         title: Setting up your development environment
         body: dev-env.md
