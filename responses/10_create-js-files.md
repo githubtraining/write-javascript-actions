@@ -4,6 +4,8 @@ Yes... files... plural. As you probably know, in JavaScript and other programmin
 
 To do so we will create two files. One of them will contain the logic to reach out to an external API and retrieve a joke for us, the other will call that module and print the joke to the actions console for us. We will be extending this functionality in our third and final action.
 
+### Fetching a joke
+
 **Joke API**
 
 The first file will be `joke.js` and it will fetch our joke for us. We will be using the [icanhazdadjoke API](https://icanhazdadjoke.com/api) for our action. This API does not require any authentication, but it does however that we set a few parameters in the [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers). I'll point out what those are when we get to the code, however it is outside of the scope of this course to cover HTTP in any depth.
@@ -26,8 +28,29 @@ We will create a file named `joke.js` and it will reside in the `.github/action/
 
 The joke module will look like this:
 
-![screenshot of joke.js file](https://i.imgur.com/GklnbKN.png)
+```javascript
+const request = require("request-promise");
 
+const options = {
+  method: "GET",
+  uri: "https://icanhazdadjoke.com/",
+  headers: {
+    Accept: "application/json",
+    "User-Agent":
+      "Writing JavaScript action GitHub Learning Lab course.  Visit lab.github.com or to contact us."
+  },
+  json: true
+};
+
+async function getJoke() {
+  const res = await request(options);
+  return res.joke;
+}
+
+module.exports = getJoke;
+```
+
+<details><summary>Need an advanced description of the <code>joke.js</code> source code?</summary>
 We first bring in the `request-promise` library that we installed earlier using `npm`.
 
 Next we define a set of `options` that the `request-promise` library will use when it makes the request.
@@ -44,14 +67,30 @@ Lastly, we `return` the `res.joke` which is only the value associated with the `
 
 This file finishes up by exporting the newly created function so that we can use it in our `main.js` file.
 
+</details>
+
+### Creating the main entry point for your second action
+
 **Main Module**
 
 We will also create a file named `main.js` that resides inside of the `.github/actions/joke-action` directory.
 
 That file will look like this:
 
-![screenshot of main.js file](https://i.imgur.com/oo7WkvE.png)
+```javascript
+const getJoke = require("./joke");
+const core = require("@actions/core");
 
+async function run() {
+  const joke = await getJoke();
+  console.log(joke);
+  core.setOutput("joke-output", joke);
+}
+
+run();
+```
+
+<details><summary>Need an advanced description of the <code>main.js</code> source code?</summary>
 Like we did in the `joke.js` file, we are first going to bring in our dependencies. Only this time, our dependencies include something we wrote! To do that we simply use `require()` to point to the location of the file we wish to bring in.
 
 We also bring in `@actions/core` so that we can set the output of our action.
@@ -61,10 +100,13 @@ Next we write another **asynchronous JavaScript function** that stores the retur
 Then we log the joke to the console.
 
 Finally we finish the function with by setting the contents of the joke as the value of the `joke-output` output parameter. We will use this output later in the course.
+_Don't forget to call the `run()` function._
 
-Don't forget to call the `run()` function.
+</details>
 
-### :keyboard: Creating the javascript files for your new action.
+---
+
+### :keyboard: Activity: Creating the javascript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
@@ -108,7 +150,7 @@ Don't forget to call the `run()` function.
 
 4. Save the `main.js` file.
 5. Commit the changes to the `action-two` branch:
-   `git add .`
+   `git add joke.js main.js`
    `git commit -m 'creating joke.js and main.js'`
 6. Push the changes to your repository:
    `git push`
