@@ -51,7 +51,7 @@ APIs also give you, the developer, the ability to give others access to specific
 
 ### What about our action?
 
-We are now going to write an action that reaches out to a service through its API to get us a random joke. We will then display that joke on the [Actions tab]({{actionsUrl}}).
+We are now going to write an action that reaches out to a service through its REST API to get us a random joke. We will then display that joke on the [Actions tab]({{actionsUrl}}).
 
 For our purposes the API we use will not require authentication, however that is a limitation of the course content and not the GitHub Actions platform. If you need to store secrets, like API keys, for your workflow to use you will need to configure [secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) as inputs.
 
