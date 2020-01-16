@@ -35,7 +35,7 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
 4. Create an `inputs:` with an id of `joke:` and add a `description:` of `"This will become the body of the created issue"`
 5. Create another `inputs:` with an id of `issue-title:` and a `description:` of `"Every issue needs a title, it's nice to supply one, even though you could do this dynamically within your code"`
 6. Give the `issue-title:` a `default:` value of `"a joke for you"` and make it a `required:` parameter
-7. Lastly, define the `runs:` parameter to use `"node12"` set the `main:` parameter to `"main.js"`
+7. Lastly, define the `runs:` parameter to use `"node12"` and set the `main:` parameter to `"main.js"`
 8. Save the `action.yml` file
 9. commit the changes:
    `git add .`

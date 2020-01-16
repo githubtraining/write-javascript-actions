@@ -10,7 +10,7 @@ We will not use the `joke-output` in in this portion of the course. There will b
 2. Use the `name` parameter to name your action `"external API action"`
 3. Next, add a `description` parameter and give it a value of `"use an external API to retrieve and display a joke"`
 4. Create an `outputs:` with an id of `joke-output:` and add a `description:` so we know what the output is for
-5. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
+5. Lastly, define the `runs:` parameter to use `"node12"` and set the `main:` parameter to `"main.js"`
 
    <details><summary>View the complete file</summary>
 
