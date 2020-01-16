@@ -1,33 +1,34 @@
 ## {{user.login}} you're doing great 👍
 
-Just like the first action we wrote, we are going to need to setup a few directories and files.
+Just like the first action you wrote, you are going to need to setup a few directories and files.
 
 ### :keyboard: Activity: Configure your second action
 
 Now that you have all the necessary tools installed locally, follow these steps to ensure your environment is configured and ready for actions.
 
-1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine and navigate to your course repo directory.
-2. Checkout the `master` branch
+1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
+1. navigate to the `.github/actions` directory.
+1. Checkout the `master` branch
    `git checkout master`
-3. Update the contents of your Learning Lab repo to your local machine:
+1. Update the contents of your Learning Lab repo to your local machine:
    `git pull`
-4. Checkout the `action-two` branch you created for this pull request.
+1. Checkout the `action-two` branch you created for this pull request.
    `git checkout action-two`
-5. Create a new folder for our actions files:
+1. Create a new folder for our actions files:
    `mkdir joke-action`
    **The full path should be `.github/actions/joke-action`**
-6. Navigate to the `joke-action` folder you just created:
+1. Navigate to the `joke-action` folder you just created:
    `cd joke-action`
    **This may be different depending on your current directory**
-7. Initialize a new project:
+1. Initialize a new project:
    `npm init -y`
-8. Install the **request** and **request-promise** dependencies using `npm`:
+1. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm`:
    `npm install --save request request-promise @actions/core`
-9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
+1. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
    `git add .`
-   `git commit -m 'initial joke action'`
-10. Push you changes to your repository:
-    `git push`
+   `git commit -m 'add joke action dependencies'`
+1. Push you changes to your repository:
+   `git push`
 
 ---
 
