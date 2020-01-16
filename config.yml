@@ -133,9 +133,14 @@ steps:
         right: true
       - type: createPullRequest
         title: Hello Action
-        body: 05_explain-metadata.md
+        body: 05_explain-actions.md
         head: hello-world
         action_id: helloPr
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
+      - type: respond
+        with: 05_explain-metadata.md
+        issue: Hello Action
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
