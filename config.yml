@@ -42,7 +42,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial workflow'
+            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -81,7 +81,7 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: getPullRequest
-        pullRequest: Initial workflow
+        pullRequest: Create my-workflow.yml
         action_id: iwPr
       - type: respond
         with: 02_modify-workflow.md
@@ -115,7 +115,7 @@ steps:
         body: 04_on-to-actions.md
         data:
           issueUrl: "%actions.devEnv.data.html_url%"
-        pullRequest: Initial workflow
+        pullRequest: Create my-workflow.yml
       - type: mergePullRequest
 
   - title: Creating the Action metadata
@@ -225,7 +225,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial workflow'
+            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -326,7 +326,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial workflow'
+            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
