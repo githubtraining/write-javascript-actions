@@ -89,7 +89,7 @@ console.log(`Hello ${firstGreeting}`);
 console.log(`Hello ${secondGreeting}`);
 if (thirdGreeting) {
     console.log(`Hello ${thirdGreeting}`);
-};
+}
 ```
 
 By using `core.getInput()` we can specify the string of any input parameter we have placed inside of the `action.yml` file.

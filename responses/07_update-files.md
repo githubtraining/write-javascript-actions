@@ -4,10 +4,9 @@
 
 That was a lot of information that you just learned. @{{user.login}} it is time for you to put it in practice.
 
-1. Navigate to the root directory of your project.
 1. Using your code editor change these files to reflect the code in the examples shown above:
 
-   <details><summary><code>.github/actions/hello-world/main.js</code></summary>
+     <details><summary><code>.github/actions/hello-world/main.js</code></summary>
 
    ```javascript
    const core = require("@actions/core");
@@ -23,28 +22,28 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
    }
    ```
 
-   </details>
+     </details>
 
-   <details><summary><code>.github/actions/hello-world/action.yml</code></summary>
+     <details><summary><code>.github/actions/hello-world/action.yml</code></summary>
 
    ```yaml
    name: "my hello action"
 
-   description: "say hello with GitHub Actions"
+   description: "say hello with actions"
 
    inputs:
      first-greeting:
-       description: who you would like to greet in the console
+       description: "who would you like to greet in the console"
        required: true
-       default: Hubot
+       default: "Hubot"
 
      second-greeting:
-       description: who to greet
+       description: "another person to greet"
        required: true
-       default: Mona the Octocat
+       default: "Mona the Octocat"
 
      third-greeting:
-       description: another greeting
+       description: "a third greeting"
        required: false
 
    runs:
@@ -52,33 +51,33 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
      main: "main.js"
    ```
 
-   </details>
+     </details>
 
-   <details><summary><code>.github/workflows/my-workflow.yml</code></summary>
 
-   ```yaml
-  name: JS Actions
+      <details><summary><code>.github/workflows/my-workflow.yml</code></summary>
 
-  on: [push]
+      ```yaml
 
-  jobs:
-    action:
-      runs-on: ubuntu-latest
+      name: "JS Actions"
 
-      steps:
-      - uses: actions/checkout@v1
+      on: [push]
 
-      - name: hello-action
-        uses: ./.github/actions/hello-world
-        with:
-          first-greeting: Learning Lab Use
-   ```
+      jobs:
+        action:
+          runs-on: "ubuntu-latest"
+          steps:
+            - uses: actions/checkout@v1
 
-   </details>
+            - name: "hello-action"
+              uses: ./.github/actions/hello-world
+              with:
+                first-greeting: "Learning Lab User"
+      ```
+      </details>
 
 2. Save the changes to each file
 3. Commit the changes to this branch
-   `git add .`
+   `git add main.js action.yml workflow.yml`
    `git commit -m 'allow input in all action files'`
 4. Push the changes from your local machine to this repository.
    `git push`
