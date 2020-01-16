@@ -107,7 +107,7 @@ steps:
     event: pull_request.synchronize
     actions:
       - type: createIssue
-        title: Setting up your development environment
+        title: Your first JavaScript action
         body: dev-env.md
         action_id: devEnv
       - type: createReview
@@ -140,11 +140,11 @@ steps:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 05_hello-pr.md
-        issue: Setting up your development environment
+        issue: Your first JavaScript action
         data:
           pullUrl: "%actions.helloPr.data.html_url%"
       - type: closeIssue
-        issue: Setting up your development environment
+        issue: Your first JavaScript action
       - type: respond
         with: 05_create-metadata.md
         issue: Hello Action
