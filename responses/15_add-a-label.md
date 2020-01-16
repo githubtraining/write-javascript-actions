@@ -12,4 +12,4 @@ try adding another label and see if you get a new joke!
 
 ---
 
-When you have finished experimenting, close this pull request. I'll open a new issue containing the next steps once I detect you've closed this.
+When you have finished experimenting, merge this pull request. I'll open a new issue containing the next steps once I detect you've closed this.
