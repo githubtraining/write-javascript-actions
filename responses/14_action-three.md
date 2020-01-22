@@ -18,7 +18,8 @@ Let's create our final project directory and install all the necessary dependenc
    `mkdir issue-maker`
    **The full path should be `.github/actions/issue-maker`**
 1. Navigate to the `issue-maker` folder you just created:
-   `cd .github/actions/issue-maker`
+   `cd issue-maker`
+   **The full path should be `.github/actions/issue-maker`**
 1. Initialize a new project:
    `npm init -y`
 1. Install the **@actions/core** and **@actions/github** dependencies using `npm`:
