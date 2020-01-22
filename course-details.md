@@ -2,7 +2,7 @@
 
 Over the duration of this course, approximately 1 hour, you will learn the skills needed to begin using and customizing GitHub Actions in your unique workflow scenarios.
 
-**prerequisites**
+**Prerequisites**
 
 We will be using Node.js to build our action and GitHub to consume our action. This presents us with a hybrid environment, the Node.js runtime environment and the virtual machine used by GitHub Actions, that you may not be used to if you've taken other Learning Lab courses.
 
