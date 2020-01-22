@@ -145,17 +145,17 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
-        with: 05_explain-metadata.md
-        issue: Hello Action
-        data:
-          actionsUrl: "%payload.repository.html_url%/actions"
-      - type: respond
         with: 05_hello-pr.md
         issue: Your first JavaScript action
         data:
           pullUrl: "%actions.helloPr.data.html_url%"
       - type: closeIssue
         issue: Your first JavaScript action
+      - type: respond
+        with: 05_explain-metadata.md
+        issue: Hello Action
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 05_create-metadata.md
         issue: Hello Action
