@@ -38,7 +38,7 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
 7. Lastly, define the `runs:` parameter to use `"node12"` and set the `main:` parameter to `"main.js"`
 8. Save the `action.yml` file
 9. commit the changes:
-   `git add .`
+   `git add action.yml`
    `git commit -m 'create action.yml'`
 10. push the changes to the `action-three` branch:
     `git push`
