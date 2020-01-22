@@ -28,7 +28,7 @@ before:
       quicklink: "%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
-  - title: Prepare the repository
+  - title: Setup a workflow file
     description: Create a pull request to add a workflow
     event: pull_request
     link: "{{ repoUrl }}/issues/1"
@@ -75,6 +75,12 @@ steps:
         left: "%payload.check_suite.app.name%"
         operator: ===
         right: "GitHub Actions"
+        else:
+          - type: respond
+            issue: Initial workflow
+            with: debug.md
+            data:
+              debug: "%payload%"
       - type: respond
         with: 02_workflow-results.md
         issue: Create my-workflow.yml
