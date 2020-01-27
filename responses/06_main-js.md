@@ -21,7 +21,7 @@ The first iteration of our action will follow the traditional path of logging "H
    ```
 
 1. Save the `main.js` file
-1. commit the changes:
+1. Commit the changes:
    `git add main.js`
    `git commit -m 'create main.js'`
 1. push them to the `hello-world` branch:
