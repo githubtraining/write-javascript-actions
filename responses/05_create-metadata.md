@@ -28,7 +28,7 @@ We will start with using the parameters that are **required** and later implemen
    </details>
 
 5. Save the `action.yml` file
-6. commit the changes:
+6. Commit the changes:
    `git add action.yml`
    `git commit -m 'create action.yml'`
 7. push them to the `hello-world` branch:
