@@ -24,7 +24,7 @@ Now that you have all the necessary tools installed locally, follow these steps 
    `npm init -y`
 1. Install the **request**, **request-promise** and **@actions/core** dependencies using `npm`:
    `npm install --save request request-promise @actions/core`
-1. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
+1. Commit those newly added files. We will remove the need to upload **node_modules** in a later step:
    `git add .`
    `git commit -m 'add joke action dependencies'`
 1. Push you changes to your repository:
