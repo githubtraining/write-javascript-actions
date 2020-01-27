@@ -40,7 +40,7 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
 9. commit the changes:
    `git add action.yml`
    `git commit -m 'create action.yml'`
-10. push the changes to the `action-three` branch:
+10. Push the changes to the `action-three` branch:
     `git push`
 
 ---
