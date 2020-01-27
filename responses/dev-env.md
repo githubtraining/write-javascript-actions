@@ -39,7 +39,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
 9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
    `git add .`
    `git commit -m 'add project dependencies'`
-10. Push you changes to your repository:
+10. Push your changes to your repository:
     `git push -u origin hello-world`
 
 ---
