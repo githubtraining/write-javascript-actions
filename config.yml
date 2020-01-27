@@ -8,18 +8,27 @@ template:
   name: "writing-javascript-actions"
 before:
   - type: updateBranchProtection
+  - type: createLabel
+    name: first-joke
+    color: FFBD33
+  - type: createLabel
+    name: second-joke
+    color: 33FFBD
+  - type: createLabel
+    name: third-joke
+    color: 3F8A99
   - type: createIssue
     title: Start here!
     body: 01_welcome-issue.md
     action_id: welcomeIssue
   - type: respond
-    issue: '%actions.welcomeIssue.data.number%'
+    issue: "%actions.welcomeIssue.data.number%"
     with: 01_welcome-activity.md
     data:
-      quicklink: '%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank'
+      quicklink: "%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
-  - title: Prepare the repository
+  - title: Setup a workflow file
     description: Create a pull request to add a workflow
     event: pull_request
     link: "{{ repoUrl }}/issues/1"
@@ -33,18 +42,18 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial workflow'
+            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Initial workflow
+        right: Create my-workflow.yml
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Initial workflow
+              title: Create my-workflow.yml
           # if those gates === true Then do this stuff
       - type: closeIssue
         issue: Start here!
@@ -66,17 +75,23 @@ steps:
         left: "%payload.check_suite.app.name%"
         operator: ===
         right: "GitHub Actions"
+        else:
+          - type: respond
+            issue: Initial workflow
+            with: debug.md
+            data:
+              debug: "%payload%"
       - type: respond
         with: 02_workflow-results.md
-        issue: Initial workflow
+        issue: Create my-workflow.yml
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: getPullRequest
-        pullRequest: Initial workflow
+        pullRequest: Create my-workflow.yml
         action_id: iwPr
       - type: respond
         with: 02_modify-workflow.md
-        issue: Initial workflow
+        issue: Create my-workflow.yml
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
 
@@ -86,7 +101,7 @@ steps:
     link: "{{ repoUrl }}/pull/2"
     actions:
       - type: getPullRequest
-        pullRequest: Initial workflow
+        pullRequest: Create my-workflow.yml
         action_id: workflowPr
       - type: respond
         with: 03_reference-actions.md
@@ -98,7 +113,7 @@ steps:
     event: pull_request.synchronize
     actions:
       - type: createIssue
-        title: Setting up your development environment
+        title: Your first JavaScript action
         body: dev-env.md
         action_id: devEnv
       - type: createReview
@@ -106,7 +121,7 @@ steps:
         body: 04_on-to-actions.md
         data:
           issueUrl: "%actions.devEnv.data.html_url%"
-        pullRequest: Initial workflow
+        pullRequest: Create my-workflow.yml
       - type: mergePullRequest
 
   - title: Creating the Action metadata
@@ -124,18 +139,23 @@ steps:
         right: true
       - type: createPullRequest
         title: Hello Action
-        body: 05_explain-metadata.md
+        body: 05_explain-actions.md
         head: hello-world
         action_id: helloPr
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 05_hello-pr.md
-        issue: Setting up your development environment
+        issue: Your first JavaScript action
         data:
           pullUrl: "%actions.helloPr.data.html_url%"
       - type: closeIssue
-        issue: Setting up your development environment
+        issue: Your first JavaScript action
+      - type: respond
+        with: 05_explain-metadata.md
+        issue: Hello Action
+        data:
+          actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 05_create-metadata.md
         issue: Hello Action
@@ -216,7 +236,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial workflow'
+            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -317,7 +337,7 @@ steps:
           - left: "%payload.action%"
             operator: ===
             right: edited
-            # AND the pull request title equals 'Initial workflow'
+            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===

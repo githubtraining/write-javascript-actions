@@ -4,9 +4,11 @@ Before we continue we are going to need to do a few things. First and foremost o
 
 ### :keyboard: Activity: Setting up the next action
 
-1. [Edit]({{workflowFile}}) your workflow file by commenting out every single line.
+1. [Edit]({{workflowFile}}) your workflow file by commenting out every single line. _(To comment in `.yml`, add a `#` symbol to the beginning of every line)_.
 2. Commit the changes to a new branch and name it `action-two`.
 3. Create a pull request named **External APIs**
+4. Supply the pull request with body content. Remember, this area can be used a notes later.
+5. Click `Create pull request`.
 
 You will still see the workflow trying to execute with every push if you look at the [Actions tab]({{actionsUrl}}), however it will seem as though it fails. This is because there is a workflow file in the `.github/workflows` directory. The failure isn't actually a failure either, if you expand it you will see that there is simple no triggers for that given workflow and therefore it doesn't run. I have placed a screenshot below so you can become familiar with what this error looks like without the need to go to your [Actions tab]({{actionsUrl}}).
 

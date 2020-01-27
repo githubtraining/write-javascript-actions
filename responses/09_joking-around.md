@@ -10,7 +10,7 @@ If you ask this question to anyone in the industry you'll likely get the obvious
 
 Let's do a thought experiment to help understand the concept of an API.
 
-I think most people are familiar with a 🚗 either through personal experience or some form of media. I also think it's safe to say that most people understand the concepts behind driving a car. By examining how we drive a car we can understand how APIs work in a fun way.
+I think most people are familiar with a car 🚗 either through personal experience or some form of media. I also think it's safe to say that most people understand the concepts behind driving a car. By examining how we drive a car we can understand how APIs work in a fun way.
 
 **Car Components**
 When driving a car there are a few components of the car that the driver interacts with directly. This wont be an all inclusive list, and each car varies to some degree, but so does each API. We will use the following components for our example:
@@ -47,9 +47,11 @@ Going into detail about each standard is beyond the scope of this course, howeve
 
 APIs also give you, the developer, the ability to give others access to specific functionality or resources within your own program or service.
 
+📺 [Watch](https://www.youtube.com/watch?v=BWnDYH_59SY) this 30 second video on APIs
+
 ### What about our action?
 
-We are now going to write an action that reaches out to a service through its API to get us a random joke. We will then display that joke on the [Actions tab]({{actionsUrl}}).
+We are now going to write an action that reaches out to a service through its REST API to get us a random joke. We will then display that joke on the [Actions tab]({{actionsUrl}}).
 
 For our purposes the API we use will not require authentication, however that is a limitation of the course content and not the GitHub Actions platform. If you need to store secrets, like API keys, for your workflow to use you will need to configure [secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) as inputs.
 
