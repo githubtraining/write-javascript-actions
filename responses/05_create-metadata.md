@@ -31,5 +31,5 @@ We will start with using the parameters that are **required** and later implemen
 6. Commit the changes:
    `git add action.yml`
    `git commit -m 'create action.yml'`
-7. push them to the `hello-world` branch:
+7. Push them to the `hello-world` branch:
    `git push`
