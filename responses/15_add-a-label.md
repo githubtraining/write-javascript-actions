@@ -8,7 +8,7 @@ Once your workflow has completed check your [issues tab]({{repoUrl}}/issues) and
 
 Continue experimenting with this workflow for as long as you'd like.
 
-try adding another label and see if you get a new joke!
+Try adding another label and see if you get a new joke!
 
 ---
 
