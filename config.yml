@@ -11,6 +11,8 @@ template:
 # ----------------
 # 1. (Issue) Start here!
 # 2. (PR) Create a workflow
+# 3. (PR) Your first JavaScript action
+
 before:
   - type: updateBranchProtection
   - type: createLabel
