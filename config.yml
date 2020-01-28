@@ -91,7 +91,7 @@ steps:
         right: "GitHub Actions"
         else:
           - type: respond
-            issue: Initial workflow
+            issue: Create a workflow
             with: debug.md
             data:
               debug: '%payload%'
@@ -117,7 +117,7 @@ steps:
       - type: gate
         left: '%payload.pull_request.title%'
         operator: ===
-        right: Initial workflow
+        right: Create a workflow
 
       - type: getFileContents
         filename: '.github/workflows/my-workflow.yml'
