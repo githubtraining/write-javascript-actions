@@ -7,5 +7,8 @@ It looks like your file contains extra commands or characters. Please clear out 
 
 I'll respond when I detect new commits on this branch.
 
-Got: 
+Got:
+
+```yaml
 {{ got }}
+```

@@ -7,4 +7,6 @@ Uh oh, I'm specifically looking to see whether `{{ filename }}` contains the fol
 I'll respond when I detect a new commit on this branch.
 
 Got:
+```yaml
 {{ got }}
+```
