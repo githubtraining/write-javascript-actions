@@ -44,9 +44,9 @@ Now that you have all the necessary tools installed locally, follow these steps 
    git commit -m 'add joke action dependencies'
    ```
 1. Push you changes to your repository:
-   ```shell
-   git push
-   ```
+    ```shell
+    git push
+    ```
 
 ---
 

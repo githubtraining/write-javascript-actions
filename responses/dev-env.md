@@ -56,9 +56,9 @@ Once you have the necessary tools installed locally, follow these steps to begin
    git commit -m 'add project dependencies'
    ```
 10. Push your changes to your repository:
-   ```shell
-   git push -u origin hello-world
-   ```
+    ```shell
+    git push -u origin hello-world
+    ```
 
 ---
 

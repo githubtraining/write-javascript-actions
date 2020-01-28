@@ -44,9 +44,9 @@ Let's create our final project directory and install all the necessary dependenc
    git commit -m 'add issue maker dependencies'
    ```
 1. Push you changes to your repository:
-   ```shell
-   git push
-   ```
+    ```shell
+    git push
+    ```
 
 ---
 
