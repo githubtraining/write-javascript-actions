@@ -228,7 +228,7 @@ steps:
         right: "refs/heads/hello-world"
         else:
         - type: respond
-          issue: Setting up your development environment
+          issue: Your first JavaScript Action
           with: e-branch.md
           data: 
             expected: hello-world
@@ -245,7 +245,7 @@ steps:
         else:
           - type: respond
             with: e-actions-dep.md
-            issue: Setting up your development environment
+            issue: Your first JavaScript Action
 
       - type: createPullRequest
         title: Hello Action
