@@ -23,9 +23,9 @@ When a repository is configured with a **workflow** file, like we just created, 
 
 1.  Your GitHub repository listens for an event
 2.  That event triggers a workflow run which starts a runner
-3.  The runner, regardless of the hosting method, is responsible for carrying out the jobs which are defined.
+3.  The runner, regardless of the hosting method, is responsible for carrying out the jobs which are defined
 4.  A job is series of steps, which can be actions or commands
-5.  When the steps complete a report is generated and can be viewed by anyone with access to the repository.
+5.  When the steps complete a report is generated and can be viewed by anyone with access to the repository
 
 
 

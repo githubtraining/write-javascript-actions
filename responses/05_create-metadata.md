@@ -2,11 +2,9 @@
 
 Now that we know what action metadata is, let's create the metadata for our current **hello-world** action.
 
-I will be doing this from within [Visual Studio Code](https://code.visualstudio.com/) and that will be reflected in the images that I show you.  If you are using a different editor then your screen may look different.
-
 ### :keyboard: Activity: Create the metadata file
 
-💡All of the following steps take place inside of the `.github/actions/hello-world` directory. 
+💡All of the following steps take place inside of the `.github/actions/hello-world` directory.
 
 We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
 
@@ -15,25 +13,23 @@ We will start with using the parameters that are **required** and later implemen
 3. Next, add a `description` parameter and give it a value of `"say hello with GitHub Actions"`
 4. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
 
-    <details><summary>View the complete file</summary>
+   <details><summary>View the complete file</summary>
 
-    ```yaml
-    name: "my hello action"
+   ```yaml
+   name: "my hello action"
 
-    description: "say hello with GitHub Actions"
+   description: "say hello with GitHub Actions"
 
-    runs:
-      using: "node12"
-      main: "main.js"
-    ```
-    </details>
+   runs:
+     using: "node12"
+     main: "main.js"
+   ```
 
-
+   </details>
 
 5. Save the `action.yml` file
-6. commit the changes:
-   `git add .`
-   `git commit -m 'update action.yml'`
-7. push them to the `hello-world` branch:
+6. Commit the changes:
+   `git add action.yml`
+   `git commit -m 'create action.yml'`
+7. Push them to the `hello-world` branch:
    `git push`
-   

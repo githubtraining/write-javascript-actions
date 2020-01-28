@@ -16,9 +16,9 @@ Most of your work going forward will take place away from your Learning Lab repo
 2. [ ] [Visual Studio Code](https://code.visualstudio.com/) or your editor of choice
 3. [ ] [Git](https://git-scm.com/)
 
-### :keyboard: Activity: Configure your environment
+### :keyboard: Activity: Initialize a new JavaScript project
 
-Now that you have all the necessary tools installed locally, follow these steps to ensure your environment is configured and ready for actions.
+Once you have the necessary tools installed locally, follow these steps to begin creating your first action.
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
 2. Clone your Learning Lab repo to your local machine:
@@ -38,8 +38,8 @@ Now that you have all the necessary tools installed locally, follow these steps 
    `npm install --save @actions/core`
 9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
    `git add .`
-   `git commit -m 'initial hello-world'`
-10. Push you changes to your repository:
+   `git commit -m 'add project dependencies'`
+10. Push your changes to your repository:
     `git push -u origin hello-world`
 
 ---
