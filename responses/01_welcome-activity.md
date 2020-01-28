@@ -17,7 +17,7 @@ _In our case, we will use this one **workflow** file for many things, which lead
    - Choose the **Set up a workflow yourself** option, located on the top right hand corner of the screen.
    - Change the name of the file from `main.yml` to `my-workflow.yml`.
 1. Commit the workflow to a new branch named `add-initial-workflow`.
-1. Create a pull request titled **Create my-workflow.yml**.
+1. Create a pull request titled **Create a workflow**.
 1. Supply the pull request body content and click `Create pull request`.
 
 _It is important to place meaningful content into the body of the pull requests you create throughout this course. This repository will stay with you long after you complete the course. It is advisable that you use the body of the pull requests you create as a way to take long lived notes about thing you want to remember._
