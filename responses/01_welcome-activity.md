@@ -28,8 +28,7 @@ _It is important to place meaningful content into the body of the pull requests 
 
 </details>
 
-I'll respond in the new pull request when I detect it has been created.
+<hr>
+<h3 align="center">I'll respond in the new pull request when I detect it has been created.</h3>
 
----
-
-If at any point you're expecting a response and don't see one, refresh the page.
+> _Sometimes I respond too fast for the page to update! If you perform an expected action and don't see a response from me, wait a few seconds. Then refresh the page for your next steps._
