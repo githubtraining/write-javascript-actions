@@ -19,13 +19,13 @@ From 30,000 feet GitHub Actions is made up of the following components, with eac
 
 ![Actions workflow diagram](https://i.imgur.com/CwxGobh.png)
 
-When a repository is configured with a **workflow** file, like we just created, the following series of events occurs.
+When a repository is configured with a **workflow** file, like we just created, the following series of events occurs:
 
 1.  Your GitHub repository listens for an event
 2.  That event triggers a workflow run which starts a runner
 3.  The runner, regardless of the hosting method, is responsible for carrying out the jobs which are defined
-4.  A job is series of steps, which can be actions or commands
-5.  When the steps complete a report is generated and can be viewed by anyone with access to the repository
+4.  A job is a series of steps, which can be actions or commands
+5.  When the steps complete, a report is generated and can be viewed by anyone with access to the repository
 
 
 
