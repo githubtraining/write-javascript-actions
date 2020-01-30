@@ -27,7 +27,5 @@ jobs:
 
 </details>
 
----
-
 <hr>
 <h3 align="center">I'll respond in this pull request once you make these changes.</h3>
