@@ -84,4 +84,4 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
 ---
 
-I'll respond here when you finish this step.
+I'll respond here when GitHub Actions reports it's finished.

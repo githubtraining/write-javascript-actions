@@ -335,8 +335,18 @@ steps:
 
   - title: Exploring your input parameters
     description: view the results of adding input parameter
-    event: pull_request.synchronize #ideally would like workflow complete to trigger this
+    event: check_suite.completed
     actions:
+      - type: gate
+        every: true
+        gates:
+          - left: "%payload.check_suite.app.name%"
+            operator: ===
+            right: "GitHub Actions"
+          - left: "%payload.check_suite.conclusion%"
+            operator: ===
+            right: success
+
       - type: respond
         with: 08_input-result.md
         data:
