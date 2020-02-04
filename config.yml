@@ -289,7 +289,9 @@ steps:
         left: '%actions.actionYML%'
         else:
           - type: respond
-            with: e-actions-yml.md
+            with: e-404.md
+            data:
+              need: .github/actions/hello-world/action.yml
 
       - type: respond
         with: 06_explain-runs.md
@@ -304,6 +306,24 @@ steps:
     description: extend your action to accept input parameters
     event: pull_request.synchronize #ideally would like the workflow completing to tigger this
     actions:
+      - type: gate
+        left: '%payload.title%'
+        operator: ===
+        right: Hello Action
+
+      - type: getFileContents
+        filename: '.github/actions/hello-world/main.js'
+        action_id: mainJS
+        required: false
+
+      - type: gate
+        left: '%actions.mainJS%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/hello-world/main.js
+
       - type: respond
         with: 07_hello-result.md
         data:
