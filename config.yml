@@ -13,6 +13,8 @@ template:
 # 2. (PR) Create a workflow
 # 3. (PR) Your first JavaScript action
 # 4. (PR) Hello Action
+# 5. (PR) Knock Knock...
+# 6. (PR) External APIs
 
 before:
   - type: updateBranchProtection
@@ -381,19 +383,11 @@ steps:
 
   - title: Prevent the workflow from running
     description: Comment out the lines in the workflow to prevent unwanted runs
-    event: pull_request
+    event: 
+      - pull_request.opened
+      - pull_request.edited
     # link: "{{ repoUrl }}/issue1/1"
     actions:
-      - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Create a workflow'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -406,6 +400,20 @@ steps:
             data:
               title: External APIs
           # if those gates === true Then do this stuff
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflow
+        required: false
+
+      - type: gate
+        left: '%actions.workflow%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+              
       - type: closeIssue
         issue: Knock Knock...
       - type: respond
