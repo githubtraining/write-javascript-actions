@@ -178,7 +178,7 @@ steps:
           workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.workflowPr.data.base.repo.full_name%/pull/%actions.workflowPr.data.number%"
 
   - title: On to your development environment
-    description: Lets prepare your environemtn to start writing Actions
+    description: Lets prepare your environment to start writing actions
     event: pull_request.synchronize
     actions:
       - type: getFileContents
@@ -218,7 +218,7 @@ steps:
       - type: mergePullRequest
 
   - title: Creating the Action metadata
-    description: Create an action.yml file and add necessary metatdata for our Action
+    description: Create an action.yml file and add necessary metadata for our Action
     event: push
     link: "{{ repoUrl }}/issues/1"
     actions:
