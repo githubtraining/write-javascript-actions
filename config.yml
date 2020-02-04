@@ -12,6 +12,7 @@ template:
 # 1. (Issue) Start here!
 # 2. (PR) Create a workflow
 # 3. (PR) Your first JavaScript action
+# 4. (PR) Hello Action
 
 before:
   - type: updateBranchProtection
@@ -274,6 +275,22 @@ steps:
     description: time to start adding code to main.js
     event: pull_request.synchronize
     actions:
+      - type: gate
+        left: '%payload.title%'
+        operator: ===
+        right: Hello Action
+
+      - type: getFileContents
+        filename: '.github/actions/hello-world/action.yml'
+        action_id: actionYML
+        required: false
+
+      - type: gate
+        left: '%actions.actionYML%'
+        else:
+          - type: respond
+            with: e-actions-yml.md
+
       - type: respond
         with: 06_explain-runs.md
         data:
