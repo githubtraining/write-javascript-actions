@@ -689,7 +689,7 @@ steps:
             with: e-line.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: {% raw %}repo-token: ${{ secrets.GITHUB_TOKEN }}{% endraw %}
+              code: 'repo-token: ${{ secrets.GITHUB_TOKEN }}'
               got: '%actions.workflowFileContents%'
 
       - type: gate
@@ -701,7 +701,7 @@ steps:
             with: e-line.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: {% raw %}joke: ${{ steps.jokes.outputs.joke-output }}{% endraw %}
+              code: 'joke: ${{ steps.jokes.outputs.joke-output }}'
               got: '%actions.workflowFileContents%'
 
       - type: closeIssue
