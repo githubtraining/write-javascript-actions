@@ -575,6 +575,42 @@ steps:
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
+
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
+      - type: gate
+        left: '/uses:\s*\.\/\.github\/actions\/joke-action*/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: '- uses: ./.github/actions/joke-action'
+              got: '%actions.workflowFileContents%'
+
       - type: removeBranchProtection
       - type: respond
         with: 12_trigger-workflow.md
