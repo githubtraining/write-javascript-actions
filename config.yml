@@ -352,14 +352,19 @@ steps:
     link: "{{ repoUrl }}/pull/4"
     actions:
       - type: gate
-        every: true
-        gates:
-          - left: "%payload.check_suite.app.name%"
-            operator: ===
-            right: "GitHub Actions"
-          - left: "%payload.check_suite.conclusion%"
-            operator: ===
-            right: success
+        left: "%payload.check_suite.app.name%"
+        operator: ===
+        right: "GitHub Actions"
+
+      - type: gate
+        left: "%payload.check_suite.conclusion%"
+        operator: ===
+        right: success
+        else:
+          - type: respond
+            with: e-workflow.md
+            data:
+              conclusion: '%payload.check_suite.conclusion%'
 
       - type: respond
         with: 08_input-result.md
