@@ -409,5 +409,5 @@ steps:
           url: '%actions.finalIssue.data.html_url%'
 
 tags: [
-  "JavaScript", "API", "Actions toolkit", "GitHub Secrets"
+  "JavaScript", "API", "Actions toolkit", "GitHub Secrets", "Workflows"
 ]
