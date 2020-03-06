@@ -1,6 +1,6 @@
 [GitHub Actions](https://github.com/features/actions) is a powerful platform that empowers your team to go from code to cloud all from the comfort of your own repositories.
 
-Over the duration of this course, approximately 1 hour, you will learn the skills needed to begin using and customizing GitHub Actions to fit your unique workflow scenarios.
+Over the duration of this course you will learn the skills needed to begin using and customizing GitHub Actions to fit your unique workflow scenarios.
 
 ## What you'll learn
 
