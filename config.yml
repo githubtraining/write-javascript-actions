@@ -19,11 +19,7 @@ before:
     color: 3F8A99
   - type: createIssue
     title: Start here!
-    body: 01_welcome-issue.md
-    action_id: welcomeIssue
-  - type: respond
-    issue: "%actions.welcomeIssue.data.number%"
-    with: 01_welcome-activity.md
+    body: 01_welcome-activity.md
     data:
       quicklink: "%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
