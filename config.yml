@@ -11,7 +11,7 @@ template:
 # 2. (PR) Create a workflow
 # 3. (Issue) Your first JavaScript action
 # 4. (PR) Hello action
-# 5. (Issue) Knock Knock...
+# 5. (Issue) Knock knock...
 # 6. (PR) External APIs
 # 7. (Issue) Consuming Action Outputs
 # 8. (PR) Use Outputs
@@ -385,7 +385,7 @@ steps:
       - type: updateBranchProtection
       - type: createIssue
         body: 09_joking-around.md
-        title: Knock Knock...
+        title: Knock knock...
         action_id: jokeIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
@@ -396,7 +396,7 @@ steps:
           issueUrl: "%actions.jokeIssue.data.html_url%"
       - type: respond
         with: 09_new-action.md
-        issue: Knock Knock...
+        issue: Knock knock...
         data:
           # The following workflowFile var does not point where it should for some reason
           workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
@@ -436,7 +436,7 @@ steps:
               need: .github/workflows/my-workflow.yml
               
       - type: closeIssue
-        issue: Knock Knock...
+        issue: Knock knock...
       - type: respond
         with: 10_action-two.md
 
