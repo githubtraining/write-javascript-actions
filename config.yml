@@ -1,5 +1,4 @@
 title: "GitHub Actions: Writing JavaScript Actions"
-tagline: Create custom automation tasks for your unique workflow using GitHub Actions
 description: >-
   Learn how to write your own GitHub JavaScript Action!  This course will
   empower you to begin automating customized tasks unique to your workflow.
@@ -408,3 +407,6 @@ steps:
       - type: respond
         issue: Last minute notes
         with: 16_complete.md
+tags: [
+  "JavaScript", "API", "Actions toolkit", "GitHub Secrets"
+]
