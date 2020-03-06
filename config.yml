@@ -420,7 +420,7 @@ steps:
     event: 
       - pull_request.opened
       - pull_request.edited
-      - pull_request.synchornize
+      - pull_request.synchronize
     link: "{{ repoUrl }}/issues/5"
     actions:
       - type: gate
