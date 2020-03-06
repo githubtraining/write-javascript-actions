@@ -453,6 +453,8 @@ steps:
         issue: Knock knock...
       - type: respond
         with: 10_action-two.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Create your new Action metadata
     description: Add action.yml file for new joke action

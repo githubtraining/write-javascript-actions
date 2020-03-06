@@ -16,20 +16,18 @@ Now that you have all the necessary tools installed locally, follow these steps 
    ```shell
    git pull
    ```
-1. Checkout the `action-two` branch you created for this pull request.
+1. Checkout the `{{ branch }}` branch you created for this pull request.
    ```shell
-   git checkout action-two
+   git checkout {{ branch }}
    ```
-1. Create a new folder for our actions files:
+1. Create a new folder for our actions files. **The full path should be `.github/actions/joke-action`**.
    ```shell
    mkdir actions/joke-action
    ```
-   **The full path should be `.github/actions/joke-action`**
 1. Navigate to the `joke-action` folder you just created:
    ```shell
    cd actions/joke-action
    ```
-   **This may be different depending on your current directory**
 1. Initialize a new project:
    ```shell
    npm init -y
@@ -38,16 +36,13 @@ Now that you have all the necessary tools installed locally, follow these steps 
    ```shell
    npm install --save request request-promise @actions/core
    ```
-1. Commit those newly added files. We will remove the need to upload **node_modules** in a later step:
+1. Commit those newly added files. We will remove the need to upload **node_modules** in a later step. Push your changes to GitHub:
    ```shell
    git add .
    git commit -m 'add joke action dependencies'
+   git push
    ```
-1. Push you changes to your repository:
-    ```shell
-    git push
-    ```
 
 ---
 
-I will respond once you have finished.
+I will respond once you push a new commit to the `{{ branch }}` branch.

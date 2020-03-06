@@ -5,7 +5,7 @@ Before we continue we are going to need to do a few things. First and foremost o
 ### :keyboard: Activity: Setting up the next action
 
 1. [Edit]({{workflowFile}}) your workflow file by commenting out every single line. _(To comment in `.yml`, add a `#` symbol to the beginning of every line)_.
-2. Commit the changes to a new branch and name it `action-two`.
+2. Commit the changes to a new branch, you can name it `action-two`.
 3. Create a pull request named **External APIs**
 4. Supply the pull request with body content. Remember, this area can be used a notes later.
 5. Click `Create pull request`.
