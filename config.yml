@@ -13,7 +13,7 @@ template:
 # 4. (PR) Hello action
 # 5. (Issue) Knock knock...
 # 6. (PR) External APIs
-# 7. (Issue) Consuming Action Outputs
+# 7. (Issue) Consuming action outputs
 # 8. (PR) Use Outputs
 # 9. (Issue) Last minute notes
 
@@ -626,7 +626,7 @@ steps:
       - type: updateBranchProtection
       - type: createIssue
         body: 13_action-three-workflow.md
-        title: Consuming Action Outputs
+        title: Consuming action outputs
         action_id: outputIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
@@ -665,7 +665,7 @@ steps:
               title: Use Outputs
           # if those gates === true Then do this stuff
       - type: closeIssue
-        issue: Consuming Action Outputs
+        issue: Consuming action outputs
       - type: respond
         with: 14_action-three.md
 
