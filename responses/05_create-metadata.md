@@ -8,13 +8,7 @@ Now that we know what action metadata is, let's create the metadata for our curr
 
 We will start with using the parameters that are **required** and later implement some optional parameters as our action evolves.
 
-1. Create a file named `action.yml`
-2. Use the `name` parameter to name your action `"my hello action"`
-3. Next, add a `description` parameter and give it a value of `"say hello with GitHub Actions"`
-4. Lastly, define the `run` parameter to use `"node12"` to execute the `"main.js"`
-
-   <details><summary>View the complete file</summary>
-
+1. Create and add the following contents to the `.github/actions/hello-world/action.yml` file:
    ```yaml
    name: "my hello action"
 
@@ -24,12 +18,14 @@ We will start with using the parameters that are **required** and later implemen
      using: "node12"
      main: "main.js"
    ```
-
-   </details>
-
-5. Save the `action.yml` file
-6. Commit the changes:
+2. Save the `action.yml` file
+3. Commit the changes:
    `git add action.yml`
    `git commit -m 'create action.yml'`
-7. Push them to the `hello-world` branch:
+4. Push them to the `hello-world` branch:
    `git push`
+   
+ ---
+
+I'll respond here once I notice that you've pushed your changes.
+
