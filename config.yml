@@ -707,6 +707,8 @@ steps:
         issue: Consuming action outputs
       - type: respond
         with: 14_action-three.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Add third Actions metadata
     description: Create the metadata for the third Action

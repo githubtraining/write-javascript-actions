@@ -31,8 +31,8 @@ We need to make some edits to the `my-workflow.yml` file to get it configured to
 4. The new step should have its `uses:` property point to `./.github/actions/issue-maker`
 5. The `issue-maker` action should consume the output of the `joke-action`. Add a `with:` property that takes a parameter of `joke:` with a value of `{% raw %}${{steps.jokes.outputs.joke-output}}{% endraw %}`
 6. The `issue-maker` action should have a property of `repo-token:` which has `{% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}` as the value (I'll explain this in a later step, for now it's a secret 🤣🤷‍♂)
-7. Commit the changes to a new branch and name it `action-three`.
-8. Create a pull request named **Use Outputs**
+7. Commit the changes to a new branch, you can name it `action-three`.
+8. Create a pull request named **Use outputs**
 
 Like our other actions, I'll respond in the new pull request when I detect it has been opened.
 

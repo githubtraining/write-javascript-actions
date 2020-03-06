@@ -16,20 +16,18 @@ Let's create our final project directory and install all the necessary dependenc
    ```shell
    git pull
    ```
-1. Checkout the `action-three` branch you created for this pull request.
+1. Checkout the `{{ branch }}` branch you created for this pull request.
    ```shell
-   git checkout action-three
+   git checkout {{ branch }}
    ```
-1. Create a new folder for our actions files:
+1. Create a new folder for our actions files. **The full path should be `.github/actions/issue-maker`**.
    ```shell
    mkdir issue-maker
    ```
-   **The full path should be `.github/actions/issue-maker`**
-1. Navigate to the `issue-maker` folder you just created:
+1. Navigate to the `issue-maker` folder you just created. **The full path should be `.github/actions/issue-maker`**
    ```shell
    cd issue-maker
    ```
-   **The full path should be `.github/actions/issue-maker`**
 1. Initialize a new project:
    ```shell
    npm init -y
@@ -38,16 +36,13 @@ Let's create our final project directory and install all the necessary dependenc
    ```shell
    npm install --save @actions/core @actions/github
    ```
-1. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
+1. Commit those newly added files,we will remove the need to upload **node_modules** in a later step. Push your changes to GitHub:
    ```shell
    git add .
    git commit -m 'add issue maker dependencies'
-   ```
-1. Push you changes to your repository:
-    ```shell
-    git push
+   git push
     ```
 
 ---
 
-I will respond once you have finished.
+I will respond once you have pushed to this branch.
