@@ -77,6 +77,7 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 
 2. Save the changes to each file
 3. Commit the changes to this branch and push them to GitHub:
+
    ```shell
    git add main.js action.yml workflow.yml
    git commit -m 'allow input in all action files'
