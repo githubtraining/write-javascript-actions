@@ -5,6 +5,18 @@ description: >-
 template:
   repo: "writing-javascript-actions-template"
   name: "writing-javascript-actions"
+
+# Repo artifacts:
+# 1. (Issue) Start here!
+# 2. (PR) Create my-workflow.yml
+# 3. (Issue) Your first JavaScript action
+# 4. (PR) Hello Action
+# 5. (Issue) Knock Knock...
+# 6. (PR) External APIs
+# 7. (Issue) Consuming Action Outputs
+# 8. (PR) Use Outputs
+# 9. (Issue) Last minute notes
+
 before:
   - type: updateBranchProtection
   - type: createLabel
@@ -90,8 +102,8 @@ steps:
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
 
-  - title: Add an Action reference
-    description: Add an Action reference to the workflow file
+  - title: Prep the workflow
+    description: Prepare the workflow for your future action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/2"
     actions:
@@ -103,9 +115,10 @@ steps:
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml"
 
-  - title: On to your development environment
-    description: Lets prepare your environemtn to start writing Actions
+  - title: Add an Action reference
+    description: Add an Action reference to the workflow file
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/2"
     actions:
       - type: createIssue
         title: Your first JavaScript action
@@ -119,10 +132,10 @@ steps:
         pullRequest: Create my-workflow.yml
       - type: mergePullRequest
 
-  - title: Creating the Action metadata
-    description: Create an action.yml file and add necessary metatdata for our Action
+  - title: On to your development environment
+    description: Lets prepare your environment to start writing Actions
     event: push
-    # link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issues/3"
     actions:
       - type: gate
         left: "%payload.ref%"
@@ -155,9 +168,10 @@ steps:
         with: 05_create-metadata.md
         issue: Hello Action
 
-  - title: Create the Action entrypoint
-    description: time to start adding code to main.js
+  - title: Creating the Action metadata
+    description: Create an action.yml file and add necessary metatdata for our Action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: respond
         with: 06_explain-runs.md
@@ -168,9 +182,10 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Adding input parameters
-    description: extend your action to accept input parameters
+  - title: Create the Action entrypoint
+    description: Add code to main.js file
     event: pull_request.synchronize #ideally would like the workflow completing to tigger this
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: respond
         with: 07_hello-result.md
@@ -182,8 +197,9 @@ steps:
         with: 07_update-files.md
 
   - title: Exploring your input parameters
-    description: view the results of adding input parameter
+    description: View the results of adding input parameter
     event: pull_request.synchronize #ideally would like workflow complete to trigger this
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: respond
         with: 08_input-result.md
@@ -194,8 +210,9 @@ steps:
         with: 08_experiment.md
 
   - title: Integrating Actions with external APIs
-    description: Write a new Action that call an external API
+    description: Write a new Action that calls an external API
     event: pull_request.closed
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: updateBranchProtection
       - type: createIssue
@@ -220,7 +237,7 @@ steps:
   - title: Prevent the workflow from running
     description: Comment out the lines in the workflow to prevent unwanted runs
     event: pull_request
-    # link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issues/5"
     actions:
       - type: gate
         gates:
@@ -252,6 +269,7 @@ steps:
   - title: Create your new Action metadata
     description: Add action.yml file for new joke action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -263,6 +281,7 @@ steps:
   - title: Create your Actions JavaScript files
     description: Add joke.j and main.js to your Action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -274,6 +293,7 @@ steps:
   - title: Use the joke Action in a workflow
     description: Edit the workflow file to now use the newly created joke Action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -291,7 +311,7 @@ steps:
   - title: Having Actions tell a joke... or two
     description: Wait for your Action to present you with a joke
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: removeBranchProtection
       - type: respond
@@ -303,6 +323,7 @@ steps:
   - title: Configure the workflow for a third Action
     description: Edit the workflow to accomodate the third action
     event: pull_request.closed
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: updateBranchProtection
       - type: createIssue
@@ -321,7 +342,7 @@ steps:
   - title: Write the final Action
     description: Create an Action that consumes output from another Action and uses Octokit
     event: pull_request
-    # link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issues/7"
     actions:
       - type: gate
         gates:
@@ -353,7 +374,7 @@ steps:
   - title: Add third Actions metadata
     description: Create the metadata for the third Action
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -365,7 +386,7 @@ steps:
   - title: Add third Actions JavaScript files
     description: Create the JavaScript files for the third Action
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -379,7 +400,7 @@ steps:
   - title: Trigger the third Action
     description: Add a pull request label to trigger the workflow
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -394,6 +415,7 @@ steps:
   - title: Wrapping things up
     description: Final notes before you go
     event: pull_request.closed
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: createIssue
         title: Last minute notes
