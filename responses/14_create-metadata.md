@@ -44,6 +44,8 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
    git push
    ```
 
+I will respond when you commit to this branch.
+
 ---
 
 <details><summary>View the complete file</summary>
@@ -67,5 +69,3 @@ runs:
 ```
 
 </details>
-
-I will respond when you commit to this branch.

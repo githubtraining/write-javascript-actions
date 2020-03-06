@@ -2,7 +2,7 @@
 
 I'm counting on you this time! In the previous steps I have guided you heavily on what to type along the way. This time I ask that you look back on the things you've done in this course and pull from the knowledge you already have to accomplish these tasks.
 
-1. Create a file named `index.js`
+1. Create a file named `index.js`. **Its full path should be: `.github/actions/issue-makes/index.js`.**
 2. Create the `core` and `github` variables
 3. Create an asynchronous function named `run()`
 4. Inside a try/catch block define the `issueTitle`, `jokeBody`, `token` and `octokit` variables
@@ -11,11 +11,13 @@ I'm counting on you this time! In the previous steps I have guided you heavily o
 7. Use the `setFailed()` method from the `@actions/core` package to stop your action and log and error if something goes wrong
 8. Save the file
 9. Commit and push the changes to this branch
-   `git add index.js`
-   `git commit -m 'create index.js'`
-   `git push`
+   ```shell
+   git add index.js
+   git commit -m 'create index.js'
+   git push
+   ```
 
-I'll respond once you complete these steps, good luck 👍
+I'll respond once you push to this branch.
 
 ---
 
