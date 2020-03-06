@@ -398,15 +398,16 @@ steps:
       - type: createIssue
         title: Last minute notes
         body: great-job.md
+        comments:
+          - 16_using-ncc.md
+          - 16_publishing.md
+          - 16_complete.md
+        action_id: finalIssue
       - type: respond
-        issue: Last minute notes
-        with: 16_using-ncc.md
-      - type: respond
-        issue: Last minute notes
-        with: 16_publishing.md
-      - type: respond
-        issue: Last minute notes
-        with: 16_complete.md
+        with: go-to-final.md
+        data:
+          url: '%actions.finalIssue.data.html_url%'
+
 tags: [
   "JavaScript", "API", "Actions toolkit", "GitHub Secrets"
 ]
