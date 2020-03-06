@@ -76,11 +76,12 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
       </details>
 
 2. Save the changes to each file
-3. Commit the changes to this branch
-   `git add main.js action.yml workflow.yml`
-   `git commit -m 'allow input in all action files'`
-4. Push the changes from your local machine to this repository.
-   `git push`
+3. Commit the changes to this branch and push them to GitHub:
+   ```shell
+   git add main.js action.yml workflow.yml
+   git commit -m 'allow input in all action files'
+   git push
+   ```
 
 ---
 

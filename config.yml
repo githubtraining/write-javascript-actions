@@ -608,7 +608,7 @@ steps:
             with: e-line.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: '- uses: ./.github/actions/joke-action'
+              code: 'uses: ./.github/actions/joke-action'
               got: '%actions.workflowFileContents%'
 
       - type: removeBranchProtection
@@ -688,7 +688,7 @@ steps:
             with: e-line.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: 'repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}'
+              code: {% raw %}repo-token: ${{ secrets.GITHUB_TOKEN }}{% endraw %}
               got: '%actions.workflowFileContents%'
 
       - type: gate
@@ -700,7 +700,7 @@ steps:
             with: e-line.md
             data:
               filename: .github/workflows/my-workflow.yml
-              code: 'joke: {% raw %}${{ steps.jokes.outputs.joke-output }}{% endraw %}'
+              code: {% raw %}joke: ${{ steps.jokes.outputs.joke-output }}{% endraw %}
               got: '%actions.workflowFileContents%'
 
       - type: closeIssue
