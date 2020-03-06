@@ -281,6 +281,11 @@ steps:
         left: '%payload.title%'
         operator: ===
         right: Hello action
+        else:
+          - type: respond
+            with: debug.md
+            data:
+              debug: "%payload%"
 
       - type: getFileContents
         filename: '.github/actions/hello-world/action.yml'
