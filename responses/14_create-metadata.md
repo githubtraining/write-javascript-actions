@@ -37,11 +37,12 @@ We will use the `joke-output`, as well as an issue title, in in this portion of 
 6. Give the `issue-title:` a `default:` value of `"a joke for you"` and make it a `required:` parameter
 7. Lastly, define the `runs:` parameter to use `"node12"` and set the `main:` parameter to `"main.js"`
 8. Save the `action.yml` file
-9. commit the changes:
-   `git add action.yml`
-   `git commit -m 'create action.yml'`
-10. Push the changes to the `action-three` branch:
-    `git push`
+9. Commit the changes and push them to GitHub:
+   ```shell
+   git add action.yml
+   git commit -m 'create action.yml'
+   git push
+   ```
 
 ---
 
@@ -66,3 +67,5 @@ runs:
 ```
 
 </details>
+
+I will respond when you commit to this branch.
