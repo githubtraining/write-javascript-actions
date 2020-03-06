@@ -278,14 +278,14 @@ steps:
     link: "{{ repoUrl }}/pull/4"
     actions:
       - type: gate
-        left: '%payload.title%'
+        left: '%payload.pull_request.title%'
         operator: ===
         right: Hello action
         else:
           - type: respond
-            with: debug.md
+            with: e-unexpected.md
             data:
-              debug: "%payload%"
+              expected: push a commit to the pull request titled "Hello action"
 
       - type: getFileContents
         filename: '.github/actions/hello-world/action.yml'
@@ -315,9 +315,14 @@ steps:
     link: "{{ repoUrl }}/pull/4"
     actions:
       - type: gate
-        left: '%payload.title%'
+        left: '%payload.pull_request.title%'
         operator: ===
         right: Hello action
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push a commit to the pull request titled "Hello action"
 
       - type: getFileContents
         filename: '.github/actions/hello-world/main.js'
