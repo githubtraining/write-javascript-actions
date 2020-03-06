@@ -719,6 +719,32 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: Use outputs
+
+        # if those statments FAIL... do this
+        else:
+          - type: respond
+            with: e-rename-pr.md
+            data:
+              title: Use outputs
+
+      - type: getFileContents
+        filename: '.github/actions/issue-maker/package.json'
+        action_id: packageJSON
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+          - left: '/@actions\/core/gm'
+            operator: test
+            right: '%actions.packageJSON%'
+          - left: '/@actions\/github/gm'
+            operator: test
+            right: '%actions.packageJSON%'
+        else:
+          - type: respond
+            with: e-issuemaker-dep.md
+
       - type: respond
         with: 14_create-metadata.md
 
