@@ -806,7 +806,7 @@ steps:
             with: e-404.md
             data:
               need: .github/actions/issue-maker/index.js
-              
+
       - type: removeBranchProtection
       - type: respond
         with: 15_add-a-label.md
@@ -818,6 +818,15 @@ steps:
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/8"
     actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Use outputs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: merge the pull request titled **Use outputs**
       - type: createIssue
         title: Last minute notes
         body: great-job.md
