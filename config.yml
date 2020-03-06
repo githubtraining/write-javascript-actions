@@ -651,6 +651,7 @@ steps:
     event: 
       - pull_request.opened
       - pull_request.edited
+      - pull_request.synchronize
     link: "{{ repoUrl }}/issues/7"
     actions:
       - type: gate
