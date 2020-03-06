@@ -85,3 +85,13 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
 ---
 
 I'll respond here when GitHub Actions reports it's finished.
+
+<details><summary>Is your workflow failing?</summary>
+
+If you workflow is failing, please double check your:
+- JavaScript source code
+- action metadata
+- workflow file
+
+Look for linter errors or any errors reported on the Actions tab. I will respond when I receive another workflow run is completed.
+</details>
