@@ -27,7 +27,7 @@ Once you have the necessary tools installed locally, follow these steps to begin
    ```
 3. Navigate to the folder you just cloned:
    ```shell
-   cd writing-javascript-actions
+   cd {{ repo }}
    ```
 4. Create a new branch named `hello-world`. This is the branch we will use to write our first action. **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**
    ```shell
