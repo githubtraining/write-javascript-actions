@@ -456,8 +456,8 @@ steps:
         data:
           branch: '%payload.pull_request.head.ref%'
 
-  - title: Create your new Action metadata
-    description: Add action.yml file for new joke action
+  - title: Install dependencies for the second action
+    description: Create a directory for your new action dependencies
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
@@ -496,8 +496,8 @@ steps:
       - type: respond
         with: 10_create-metadata.md
 
-  - title: Create your Actions JavaScript files
-    description: Add joke.j and main.js to your Action
+  - title: Create your new Action metadata
+    description: Add action.yml file for new joke action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
@@ -508,8 +508,8 @@ steps:
       - type: respond
         with: 10_create-js-files.md
 
-  - title: Use the joke Action in a workflow
-    description: Edit the workflow file to now use the newly created joke Action
+  - title: Create your Actions JavaScript files
+    description: Add joke.js and main.js to your Action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
@@ -526,8 +526,8 @@ steps:
           workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.apiPr.data.base.repo.full_name%/pull/%actions.apiPr.data.number%"
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Having Actions tell a joke... or two
-    description: Wait for your Action to present you with a joke
+  - title: Use the joke Action in a workflow  
+    description: Edit the workflow file to now use the newly created joke Action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
@@ -538,8 +538,8 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Configure the workflow for a third Action
-    description: Edit the workflow to accomodate the third action
+  - title: Having Actions tell a joke... or two
+    description: Wait for your Action to present you with a joke
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/6"
     actions:
