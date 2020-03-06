@@ -1,16 +1,46 @@
 [GitHub Actions](https://github.com/features/actions) is a powerful platform that empowers your team to go from code to cloud all from the comfort of your own repositories.
 
-Over the duration of this course, approximately 1 hour, you will learn the skills needed to begin using and customizing GitHub Actions in your unique workflow scenarios.
+Over the duration of this course, approximately 1 hour, you will learn the skills needed to begin using and customizing GitHub Actions to fit your unique workflow scenarios.
 
-**Prerequisites**
+## What you'll learn
 
-We will be using Node.js to build our action and GitHub to consume our action. This presents us with a hybrid environment, the Node.js runtime environment and the virtual machine used by GitHub Actions, that you may not be used to if you've taken other Learning Lab courses.
+In this course you will learn how to:
 
-Before we can get started there are a few things you need to setup on your **local machine**
+- Consume actions within a workflow file
+- Create custom JavaScript based actions
+- Publish your newly created action to the marketplace
 
-1. Install [Node.js](https://nodejs.org/en/) for your operating system.
-2. Ensure you have a text editor installed. I'll be using Visual Studio Code, and although you are free to use your editor of choice you should be aware that using a different editor will result in your screen not matching my examples. Here are some editor options for you:
-   1. [Visual Studio Code](https://code.visualstudio.com/) **(recommended)**
-   2. [Atom](https://atom.io/)
-   3. [Sublime Text](https://www.sublimetext.com/)
-3. Lastly, you're going to need a local installation of [Git](https://git-scm.com/) so that you can interact with this repository as you write code.
+You'll know the answers to questions like:
+
+- What is a workflow?
+- What are actions?
+- What is action metadata?
+- What are GitHub Actions capable of?
+
+## What you'll build
+
+![screenshot of a pull request in the course with instructions on how to fetch a joke from the API, a second screenshot of a workflow running and outputting the joke: "Guy told me today he did not know what cloning is. I told him, that makes 2 of us."](https://user-images.githubusercontent.com/16547949/76105870-cce3a380-5fa3-11ea-8882-7138319b4100.png)
+
+In this course you will build three actions that each accomplish different tasks designed to demonstrate the flexibility of creating and consuming JavaScript Based Actions.
+
+First, you will start with the traditional "Hello World!" program which will teach you where to find the output of a workflow run. You will then modify this "Hello World!" action to accept `input` parameters which allow the action to be more dynamic. 
+
+Second, you will write an action that call upon an external API to retrieve a fact about cats and prints it to the workflows output. You will then modify this cat fact action to set the retrieved data as `output` for another action in the workflow to consume.
+
+Lastly, you will write a third action that will open an issue in your repository making the cat fact available to everyone. You will learn how to use the `output` of previous actions as `input` for current actions in this step.
+
+## Prerequisites
+
+We first recommend taking the following courses:
+- [Hello, GitHub Actions!](https://lab.github.com/github/hello-github-actions!) to learn the basics of how GitHub Actions work
+- [GitHub Actions: Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) to dive deeper into a workflow file
+
+## Projects used
+
+This makes use of the following open source projects. Consider exploring these repos and maybe even making contributions!
+
+- [GitHub Actions Toolkit](https://github.com/actions/toolkit), a multipurpose JavaScript library for writing actions
+
+## Audience
+
+Developers, DevOps Engineers, students, teams

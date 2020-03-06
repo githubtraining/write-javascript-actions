@@ -1,5 +1,4 @@
 title: "GitHub Actions: Writing JavaScript Actions"
-tagline: Create custom automation tasks for your unique workflow using GitHub Actions
 description: >-
   Learn how to write your own GitHub JavaScript Action!  This course will
   empower you to begin automating customized tasks unique to your workflow.
@@ -7,14 +6,16 @@ template:
   repo: "writing-javascript-actions-template"
   name: "writing-javascript-actions"
 
-# Course artifacts
-# ----------------
+# Repo artifacts:
 # 1. (Issue) Start here!
-# 2. (PR) Create a workflow
-# 3. (PR) Your first JavaScript action
+# 2. (PR) Create my-workflow.yml
+# 3. (Issue) Your first JavaScript action
 # 4. (PR) Hello Action
-# 5. (PR) Knock Knock...
+# 5. (Issue) Knock Knock...
 # 6. (PR) External APIs
+# 7. (Issue) Consuming Action Outputs
+# 8. (PR) Use Outputs
+# 9. (Issue) Last minute notes
 
 before:
   - type: updateBranchProtection
@@ -29,11 +30,7 @@ before:
     color: 3F8A99
   - type: createIssue
     title: Start here!
-    body: 01_welcome-issue.md
-    action_id: welcomeIssue
-  - type: respond
-    issue: "%actions.welcomeIssue.data.number%"
-    with: 01_welcome-activity.md
+    body: 01_welcome-activity.md
     data:
       quicklink: "%payload.repository.html_url%/new/master/.github/workflows?filename=my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
@@ -113,8 +110,9 @@ steps:
         issue: Create a workflow
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.iwPr.data.base.repo.full_name%/pull/%actions.iwPr.data.number%"
-  - title: Add an Action reference
-    description: Add an Action reference to the workflow file
+
+  - title: Prep the workflow
+    description: Prepare the workflow for your future action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/2"
     actions:
@@ -180,9 +178,10 @@ steps:
         data:
           workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.workflowPr.data.base.repo.full_name%/pull/%actions.workflowPr.data.number%"
 
-  - title: On to your development environment
-    description: Lets prepare your environment to start writing actions
+  - title: Add an Action reference
+    description: Add an Action reference to the workflow file
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/2"
     actions:
       - type: getFileContents
         filename: '.github/workflows/my-workflow.yml'
@@ -220,10 +219,10 @@ steps:
         pullRequest: Create a workflow
       - type: mergePullRequest
 
-  - title: Creating the Action metadata
-    description: Create an action.yml file and add necessary metadata for our Action
+  - title: On to your development environment
+    description: Lets prepare your environment to start writing Actions
     event: push
-    link: "{{ repoUrl }}/issues/1"
+    link: "{{ repoUrl }}/issues/3"
     actions:
       - type: gate
         left: "%payload.ref%"
@@ -273,9 +272,10 @@ steps:
         with: 05_create-metadata.md
         issue: Hello Action
 
-  - title: Create the Action entrypoint
-    description: time to start adding code to main.js
+  - title: Creating the Action metadata
+    description: Create an action.yml file and add necessary metatdata for our Action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: gate
         left: '%payload.title%'
@@ -304,9 +304,10 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Adding input parameters
-    description: extend your action to accept input parameters
+  - title: Create the Action entrypoint
+    description: Add code to main.js file
     event: pull_request.synchronize #ideally would like the workflow completing to tigger this
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: gate
         left: '%payload.title%'
@@ -336,8 +337,9 @@ steps:
         with: 07_update-files.md
 
   - title: Exploring your input parameters
-    description: view the results of adding input parameter
-    event: check_suite.completed
+    description: View the results of adding input parameter
+    event: check_suite.completed #ideally would like workflow complete to trigger this
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: gate
         every: true
@@ -358,8 +360,9 @@ steps:
         with: 08_experiment.md
 
   - title: Integrating Actions with external APIs
-    description: Write a new Action that call an external API
+    description: Write a new Action that calls an external API
     event: pull_request.closed
+    link: "{{ repoUrl }}/pull/4"
     actions:
       - type: updateBranchProtection
       - type: createIssue
@@ -386,7 +389,7 @@ steps:
     event: 
       - pull_request.opened
       - pull_request.edited
-    # link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issues/5"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -422,6 +425,7 @@ steps:
   - title: Create your new Action metadata
     description: Add action.yml file for new joke action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -433,6 +437,7 @@ steps:
   - title: Create your Actions JavaScript files
     description: Add joke.j and main.js to your Action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -444,6 +449,7 @@ steps:
   - title: Use the joke Action in a workflow
     description: Edit the workflow file to now use the newly created joke Action
     event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -461,7 +467,7 @@ steps:
   - title: Having Actions tell a joke... or two
     description: Wait for your Action to present you with a joke
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: removeBranchProtection
       - type: respond
@@ -473,6 +479,7 @@ steps:
   - title: Configure the workflow for a third Action
     description: Edit the workflow to accomodate the third action
     event: pull_request.closed
+    link: "{{ repoUrl }}/pull/6"
     actions:
       - type: updateBranchProtection
       - type: createIssue
@@ -491,7 +498,7 @@ steps:
   - title: Write the final Action
     description: Create an Action that consumes output from another Action and uses Octokit
     event: pull_request
-    # link: "{{ repoUrl }}/issue1/1"
+    link: "{{ repoUrl }}/issues/7"
     actions:
       - type: gate
         gates:
@@ -523,7 +530,7 @@ steps:
   - title: Add third Actions metadata
     description: Create the metadata for the third Action
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -535,7 +542,7 @@ steps:
   - title: Add third Actions JavaScript files
     description: Create the JavaScript files for the third Action
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -549,7 +556,7 @@ steps:
   - title: Trigger the third Action
     description: Add a pull request label to trigger the workflow
     event: pull_request.synchronize
-    # link: "{{ repoUrl }}/pull/2"
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: gate
         left: "%payload.pull_request.title%"
@@ -564,16 +571,21 @@ steps:
   - title: Wrapping things up
     description: Final notes before you go
     event: pull_request.closed
+    link: "{{ repoUrl }}/pull/8"
     actions:
       - type: createIssue
         title: Last minute notes
         body: great-job.md
+        comments:
+          - 16_using-ncc.md
+          - 16_publishing.md
+          - 16_complete.md
+        action_id: finalIssue
       - type: respond
-        issue: Last minute notes
-        with: 16_using-ncc.md
-      - type: respond
-        issue: Last minute notes
-        with: 16_publishing.md
-      - type: respond
-        issue: Last minute notes
-        with: 16_complete.md
+        with: go-to-final.md
+        data:
+          url: '%actions.finalIssue.data.html_url%'
+
+tags: [
+  "JavaScript", "API", "Actions toolkit", "GitHub Secrets", "Workflows"
+]
