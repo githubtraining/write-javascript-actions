@@ -14,7 +14,7 @@ template:
 # 5. (Issue) Knock knock...
 # 6. (PR) External APIs
 # 7. (Issue) Consuming action outputs
-# 8. (PR) Use Outputs
+# 8. (PR) Use outputs
 # 9. (Issue) Last minute notes
 
 before:
@@ -600,7 +600,7 @@ steps:
               need: .github/workflows/my-workflow.yml
 
       - type: gate
-        left: '/uses:\s*\.\/\.github\/actions\/joke-action*/g'
+        left: '/uses:\s*\.\/\.github\/actions\/joke-action/g'
         operator: test
         right: '%actions.workflowFileContents%'
         else:
@@ -623,6 +623,15 @@ steps:
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/6"
     actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: merge the pull request titled **External APIs**
       - type: updateBranchProtection
       - type: createIssue
         body: 13_action-three-workflow.md
@@ -639,31 +648,61 @@ steps:
 
   - title: Write the final Action
     description: Create an Action that consumes output from another Action and uses Octokit
-    event: pull_request
+    event: 
+      - pull_request.opened
+      - pull_request.edited
     link: "{{ repoUrl }}/issues/7"
     actions:
       - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Create a workflow'
-      - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Use Outputs
+              title: Use outputs
           # if those gates === true Then do this stuff
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
+      - type: gate
+        left: '/repo-token:\s*\${{\s*secrets.GITHUB_TOKEN\s*}}/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}'
+              got: '%actions.workflowFileContents%'
+
+      - type: gate
+        left: '/joke:\s*\${{\s*steps.jokes.outputs.joke-output\s*}}/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'joke: {% raw %}${{ steps.jokes.outputs.joke-output }}{% endraw %}'
+              got: '%actions.workflowFileContents%'
+
       - type: closeIssue
         issue: Consuming action outputs
       - type: respond
@@ -677,7 +716,7 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
       - type: respond
         with: 14_create-metadata.md
 
@@ -689,7 +728,7 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
       - type: respond
         with: 14_create-js-files.md
       - type: respond
@@ -703,7 +742,7 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
       - type: removeBranchProtection
       - type: respond
         with: 15_add-a-label.md
