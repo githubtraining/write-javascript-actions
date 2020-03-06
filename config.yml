@@ -10,7 +10,7 @@ template:
 # 1. (Issue) Start here!
 # 2. (PR) Create a workflow
 # 3. (Issue) Your first JavaScript action
-# 4. (PR) Hello Action
+# 4. (PR) Hello action
 # 5. (Issue) Knock Knock...
 # 6. (PR) External APIs
 # 7. (Issue) Consuming Action Outputs
@@ -250,7 +250,7 @@ steps:
             issue: Your first JavaScript action
 
       - type: createPullRequest
-        title: Hello Action
+        title: Hello action
         body: 05_explain-actions.md
         head: hello-world
         action_id: helloPr
@@ -265,12 +265,12 @@ steps:
         issue: Your first JavaScript action
       - type: respond
         with: 05_explain-metadata.md
-        issue: Hello Action
+        issue: Hello action
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 05_create-metadata.md
-        issue: Hello Action
+        issue: Hello action
 
   - title: Creating the Action metadata
     description: Create an action.yml file and add necessary metatdata for our Action
@@ -280,7 +280,7 @@ steps:
       - type: gate
         left: '%payload.title%'
         operator: ===
-        right: Hello Action
+        right: Hello action
 
       - type: getFileContents
         filename: '.github/actions/hello-world/action.yml'
@@ -312,7 +312,7 @@ steps:
       - type: gate
         left: '%payload.title%'
         operator: ===
-        right: Hello Action
+        right: Hello action
 
       - type: getFileContents
         filename: '.github/actions/hello-world/main.js'
@@ -373,7 +373,7 @@ steps:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 08_next-steps.md
-        issue: Hello Action
+        issue: Hello action
         data:
           issueUrl: "%actions.jokeIssue.data.html_url%"
       - type: respond
