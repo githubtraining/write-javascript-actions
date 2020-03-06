@@ -535,6 +535,32 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/joke.js'
+        action_id: jokeJS
+        required: false
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/main.js'
+        action_id: mainJS
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+          - left: '%actions.jokeJS%'
+          - left: '%actions.mainJS%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/joke-action/joke.js and .github/actions/joke-action/main.js
       - type: getPullRequest
         pullRequest: External APIs
         action_id: apiPr
