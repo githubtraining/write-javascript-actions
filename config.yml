@@ -382,18 +382,31 @@ steps:
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/4"
     actions:
+      - type: gate
+        left: '%payload.pull_request.title%'
+        operator: ===
+        right: Hello action
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: merge the pull request titled "Hello action"
+
       - type: updateBranchProtection
+
       - type: createIssue
         body: 09_joking-around.md
         title: Knock knock...
         action_id: jokeIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
+
       - type: respond
         with: 08_next-steps.md
         issue: Hello action
         data:
           issueUrl: "%actions.jokeIssue.data.html_url%"
+
       - type: respond
         with: 09_new-action.md
         issue: Knock knock...
@@ -407,6 +420,7 @@ steps:
     event: 
       - pull_request.opened
       - pull_request.edited
+      - pull_request.synchornize
     link: "{{ repoUrl }}/issues/5"
     actions:
       - type: gate
