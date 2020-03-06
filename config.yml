@@ -491,7 +491,6 @@ steps:
         else:
           - type: respond
             with: e-joke-dep.md
-            issue: Your first JavaScript action
 
       - type: respond
         with: 10_create-metadata.md
@@ -505,6 +504,25 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/action.yml'
+        action_id: ymlContent
+        required: false
+
+      - type: gate
+        left: '%actions.ymlContent%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: '.github/actions/joke-action/action.yml'
+
       - type: respond
         with: 10_create-js-files.md
 

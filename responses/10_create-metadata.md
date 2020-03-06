@@ -31,8 +31,13 @@ We will not use the `joke-output` in in this portion of the course. There will b
    </details>
 
 6. Save the `action.yml` file
-7. Commit the changes:
-   `git add action.yml`
-   `git commit -m 'add metadata for the joke action'`
-8. push them to the `action-two` branch:
-   `git push`
+7. Commit the changes and push them to GitHub:
+   ```shell
+   git add action.yml
+   git commit -m 'add metadata for the joke action'
+   git push
+   ```
+
+---
+
+I'll respond when you push to this branch. 
