@@ -465,6 +465,34 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/package.json'
+        action_id: packageJSON
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+          - left: '/@actions\/core/gm'
+            operator: test
+            right: '%actions.packageJSON%'
+          - left: '/request/gm'
+            operator: test
+            right: '%actions.packageJSON%'          
+          - left: '/request-promise/gm'
+            operator: test
+            right: '%actions.packageJSON%'          
+        else:
+          - type: respond
+            with: e-joke-dep.md
+            issue: Your first JavaScript action
+
       - type: respond
         with: 10_create-metadata.md
 
