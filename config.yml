@@ -362,16 +362,19 @@ steps:
         right: success
         else:
           - type: respond
+            issue: Hello action
             with: e-workflow.md
             data:
               conclusion: '%payload.check_suite.conclusion%'
 
       - type: respond
         with: 08_input-result.md
+        issue: Hello action
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: removeBranchProtection
       - type: respond
+        issue: Hello action
         with: 08_experiment.md
 
   - title: Integrating Actions with external APIs
