@@ -8,7 +8,7 @@ template:
 
 # Repo artifacts:
 # 1. (Issue) Start here!
-# 2. (PR) Create my-workflow.yml
+# 2. (PR) Create a workflow
 # 3. (Issue) Your first JavaScript action
 # 4. (PR) Hello Action
 # 5. (Issue) Knock Knock...
@@ -31,8 +31,8 @@ before:
   - type: createIssue
     title: Start here!
     body: 01_welcome-activity.md
-    data:
-      quicklink: "%payload.repository.html_url%/new/master/.github/workflows?filename=my-workflow.yml&workflow_template=blank"
+    data:                                          
+      quicklink: "%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
   - title: Setup a workflow file

@@ -12,11 +12,11 @@ _In our case, we will use this one **workflow** file for many things, which lead
 
 ### :keyboard: Activity: Create a pull request to prepare the repository for actions
 
-1. Create a new workflow file titled `my-workflow.yml` by using the instructions below, or [this quicklink]({{quicklink}}).
+1. Create a new workflow file titled `my-workflow.yml` inside of the folders `.github/workflows/` by using the instructions below, or [this quicklink]({{quicklink}}).
    - Go to the [Actions tab]({{ actionsUrl }}).
    - Choose the **Set up a workflow yourself** option, located on the top right hand corner of the screen.
-   - Change the name of the file from `main.yml` to `my-workflow.yml`.
-1. Commit the workflow to a new branch named `add-initial-workflow`.
+   - Change the name of the file to `.github/workflows/my-workflow.yml`.
+1. Commit the workflow to a new branch, you can name it `add-initial-workflow`.
 1. Create a pull request titled **Create a workflow**.
 1. Supply the pull request body content and click `Create pull request`.
 
