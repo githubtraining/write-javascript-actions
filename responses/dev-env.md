@@ -22,25 +22,43 @@ Once you have the necessary tools installed locally, follow these steps to begin
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
 2. Clone your Learning Lab repo to your local machine:
-   `git clone {{repoUrl}}.git`
+   ```shell
+   git clone {{repoUrl}}.git
+   ```
 3. Navigate to the folder you just cloned:
-   `cd writing-javascript-actions`
+   ```shell
+   cd {{ repo }}
+   ```
 4. Create a new branch named `hello-world`. This is the branch we will use to write our first action. **Please do not capitalize letters unless I do, I run case-sensitive checks to make sure I can help you along the way!**
-   `git checkout -b hello-world`
+   ```shell
+   git checkout -b hello-world
+   ```
 
 5. Create a new folder for our actions files:
-   `mkdir -p .github/actions/hello-world`
+   ```shell
+   mkdir -p .github/actions/hello-world
+   ```
 6. Navigate to the `hello-world` folder you just created:
-   `cd .github/actions/hello-world`
+   ```shell
+   cd .github/actions/hello-world
+   ```
 7. Initialize a new project:
-   `npm init -y`
+   ```shell
+   npm init -y
+   ```
 8. Install the **core** dependency from the [GitHub ToolKit](https://github.com/actions/toolkit):
-   `npm install --save @actions/core`
+   ```shell
+   npm install --save @actions/core
+   ```
 9. Commit those newly added files,we will remove the need to upload **node_modules** in a later step:
-   `git add .`
-   `git commit -m 'add project dependencies'`
+   ```shell
+   git add .
+   git commit -m 'add project dependencies'
+   ```
 10. Push your changes to your repository:
-    `git push -u origin hello-world`
+    ```shell
+    git push -u origin hello-world
+    ```
 
 ---
 

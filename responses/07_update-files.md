@@ -76,12 +76,24 @@ That was a lot of information that you just learned. @{{user.login}} it is time 
       </details>
 
 2. Save the changes to each file
-3. Commit the changes to this branch
-   `git add main.js action.yml workflow.yml`
-   `git commit -m 'allow input in all action files'`
-4. Push the changes from your local machine to this repository.
-   `git push`
+3. Commit the changes to this branch and push them to GitHub:
+
+   ```shell
+   git add main.js action.yml workflow.yml
+   git commit -m 'allow input in all action files'
+   git push
+   ```
 
 ---
 
-I'll respond here when you finish this step.
+I'll respond here when GitHub Actions reports it's finished.
+
+<details><summary>Is your workflow failing?</summary>
+
+If you workflow is failing, please double check your:
+- JavaScript source code
+- action metadata
+- workflow file
+
+Look for linter errors or any errors reported on the Actions tab. I will respond when I receive another workflow run is completed.
+</details>

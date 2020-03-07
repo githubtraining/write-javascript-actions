@@ -106,7 +106,7 @@ _Don't forget to call the `run()` function._
 
 ---
 
-### :keyboard: Activity: Creating the javascript files for your new action.
+### :keyboard: Activity: Creating the JavaScript files for your new action.
 
 1. Create and add the following contents to the `.github/actions/joke-action/joke.js` file:
 
@@ -149,12 +149,13 @@ _Don't forget to call the `run()` function._
    ```
 
 4. Save the `main.js` file.
-5. Commit the changes to the `action-two` branch:
-   `git add joke.js main.js`
-   `git commit -m 'creating joke.js and main.js'`
-6. Push the changes to your repository:
-   `git push`
+5. Commit the changes to this branch and push them to GitHub:
+   ```shell
+   git add joke.js main.js
+   git commit -m 'creating joke.js and main.js'
+   git push
+   ```
 
 ---
 
-I'll respond in this pull request when you have completed these tasks.
+I'll respond in this pull request when you have pushed to this branch.

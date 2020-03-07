@@ -8,13 +8,13 @@ template:
 
 # Repo artifacts:
 # 1. (Issue) Start here!
-# 2. (PR) Create my-workflow.yml
+# 2. (PR) Create a workflow
 # 3. (Issue) Your first JavaScript action
-# 4. (PR) Hello Action
-# 5. (Issue) Knock Knock...
+# 4. (PR) Hello action
+# 5. (Issue) Knock knock...
 # 6. (PR) External APIs
-# 7. (Issue) Consuming Action Outputs
-# 8. (PR) Use Outputs
+# 7. (Issue) Consuming action outputs
+# 8. (PR) Use outputs
 # 9. (Issue) Last minute notes
 
 before:
@@ -31,39 +31,48 @@ before:
   - type: createIssue
     title: Start here!
     body: 01_welcome-activity.md
-    data:
+    data:                                          
       quicklink: "%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
   - title: Setup a workflow file
     description: Create a pull request to add a workflow
-    event: pull_request
+    event: 
+        # if the payload action is 'opened' OR 'edited'
+      - pull_request.opened
+      - pull_request.edited
+      - pull_request.synchronize
     link: "{{ repoUrl }}/issues/1"
     actions:
       - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Create my-workflow.yml'
-      - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Create my-workflow.yml
+        right: Create a workflow
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Create my-workflow.yml
+              title: Create a workflow
           # if those gates === true Then do this stuff
+
       - type: closeIssue
         issue: Start here!
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
       - type: respond
         with: 01_explain-workflow.md
         data:
@@ -84,42 +93,120 @@ steps:
         right: "GitHub Actions"
         else:
           - type: respond
-            issue: Initial workflow
+            issue: Create a workflow
             with: debug.md
             data:
-              debug: "%payload%"
+              debug: '%payload%'
       - type: respond
         with: 02_workflow-results.md
-        issue: Create my-workflow.yml
+        issue: Create a workflow
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: getPullRequest
-        pullRequest: Create my-workflow.yml
+        pullRequest: Create a workflow
         action_id: iwPr
       - type: respond
         with: 02_modify-workflow.md
-        issue: Create my-workflow.yml
+        issue: Create a workflow
         data:
-          workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml"
+          workflowFile: "%payload.repository.html_url%/edit/%actions.iwPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.iwPr.data.base.repo.full_name%/pull/%actions.iwPr.data.number%"
 
   - title: Prep the workflow
     description: Prepare the workflow for your future action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/2"
     actions:
+      # Make sure we have the right PR
+      - type: gate
+        left: '%payload.pull_request.title%'
+        operator: ===
+        right: Create a workflow
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
+      - type: gate
+        left: '/name:\s*JS Actions/gm'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'name: JS Actions'
+              got: '%actions.workflowFileContents%'
+
+      - type: gate
+        left: '/uses:\s*actions\/checkout@v1\n*$/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-end.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: '- uses: actions\/checkout@v1'
+              got: '%actions.workflowFileContents%'
+
+      - type: gate
+        left: '/action:/gm'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'action:'
+
       - type: getPullRequest
-        pullRequest: Create my-workflow.yml
+        pullRequest: Create a workflow
         action_id: workflowPr
       - type: respond
         with: 03_reference-actions.md
         data:
-          workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml"
+          workflowFile: "%payload.repository.html_url%/edit/%actions.workflowPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.workflowPr.data.base.repo.full_name%/pull/%actions.workflowPr.data.number%"
 
   - title: Add an Action reference
     description: Add an Action reference to the workflow file
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/2"
     actions:
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+        - left: '/name:\s*hello-action/gm'
+          operator: test
+          right: '%actions.workflowFileContents%'
+        - left: '/uses:\s*\.\/\.github\/actions\/hello-world/gm'
+          operator: test
+          right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: |
+                - name: hello-action
+                  uses: ./.github/actions/hello-world
+              got: '%actions.workflowFileContents%'
+
       - type: createIssue
         title: Your first JavaScript action
         body: dev-env.md
@@ -129,7 +216,7 @@ steps:
         body: 04_on-to-actions.md
         data:
           issueUrl: "%actions.devEnv.data.html_url%"
-        pullRequest: Create my-workflow.yml
+        pullRequest: Create a workflow
       - type: mergePullRequest
 
   - title: On to your development environment
@@ -141,12 +228,29 @@ steps:
         left: "%payload.ref%"
         operator: ===
         right: "refs/heads/hello-world"
+        else:
+        - type: respond
+          issue: Your first JavaScript action
+          with: e-branch.md
+          data: 
+            expected: hello-world
+
+      - type: getFileContents
+        filename: '.github/actions/hello-world/package.json'
+        action_id: packageJSON
+        required: false
+
       - type: gate
-        left: "%payload.created%"
-        operator: ===
-        right: true
+        left: '/@actions\/core/gm'
+        operator: test
+        right: '%actions.packageJSON%'
+        else:
+          - type: respond
+            with: e-actions-dep.md
+            issue: Your first JavaScript action
+
       - type: createPullRequest
-        title: Hello Action
+        title: Hello action
         body: 05_explain-actions.md
         head: hello-world
         action_id: helloPr
@@ -161,18 +265,41 @@ steps:
         issue: Your first JavaScript action
       - type: respond
         with: 05_explain-metadata.md
-        issue: Hello Action
+        issue: Hello action
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: respond
         with: 05_create-metadata.md
-        issue: Hello Action
+        issue: Hello action
 
   - title: Creating the Action metadata
     description: Create an action.yml file and add necessary metatdata for our Action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/4"
     actions:
+      - type: gate
+        left: '%payload.pull_request.title%'
+        operator: ===
+        right: Hello action
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push a commit to the pull request titled "Hello action"
+
+      - type: getFileContents
+        filename: '.github/actions/hello-world/action.yml'
+        action_id: actionYML
+        required: false
+
+      - type: gate
+        left: '%actions.actionYML%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/hello-world/action.yml
+
       - type: respond
         with: 06_explain-runs.md
         data:
@@ -187,6 +314,29 @@ steps:
     event: pull_request.synchronize #ideally would like the workflow completing to tigger this
     link: "{{ repoUrl }}/pull/4"
     actions:
+      - type: gate
+        left: '%payload.pull_request.title%'
+        operator: ===
+        right: Hello action
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push a commit to the pull request titled "Hello action"
+
+      - type: getFileContents
+        filename: '.github/actions/hello-world/main.js'
+        action_id: mainJS
+        required: false
+
+      - type: gate
+        left: '%actions.mainJS%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/hello-world/main.js
+
       - type: respond
         with: 07_hello-result.md
         data:
@@ -198,15 +348,33 @@ steps:
 
   - title: Exploring your input parameters
     description: View the results of adding input parameter
-    event: pull_request.synchronize #ideally would like workflow complete to trigger this
+    event: check_suite.completed #ideally would like workflow complete to trigger this
     link: "{{ repoUrl }}/pull/4"
     actions:
+      - type: gate
+        left: "%payload.check_suite.app.name%"
+        operator: ===
+        right: "GitHub Actions"
+
+      - type: gate
+        left: "%payload.check_suite.conclusion%"
+        operator: ===
+        right: success
+        else:
+          - type: respond
+            issue: Hello action
+            with: e-workflow.md
+            data:
+              conclusion: '%payload.check_suite.conclusion%'
+
       - type: respond
         with: 08_input-result.md
+        issue: Hello action
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
       - type: removeBranchProtection
       - type: respond
+        issue: Hello action
         with: 08_experiment.md
 
   - title: Integrating Actions with external APIs
@@ -214,21 +382,34 @@ steps:
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/4"
     actions:
+      - type: gate
+        left: '%payload.pull_request.title%'
+        operator: ===
+        right: Hello action
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: merge the pull request titled "Hello action"
+
       - type: updateBranchProtection
+
       - type: createIssue
         body: 09_joking-around.md
-        title: Knock Knock...
+        title: Knock knock...
         action_id: jokeIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
+
       - type: respond
         with: 08_next-steps.md
-        issue: Hello Action
+        issue: Hello action
         data:
           issueUrl: "%actions.jokeIssue.data.html_url%"
+
       - type: respond
         with: 09_new-action.md
-        issue: Knock Knock...
+        issue: Knock knock...
         data:
           # The following workflowFile var does not point where it should for some reason
           workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
@@ -236,19 +417,12 @@ steps:
 
   - title: Prevent the workflow from running
     description: Comment out the lines in the workflow to prevent unwanted runs
-    event: pull_request
+    event: 
+      - pull_request.opened
+      - pull_request.edited
+      - pull_request.synchronize
     link: "{{ repoUrl }}/issues/5"
     actions:
-      - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Create my-workflow.yml'
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
@@ -261,10 +435,65 @@ steps:
             data:
               title: External APIs
           # if those gates === true Then do this stuff
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflow
+        required: false
+
+      - type: gate
+        left: '%actions.workflow%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+              
       - type: closeIssue
-        issue: Knock Knock...
+        issue: Knock knock...
       - type: respond
         with: 10_action-two.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
+
+  - title: Install dependencies for the second action
+    description: Create a directory for your new action dependencies
+    event: pull_request.synchronize
+    link: "{{ repoUrl }}/pull/6"
+    actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/package.json'
+        action_id: packageJSON
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+          - left: '/@actions\/core/gm'
+            operator: test
+            right: '%actions.packageJSON%'
+          - left: '/request/gm'
+            operator: test
+            right: '%actions.packageJSON%'          
+          - left: '/request-promise/gm'
+            operator: test
+            right: '%actions.packageJSON%'          
+        else:
+          - type: respond
+            with: e-joke-dep.md
+
+      - type: respond
+        with: 10_create-metadata.md
 
   - title: Create your new Action metadata
     description: Add action.yml file for new joke action
@@ -275,23 +504,30 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: External APIs
-      - type: respond
-        with: 10_create-metadata.md
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
 
-  - title: Create your Actions JavaScript files
-    description: Add joke.j and main.js to your Action
-    event: pull_request.synchronize
-    link: "{{ repoUrl }}/pull/6"
-    actions:
+      - type: getFileContents
+        filename: '.github/actions/joke-action/action.yml'
+        action_id: ymlContent
+        required: false
+
       - type: gate
-        left: "%payload.pull_request.title%"
-        operator: ===
-        right: External APIs
+        left: '%actions.ymlContent%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: '.github/actions/joke-action/action.yml'
+
       - type: respond
         with: 10_create-js-files.md
 
-  - title: Use the joke Action in a workflow
-    description: Edit the workflow file to now use the newly created joke Action
+  - title: Create your Actions JavaScript files
+    description: Add joke.js and main.js to your Action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
@@ -299,20 +535,82 @@ steps:
         left: "%payload.pull_request.title%"
         operator: ===
         right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/joke.js'
+        action_id: jokeJS
+        required: false
+
+      - type: getFileContents
+        filename: '.github/actions/joke-action/main.js'
+        action_id: mainJS
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+          - left: '%actions.jokeJS%'
+          - left: '%actions.mainJS%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/joke-action/joke.js and .github/actions/joke-action/main.js
       - type: getPullRequest
         pullRequest: External APIs
         action_id: apiPr
       - type: respond
         with: 11_edit-workflow.md
         data:
-          workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml"
+          workflowFile: "%payload.repository.html_url%/edit/%actions.apiPr.data.head.ref%/.github/workflows/my-workflow.yml?pr=/%actions.apiPr.data.base.repo.full_name%/pull/%actions.apiPr.data.number%"
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Having Actions tell a joke... or two
-    description: Wait for your Action to present you with a joke
+  - title: Use the joke Action in a workflow  
+    description: Edit the workflow file to now use the newly created joke Action
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/6"
     actions:
+
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to the **External APIs** pull request
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
+      - type: gate
+        left: '/uses:\s*\.\/\.github\/actions\/joke-action/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'uses: ./.github/actions/joke-action'
+              got: '%actions.workflowFileContents%'
+
       - type: removeBranchProtection
       - type: respond
         with: 12_trigger-workflow.md
@@ -320,15 +618,24 @@ steps:
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
 
-  - title: Configure the workflow for a third Action
-    description: Edit the workflow to accomodate the third action
+  - title: Having Actions tell a joke... or two
+    description: Wait for your Action to present you with a joke
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/6"
     actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: External APIs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: merge the pull request titled **External APIs**
       - type: updateBranchProtection
       - type: createIssue
         body: 13_action-three-workflow.md
-        title: Consuming Action Outputs
+        title: Consuming action outputs
         action_id: outputIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
@@ -341,35 +648,68 @@ steps:
 
   - title: Write the final Action
     description: Create an Action that consumes output from another Action and uses Octokit
-    event: pull_request
+    event: 
+      - pull_request.opened
+      - pull_request.edited
+      - pull_request.synchronize
     link: "{{ repoUrl }}/issues/7"
     actions:
       - type: gate
-        gates:
-          # if the payload action is 'opened' OR 'edited'
-          - left: "%payload.action%"
-            operator: ===
-            right: opened
-          - left: "%payload.action%"
-            operator: ===
-            right: edited
-            # AND the pull request title equals 'Create my-workflow.yml'
-      - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
 
         # if those statments FAIL... do this
         else:
           - type: respond
             with: e-rename-pr.md
             data:
-              title: Use Outputs
+              title: Use outputs
           # if those gates === true Then do this stuff
+
+      - type: getFileContents
+        filename: '.github/workflows/my-workflow.yml'
+        action_id: workflowFileContents
+        required: false
+
+      - type: gate
+        left: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/workflows/my-workflow.yml
+
+      - type: gate
+        left: '/repo-token:\s*\${{\s*secrets.GITHUB_TOKEN\s*}}/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'repo-token: ${{ secrets.GITHUB_TOKEN }}'
+              got: '%actions.workflowFileContents%'
+
+      - type: gate
+        left: '/joke:\s*\${{\s*steps.jokes.outputs.joke-output\s*}}/g'
+        operator: test
+        right: '%actions.workflowFileContents%'
+        else:
+          - type: respond
+            with: e-line.md
+            data:
+              filename: .github/workflows/my-workflow.yml
+              code: 'joke: ${{ steps.jokes.outputs.joke-output }}'
+              got: '%actions.workflowFileContents%'
+
       - type: closeIssue
-        issue: Consuming Action Outputs
+        issue: Consuming action outputs
       - type: respond
         with: 14_action-three.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Add third Actions metadata
     description: Create the metadata for the third Action
@@ -379,7 +719,31 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to a pull request titled **Use outputs**
+
+      - type: getFileContents
+        filename: '.github/actions/issue-maker/package.json'
+        action_id: packageJSON
+        required: false
+
+      - type: gate
+        every: true
+        gates:
+          - left: '/@actions\/core/gm'
+            operator: test
+            right: '%actions.packageJSON%'
+          - left: '/@actions\/github/gm'
+            operator: test
+            right: '%actions.packageJSON%'
+        else:
+          - type: respond
+            with: e-issuemaker-dep.md
+
       - type: respond
         with: 14_create-metadata.md
 
@@ -391,7 +755,26 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to a pull request titled **Use outputs**
+
+      - type: getFileContents
+        filename: '.github/actions/issue-maker/action.yml'
+        action_id: actionYML
+        required: false
+
+      - type: gate
+        left: '%actions.actionYML%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/issue-maker/action.yml
+
       - type: respond
         with: 14_create-js-files.md
       - type: respond
@@ -405,7 +788,26 @@ steps:
       - type: gate
         left: "%payload.pull_request.title%"
         operator: ===
-        right: Use Outputs
+        right: Use outputs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: push to a pull request titled **Use outputs**
+
+      - type: getFileContents
+        filename: '.github/actions/issue-maker/index.js'
+        action_id: indexJS
+        required: false
+
+      - type: gate
+        left: '%actions.indexJS%'
+        else:
+          - type: respond
+            with: e-404.md
+            data:
+              need: .github/actions/issue-maker/index.js
+
       - type: removeBranchProtection
       - type: respond
         with: 15_add-a-label.md
@@ -417,6 +819,15 @@ steps:
     event: pull_request.closed
     link: "{{ repoUrl }}/pull/8"
     actions:
+      - type: gate
+        left: "%payload.pull_request.title%"
+        operator: ===
+        right: Use outputs
+        else:
+          - type: respond
+            with: e-unexpected.md
+            data:
+              expected: merge the pull request titled **Use outputs**
       - type: createIssue
         title: Last minute notes
         body: great-job.md

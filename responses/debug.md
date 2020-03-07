@@ -1,3 +1,3 @@
-Here is the payload to help you debug
+:robot: I'm here to help you debug.
 
 {{ debug }}

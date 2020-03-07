@@ -6,14 +6,7 @@ Our action does not require much metadata for it to run correctly. We will not b
 
 We will not use the `joke-output` in in this portion of the course. There will be a later step that will rely on this actions output.
 
-1. Create the action metadata file `.github/actions/joke-action/action.yml`
-2. Use the `name` parameter to name your action `"external API action"`
-3. Next, add a `description` parameter and give it a value of `"use an external API to retrieve and display a joke"`
-4. Create an `outputs:` with an id of `joke-output:` and add a `description:` so we know what the output is for
-5. Lastly, define the `runs:` parameter to use `"node12"` and set the `main:` parameter to `"main.js"`
-
-   <details><summary>View the complete file</summary>
-
+1. Create the action metadata file `.github/actions/joke-action/action.yml` with the following content:
    ```yaml
    name: "external API action"
 
@@ -27,12 +20,14 @@ We will not use the `joke-output` in in this portion of the course. There will b
      using: "node12"
      main: "main.js"
    ```
+2. Save the `action.yml` file
+3. Commit the changes and push them to GitHub:
+   ```shell
+   git add action.yml
+   git commit -m 'add metadata for the joke action'
+   git push
+   ```
 
-   </details>
+---
 
-6. Save the `action.yml` file
-7. Commit the changes:
-   `git add action.yml`
-   `git commit -m 'add metadata for the joke action'`
-8. push them to the `action-two` branch:
-   `git push`
+I'll respond when you push to this branch. 

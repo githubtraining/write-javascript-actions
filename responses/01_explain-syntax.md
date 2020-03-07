@@ -1,6 +1,6 @@
 ## Go on... Tell me more!
 
-I'm glad you asked. Let's take a look at the workflow file that we just committed to this repository.
+I'm glad you asked. Let's take a look at a workflow file similar to what we just committed to this repository.
 
 ```yaml
 name: CI
@@ -52,3 +52,5 @@ Let's take a second to talk about each of the pieces that we see here:
 
 📖Take a deeper dive into [workflow components](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-workflows)
 📖Read more about [configuring workflows](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-workflows)
+
+*if you don't see a response from me below this, try making a new commit to this branch.  Your workflow may have finished before I was ready to listen*
