@@ -25,47 +25,39 @@ We need to make some edits to the `my-workflow.yml` file to get it configured to
 
 ### :keyboard: Activity: Final workflow edit
 
-1. [Edit]({{workflowFile}}) your `my-workflow.yml` file.
-2. Assign the `ha-ha` step an `id:` of **jokes**
-3. Add a new step named `create-issue`.
-4. The new step should have its `uses:` property point to `./.github/actions/issue-maker`
-5. The `issue-maker` action should consume the output of the `joke-action`. Add a `with:` property that takes a parameter of `joke:` with a value of `{% raw %}${{steps.jokes.outputs.joke-output}}{% endraw %}`
-6. The `issue-maker` action should have a property of `repo-token:` which has `{% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}` as the value (I'll explain this in a later step, for now it's a secret 🤣🤷‍♂)
-7. Commit the changes to a new branch, you can name it `action-three`.
-8. Create a pull request named **Use outputs**
+1. [Edit]({{workflowFile}}) your `my-workflow.yml` file to contain the following:
+    ```yaml
+    name: JS Actions
 
-Like our other actions, I'll respond in the new pull request when I detect it has been opened.
+    on:
+      pull_request:
+        types: [labeled]
+
+    jobs:
+      action:
+        runs-on: ubuntu-latest
+
+        steps:
+          - uses: actions/checkout@v1
+
+          - name: hello-action
+            uses: ./.github/actions/hello-world
+
+          - name: ha-ha
+            uses: ./.github/actions/joke-action
+            id: jokes
+
+          - name: create-issue
+            uses: ./.github/actions/issue-maker
+            with:
+              repo-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
+              joke: {% raw %}${{steps.jokes.outputs.joke-output}}{% endraw %}
+    ```
+2. Commit the changes to a new branch, you can name it `action-three`.
+3. Create a pull request named **Use outputs**
+
+
 
 ---
 
-<details><summary>The complete workflow can be viewed by clicking here</summary>
-
-```yaml
-name: JS Actions
-
-on:
-  pull_request:
-    types: [labeled]
-
-jobs:
-  action:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: hello-action
-        uses: ./.github/actions/hello-world
-
-      - name: ha-ha
-        uses: ./.github/actions/joke-action
-        id: jokes
-
-      - name: create-issue
-        uses: ./.github/actions/issue-maker
-        with:
-          repo-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
-          joke: {% raw %}${{steps.jokes.outputs.joke-output}}{% endraw %}
-```
-
-</details>
+Like our other actions, I'll respond in the new pull request when I detect it has been opened.
