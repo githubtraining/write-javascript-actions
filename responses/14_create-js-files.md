@@ -89,7 +89,7 @@ async function run() {
     const jokeBody = core.getInput("joke");
     const token = core.getInput("repo-token");
 
-    const octokit = new github.Github(token);
+    const octokit = new github.GitHub(token);
   } catch (err) {}
 }
 
@@ -106,7 +106,7 @@ async function run() {
     const jokeBody = core.getInput("joke");
     const token = core.getInput("repo-token");
 
-    const octokit = new github.Github(token);
+    const octokit = new github.GitHub(token);
 
     const newIssue = await octokit.issues.create({
         repo: github.context.repo.repo,
@@ -132,7 +132,7 @@ async function run() {
     const jokeBody = core.getInput("joke");
     const token = core.getInput("repo-token");
 
-    const octokit = new github.Github(token);
+    const octokit = new github.GitHub(token);
 
     const newIssue = await octokit.issues.create({
         repo: github.context.repo.repo,
