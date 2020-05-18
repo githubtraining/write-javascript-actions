@@ -6,7 +6,7 @@ template:
   repo: "writing-javascript-actions-template"
   name: "writing-javascript-actions"
 
-# Repo artifacts:
+# Repo artifacts
 # 1. (Issue) Start here!
 # 2. (PR) Create a workflow
 # 3. (Issue) Your first JavaScript action
