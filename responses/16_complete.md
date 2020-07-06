@@ -6,7 +6,7 @@ You can keep this repository forever to remember our time... I actually encourag
 
 I really do think of everything!
 
-Make sure to visit [Learning Lab](lab.github.com) for more courses on GitHub Actions and other awesome tech content.
+Make sure to visit [Learning Lab](//lab.github.com) for more courses on GitHub Actions and other awesome tech content.
 
 We would love to hear what you thought about this course, share your experience with us and others in the [Community forum](https://github.community/t5/GitHub-Learning-Lab/bd-p/learn)
 
