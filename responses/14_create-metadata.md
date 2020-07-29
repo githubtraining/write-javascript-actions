@@ -27,7 +27,7 @@ Now, we will do something similar so that our action matches what our workflow e
 
 💡All of the following steps take place inside of the `.github/actions/issue-maker` directory.
 
-We will use the `joke-output`, as well as an issue title, in in this portion of the course so we need to accept `inputs:` for our action.
+We will use the joke output, an `issue-title`, and the `repo-token` in this portion of the course as `inputs:` for our action.
 
 1. Create a file named `action.yml` with the following contents:
     ```yaml
