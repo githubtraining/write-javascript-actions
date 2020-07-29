@@ -42,6 +42,8 @@ We will use the joke output, an `issue-title`, and the `repo-token` in this port
         description: "Every issue needs a title, it's nice to supply one, even though you could do this dynamically within your code"
         default: "a joke for you"
         required: true
+      repo-token:
+        description: "Token with permissions to do repo things"
 
     runs:
       using: "node12"
