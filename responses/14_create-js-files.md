@@ -26,6 +26,7 @@ The first two lines will import packages from the [Actions ToolKit](https://gith
 ```javascript
 const core = require("@actions/core");
 const github = require("@actions/github");
+const { Octokit} = require('@octokit/rest')
 ```
 
 **Creating the main function**
@@ -89,7 +90,10 @@ async function run() {
     const jokeBody = core.getInput("joke");
     const token = core.getInput("repo-token");
 
-    const octokit = github.getOctokit(token);
+    const octokit = new Octokit({
+        auth: token,
+        userAgent: 'action-three',
+    });
   } catch (err) {}
 }
 
@@ -106,7 +110,10 @@ async function run() {
     const jokeBody = core.getInput("joke");
     const token = core.getInput("repo-token");
 
-    const octokit = github.getOctokit(token);
+    const octokit = new Octokit({
+        auth: token,
+        userAgent: 'action-three',
+    });
 
     const newIssue = await octokit.issues.create({
         repo: github.context.repo.repo,
@@ -132,7 +139,10 @@ async function run() {
     const jokeBody = core.getInput("joke");
     const token = core.getInput("repo-token");
 
-    const octokit = github.getOctokit(token);
+    const octokit = new Octokit({
+        auth: token,
+        userAgent: 'action-three',
+    });
 
     const newIssue = await octokit.issues.create({
         repo: github.context.repo.repo,
