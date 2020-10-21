@@ -1,0 +1,36 @@
+name: find and replace
+
+on:
+  workflow_dispatch:
+    branches-ignore: 
+      - main
+    inputs:
+      find:
+        description: 'what to find'
+        required: true
+      replace:
+        description: "replacement value"
+        required: true
+      where-to-look:
+        descriptions: "what directory to look in"
+        required: true
+        default: .
+
+jobs:
+  find-and-replace:
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v2
+      - name: Find and replace
+        run: find ${{github.event.inputs.where-to-look}} -type f -print0 | xargs -0 sed -i 's/${{github.event.inputs.find}}/${{github.event.inputs.replace}}/g'
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v5
+        with:
+          author_name: ${{github.actor}}
+          author_email: ${{github.actor}}@github.com
+          message: "find and replace action"
+          add: "."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
