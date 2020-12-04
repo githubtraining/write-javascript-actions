@@ -32,7 +32,7 @@ before:
     title: Start here!
     body: 01_welcome-activity.md
     data:                                          
-      quicklink: "%payload.repository.html_url%/new/master?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
+      quicklink: "%payload.repository.html_url%/new/main?filename=.github/workflows/my-workflow.yml&workflow_template=blank"
       actionsUrl: "%payload.repository.html_url%/actions/new"
 steps:
   - title: Setup a workflow file
@@ -412,7 +412,7 @@ steps:
         issue: Knock knock...
         data:
           # The following workflowFile var does not point where it should for some reason
-          workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
+          workflowFile: "%payload.repository.html_url%/edit/main/.github/workflows/my-workflow.yml"
           actionsUrl: "%payload.repository.html_url%/actions"
 
   - title: Prevent the workflow from running
@@ -639,7 +639,7 @@ steps:
         action_id: outputIssue
         data:
           actionsUrl: "%payload.repository.html_url%/actions"
-          workflowFile: "%payload.repository.html_url%/edit/master/.github/workflows/my-workflow.yml"
+          workflowFile: "%payload.repository.html_url%/edit/main/.github/workflows/my-workflow.yml"
       - type: respond
         with: 12_next-steps.md
         issue: External APIs

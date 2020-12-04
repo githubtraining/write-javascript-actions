@@ -55,7 +55,7 @@ We first bring in the `request-promise` library that we installed earlier using 
 
 Next we define a set of `options` that the `request-promise` library will use when it makes the request.
 
-📖Read more about [request-promise](https://github.com/request/request-promise/blob/master/README.md)
+📖Read more about [request-promise](https://github.com/request/request-promise/)
 
 Inside of the `options` block we add a key named `headers`. This defines the HTTP headers that the **icanhazdadjoke** API expects in each request that comes it's way.
 

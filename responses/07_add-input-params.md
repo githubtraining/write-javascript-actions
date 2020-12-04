@@ -94,7 +94,7 @@ if (thirdGreeting) {
 
 By using `core.getInput()` we can specify the string of any input parameter we have placed inside of the `action.yml` file.
 
-The `@actions/core` package brings a few more methods along with it to help us interact with the GitHub Actions platform. If writing actions is something you plan to continue doing it's work reading the [documentation](https://github.com/actions/toolkit/tree/master/packages/core) about this package.
+The `@actions/core` package brings a few more methods along with it to help us interact with the GitHub Actions platform. If writing actions is something you plan to continue doing it's work reading the [documentation](https://github.com/actions/toolkit/tree/main/packages/core) about this package.
 
 ---
 
