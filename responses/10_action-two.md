@@ -8,9 +8,9 @@ Now that you have all the necessary tools installed locally, follow these steps 
 
 1. Open the **Terminal** (Mac and Linux) or **Command Prompt** (Windows) on your local machine
 1. Navigate to the `.github/` directory.
-1. Checkout the `master` branch
+1. Checkout the `main` branch
    ```shell
-   git checkout master
+   git checkout main
    ```
 1. Update the contents of your Learning Lab repo to your local machine:
    ```shell

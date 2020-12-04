@@ -12,4 +12,4 @@ Great job! Everything is all set up and now we are ready to start laughing 🤣.
 
 Feel free to continue adding labels to this pull request if you want to see more jokes.
 
-When you are ready to move forward in the lesson merge this pull request into the `master` branch.
+When you are ready to move forward in the lesson merge this pull request into the `main` branch.
