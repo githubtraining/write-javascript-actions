@@ -2,7 +2,7 @@
 
 I'm counting on you this time! In the previous steps I have guided you heavily on what to type along the way. This time I ask that you look back on the things you've done in this course and pull from the knowledge you already have to accomplish these tasks.
 
-1. Create a file named `index.js`. **Its full path should be: `.github/actions/issue-makes/index.js`.**
+1. Create a file named `index.js`. **Its full path should be: `.github/actions/issue-maker/index.js`.**
 2. Create the `core` and `github` variables
 3. Create an asynchronous function named `run()`
 4. Inside a try/catch block define the `issueTitle`, `jokeBody`, `token` and `octokit` variables
