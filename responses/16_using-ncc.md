@@ -7,7 +7,7 @@ First you need to install a tool called [ncc](https://github.com/zeit/ncc). You'
 What **ncc** does is take all the dependencies within your project and compile them into a single JavaScript file. This allows you to avoid committing the `node_modules` folder in your actions source code.
 
 **Install ncc**
-`npm install -g @zeit/ncc`
+`npm install -g @vercel/ncc`
 
 **Using ncc**
 When you use ncc:
