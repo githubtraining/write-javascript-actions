@@ -2,7 +2,7 @@
 
 Earlier you learned how the different pieces of the GitHub Actions feature work together. Now you will learn about the components that make up an individual action.
 
-Remember, and action is the unit of work that a workflow file executes when it reaches that task. They are called by referencing them as the value to the `uses:` key in a workflow step.
+Remember, an action is the unit of work that a workflow file executes when it reaches that task. They are called by referencing them as the value to the `uses:` key in a workflow step.
 
 ### What makes up an action?
 
