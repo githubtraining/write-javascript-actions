@@ -27,7 +27,7 @@ Let's take a second to talk about each of the pieces that we see here:
 
 - `name: CI`
   - This is the user-defined name for the workflow. This shows up on the Actions tab so we can see which workflows, and their statuses, run on this repository.
-  - As you can see, our's is currently named `CI`
+  - As you can see, ours is currently named `CI`
 - `on: [push]`
   - This defines the **event** that will tigger a workflow on this repository. Currently we are listening for any [push event](https://developer.github.com/v3/activity/events/types/#pushevent) that happens within this repository.
   - Also note that this is an array, which means we can trigger this workflow [on more than one event](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#about-workflow-events) if that is our intended behavior.
