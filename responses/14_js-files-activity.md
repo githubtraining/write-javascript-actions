@@ -6,7 +6,7 @@ I'm counting on you this time! In the previous steps I have guided you heavily o
 2. Create the `core` and `github` variables
 3. Create an asynchronous function named `run()`
 4. Inside a try/catch block define the `issueTitle`, `jokeBody`, `token` and `octokit` variables
-5. Use the `issues.create()` octokit method to define your API request
+5. Use the `rest.issues.create()` octokit method to define your API request
 6. Add the catch portion of the try/catch block
 7. Use the `setFailed()` method from the `@actions/core` package to stop your action and log and error if something goes wrong
 8. Save the file
@@ -35,7 +35,7 @@ async function run() {
 
     const octokit = new github.getOctokit(token);
 
-    const newIssue = await octokit.issues.create({
+    const newIssue = await octokit.rest.issues.create({
       repo: github.context.repo.repo,
       owner: github.context.repo.owner,
       title: issueTitle,
