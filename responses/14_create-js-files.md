@@ -97,7 +97,7 @@ run();
 ```
 
 **Creating an issue in the repository**
-Next we use that octokit client to create an issue in your repository, which will make the HTTP request to the GitHub API for us. [Look here](https://octokit.github.io/rest.js/#octokit-routes-issues-create) to learn more about `octokit.issues.create()`.
+Next we use that octokit client to create an issue in your repository, which will make the HTTP request to the GitHub API for us. You can learn more about `octokit.rest.issues.create()` in the [octokit API documentation](https://octokit.github.io/rest.js/v18#issues-create).
 
 ```javascript
 async function run() {
@@ -134,7 +134,7 @@ async function run() {
 
     const octokit = github.getOctokit(token);
 
-    const newIssue = await octokit.issues.create({
+    const newIssue = await octokit.rest.issues.create({
         repo: github.context.repo.repo,
         owner: github.context.repo.owner,
         title: issueTitle,
