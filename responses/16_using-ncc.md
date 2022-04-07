@@ -2,12 +2,12 @@
 
 We typically don't commit a `node_modules` folder in a repository. These can often grow to be huge if your project has many dependencies. Because of the way Node works this folder is a necessary evil, but there is a way to get rid of it!
 
-First you need to install a tool called [ncc](https://github.com/zeit/ncc). You'll want to install this tool globally so that you can use as if it's any other CLI tool on your machine.
+First you need to install a tool called [ncc](https://github.com/vercel/ncc). You'll want to install this tool globally so that you can use as if it's any other CLI tool on your machine.
 
 What **ncc** does is take all the dependencies within your project and compile them into a single JavaScript file. This allows you to avoid committing the `node_modules` folder in your actions source code.
 
 **Install ncc**
-`npm install -g @zeit/ncc`
+`npm install -g @vercel/ncc`
 
 **Using ncc**
 When you use ncc:
