@@ -20,7 +20,7 @@ That's quite a bit for a course that doesn't cover workflows!
 
 **Action metadata**
 
-- You became familiar with over 1/2 of the syntax keywords that can be used in an `action.yml` file
+- You became familiar with over the half of the syntax keywords that can be used in an `action.yml` file
 - Using `inputs:` and `outputs:` allowed you to create more dynamic and reusable metadata files for your actions.
 - You've mow written the metadata for three different actions
 
